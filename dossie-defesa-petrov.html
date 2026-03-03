@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dossiê Completo – Defesa Petrov / Petroff</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4a017; --gold-dark: #b8860b;
+      --cream: #faf8f2; --dark-bg: #1a1a1a;
+      --accent-red: #8b1a1a; --border: #ddd5c0;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: #2c2c2c; }
+
+    .cover { background: var(--dark-bg); color: #fff; padding: 80px 0 70px; position: relative; overflow: hidden; }
+    .cover::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,.015) 40px, rgba(255,255,255,.015) 80px); }
+    .cover-tag { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); }
+    .cover h1 { font-family: 'Crimson Text', serif; font-size: clamp(36px,6vw,58px); font-weight: 600; line-height: 1.1; }
+    .cover h1 span { color: var(--gold); }
+    .cover-meta { border-top: 1px solid #333; }
+    .cover-meta-item strong { color: var(--gold); display: block; font-size: 13px; }
+    .cover-meta-item span { color: #888; font-size: 12px; letter-spacing: 1px; }
+    .board-deco { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); opacity: .07; font-size: 120px; line-height: 1; user-select: none; }
+
+    .toc-box { background: var(--dark-bg); border-left: 4px solid var(--gold); color: #fff; }
+    .toc-box h2 { font-family: 'Crimson Text', serif; color: var(--gold); font-size: 22px; letter-spacing: 1px; }
+    .toc-list { list-style: none; padding: 0; counter-reset: toc; }
+    .toc-list li { counter-increment: toc; display: flex; gap: 12px; padding: 5px 0; font-size: 13.5px; color: #ccc; }
+    .toc-list li::before { content: counter(toc,decimal-leading-zero); color: var(--gold); font-weight: 700; min-width: 26px; flex-shrink: 0; }
+    .toc-list a { color: inherit; text-decoration: none; }
+    .toc-list a:hover { color: #fff; }
+
+    .section-num { background: var(--dark-bg); color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 3px 10px; white-space: nowrap; }
+    .section-title { font-family: 'Crimson Text', serif; font-size: 30px; font-weight: 600; color: #1a1a1a; border-bottom: 2px solid var(--gold); padding-bottom: 6px; margin: 0; flex: 1; }
+    h3 { font-family: 'Crimson Text', serif; font-size: 21px; color: var(--accent-red); }
+    h4 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #2c2c2c; }
+
+    .moves-box { background: var(--dark-bg); color: #e0e0e0; border-left: 3px solid var(--gold); font-family: 'Courier New', monospace; font-size: 14px; line-height: 2.2; }
+    .move-label { display: block; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .move { color: #fff; font-weight: 600; }
+    .comment { color: #999; font-style: italic; font-family: 'Inter', sans-serif; font-size: 12px; }
+
+    .var-card { border: 1px solid var(--border); background: #fff; }
+    .var-card-header { background: var(--dark-bg); color: #fff; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; }
+    .badge-var { background: var(--gold); color: var(--dark-bg); font-size: 10px; font-weight: 700; padding: 2px 8px; letter-spacing: 1px; text-transform: uppercase; }
+
+    .callout        { background: #f0ede5; border-left: 4px solid var(--gold); }
+    .callout-danger { background: #fff5f5; border-left: 4px solid var(--accent-red); }
+    .callout-tip    { background: #f1f8f1; border-left: 4px solid #2e7d32; }
+    .callout strong, .callout-danger strong, .callout-tip strong { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+    .callout strong { color: var(--gold-dark); }
+    .callout-danger strong { color: var(--accent-red); }
+    .callout-tip strong { color: #2e7d32; }
+
+    .table thead th { background: var(--dark-bg) !important; color: var(--gold) !important; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; border: none; }
+    .table tbody tr:hover td { background: #e8e4d8; }
+
+    blockquote { border-left: 3px solid var(--gold); background: #f0ede5; font-family: 'Crimson Text', serif; font-size: 19px; font-style: italic; }
+    blockquote cite { display: block; font-size: 13px; font-style: normal; color: #888; margin-top: 6px; }
+
+    footer { background: var(--dark-bg); color: #555; font-size: 12px; letter-spacing: 1px; }
+    hr { border-color: var(--border); }
+  </style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="board-deco">&#9822;&#9820;&#9819;&#9821;</div>
+  <div class="container position-relative" style="max-width:860px;">
+    <p class="cover-tag mb-3">Dossiê de Abertura · Xadrez</p>
+    <h1 class="mb-2">Defesa <span>Petrov</span> / Petroff</h1>
+    <p class="text-secondary fw-light mb-4" style="font-size:16px;">O Guia Completo — História, Variantes, Teoria e Partidas Práticas</p>
+    <div class="cover-meta pt-3 d-flex flex-wrap gap-4">
+      <div class="cover-meta-item"><strong>Notação</strong><span>1.e4 e5 2.Cf3 Cf6</span></div>
+      <div class="cover-meta-item"><strong>ECO</strong><span>C42 – C43</span></div>
+      <div class="cover-meta-item"><strong>Também chamada</strong><span>Jogo Russo</span></div>
+      <div class="cover-meta-item"><strong>Nível</strong><span>Iniciante a Avançado</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5" style="max-width:860px;">
+
+  <nav class="toc-box p-4 p-md-5 my-5">
+    <h2 class="mb-3">Sumário</h2>
+    <ol class="toc-list">
+      <li><a href="#historia">História e Origem</a></li>
+      <li><a href="#conceito">Conceito e Filosofia</a></li>
+      <li><a href="#pros-cons">Vantagens e Desvantagens</a></li>
+      <li><a href="#variantes">Variantes Principais</a></li>
+      <li><a href="#armadilhas">Armadilhas e Erros Comuns</a></li>
+      <li><a href="#gambito-stafford">Gambito Stafford (3…Cc6)</a></li>
+      <li><a href="#gambito-cochrane">Gambito Cochrane (4.Cxf7)</a></li>
+      <li><a href="#jogadores">Grandes Especialistas</a></li>
+      <li><a href="#partidas">Partidas Clássicas Comentadas</a></li>
+      <li><a href="#conselho">Recomendações Práticas</a></li>
+    </ol>
+  </nav>
+
+  <section class="mb-5" id="historia">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">01</span><h2 class="section-title">História e Origem</h2>
+    </div>
+    <p>A Defesa Petrov é uma das aberturas mais antigas do xadrez ocidental. A primeira aparição registrada das ideias por trás do lance 2…Cf6 remonta a <strong>Pedro Damiano</strong>, escritor português que publicou um tratado de xadrez por volta do ano <strong>1512</strong>.</p>
+    <p>O nome oficial da abertura homenageia o mestre russo <strong>Alexander Dmitrievich Petrov</strong> (1794–1867), considerado o primeiro grande jogador russo da história. Petrov estudou e popularizou a defesa no século XIX, demonstrando suas possibilidades defensivas e contraatacantes. Por isso, a abertura também é conhecida como <em>Russian Game</em> (Jogo Russo).</p>
+    <p>Durante décadas, a Petrov foi vista como arma para quem quer um empate seguro. Sua primeira aparição numa disputa de título foi em <strong>1969</strong>, quando <strong>Tigran Petrosian</strong> a utilizou contra <strong>Boris Spassky</strong> para garantir empates rápidos. O prestígio da abertura foi renovado no século XXI por <strong>Vladimir Kramnik</strong> e, mais recentemente, por <strong>Fabiano Caruana</strong>, que a transformaram em arma temível não apenas para empates, mas para vitórias com as pretas.</p>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="conceito">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">02</span><h2 class="section-title">Conceito e Filosofia</h2>
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Posição Inicial da Defesa Petrov</span>
+      <span class="move">1. e4</span> <span class="comment">— Peão do rei, abertura central clássica</span><br>
+      <span class="move">1… e5</span> <span class="comment">— Pretas espelham, controlando d4 e f4</span><br>
+      <span class="move">2. Cf3</span> <span class="comment">— Desenvolvimento com ataque imediato ao peão e5</span><br>
+      <span class="move">2… Cf6!</span> <span class="comment">— Em vez de defender e5, contra-ataca o peão e4</span>
+    </div>
+    <p>A ideia central das pretas é surpreendente: em vez de proteger o peão e5 ameaçado (como na Defesa Espanhola com 2…Cc6, ou na Philidor com 2…d6), as pretas simplesmente <strong>ignoram a ameaça e contra-atacam</strong> com o cavalo para f6, criando uma posição essencialmente <strong>simétrica</strong>.</p>
+    <p>A filosofia das pretas é: "Se você captura meu peão, eu capturo o seu." O resultado natural é equalização do material e, frequentemente, uma estrutura de peões idêntica para ambos os lados.</p>
+    <blockquote class="p-4 my-4">
+      "A Petrov não tenta vencer desde o início — ela tenta não perder. E quando bem jogada, pode punir qualquer imprecisão branca de forma devastadora."
+      <cite>— Ideia recorrente entre comentaristas da Elite</cite>
+    </blockquote>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="pros-cons">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">03</span><h2 class="section-title">Vantagens e Desvantagens</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="h-100 p-4" style="background:#f0f8f0;border-top:3px solid #2e7d32;">
+          <h4 style="color:#2e7d32;">✓ Vantagens para as Pretas</h4>
+          <ul class="mb-0" style="font-size:14px;">
+            <li class="mb-2">Desenvolvimento rápido das peças</li>
+            <li class="mb-2">Estrutura sólida, difícil de atacar</li>
+            <li class="mb-2">Evita a teoria massiva da Ruy Lopez e Italiana</li>
+            <li class="mb-2">Equalização confiável contra adversários mais fortes</li>
+            <li class="mb-2">Boa para jogadores que preferem jogo posicional</li>
+            <li>Adversários muitas vezes não conhecem as linhas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-4" style="background:#fff5f5;border-top:3px solid #8b1a1a;">
+          <h4 style="color:#8b1a1a;">✗ Desvantagens</h4>
+          <ul class="mb-0" style="font-size:14px;">
+            <li class="mb-2">Brancas mantêm pequena vantagem de desenvolvimento</li>
+            <li class="mb-2">Jogo pode se tornar monótono e passivo</li>
+            <li class="mb-2">Muita teoria exigida nas linhas principais</li>
+            <li class="mb-2">Chances de vitória reduzidas em algumas linhas</li>
+            <li class="mb-2">A linha da Dama (5.De2) quase garante empate</li>
+            <li>Armadilha crítica no 3º lance derruba iniciantes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="variantes">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">04</span><h2 class="section-title">Variantes Principais</h2>
+    </div>
+    <p>Após os lances iniciais <strong>1.e4 e5 2.Cf3 Cf6</strong>, as brancas têm três respostas principais, cada uma com características bem distintas.</p>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Principal</span><span>Variante Clássica — 3.Cxe5</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Linha Clássica Completa</span>
+          <span class="move">3. Cxe5</span> <span class="comment">— Captura o peão aparentemente indefeso</span><br>
+          <span class="move">3… d6!</span> <span class="comment">— OBRIGATÓRIO — expulsa o cavalo antes de capturar em e4</span><br>
+          <span class="move">4. Cf3</span> <span class="comment">— O cavalo recua</span><br>
+          <span class="move">4… Cxe4</span> <span class="comment">— Agora as pretas recuperam o peão com segurança</span><br>
+          <span class="move">5. d4</span> <span class="comment">— Brancas ocupam o centro</span><br>
+          <span class="move">5… d5</span> <span class="comment">— Pretas espelham, criando estrutura simétrica</span><br>
+          <span class="move">6. Bd3</span> <span class="comment">— Desenvolvimento natural do bispo</span><br>
+          <span class="move">6… Be7</span> <span class="comment">— Pretas preparam roque</span>
+        </div>
+        <p>Esta é a linha mais jogada e analisada da Petrov. A estrutura simétrica após 5…d5 é o "cartão de visitas" da abertura. O jogo evolui frequentemente para finais técnicos onde as pretas buscam quebrar a estrutura branca.</p>
+        <h4 class="mt-4">Sub-variante: Ataque de Nimzowitsch (5.Cc3)</h4>
+        <div class="moves-box p-4 mb-3">
+          <span class="move">5. Cc3!</span> <span class="comment">— Aceita peões dobrados em troca de desenvolvimento rápido</span><br>
+          <span class="move">5… Cxc3</span><br>
+          <span class="move">6. dxc3</span> <span class="comment">— Abre diagonal para o bispo escuro, planeja roque longo</span><br>
+          <span class="move">6… Be7</span> <span class="comment">— Melhor resposta para as pretas</span>
+        </div>
+        <p>Ganhou popularidade na última década. As brancas ficam com peões dobrados, mas desenvolvem-se rapidamente e habitualmente realizam o roque longo, criando pressão na ala do rei adversário.</p>
+        <h4 class="mt-4">Sub-variante da Dama (5.De2)</h4>
+        <div class="moves-box p-4 mb-3">
+          <span class="move">5. De2</span> <span class="comment">— Crava o cavalo ao rei</span><br>
+          <span class="move">5… De7</span> <span class="comment">— Única resposta para defender o cavalo</span><br>
+          <span class="move">6. d3</span> <span class="comment">— Troca de damas é inevitável</span>
+        </div>
+        <p>Quase sempre resulta em empate (~80% das partidas de elite). Útil quando as brancas <em>precisam</em> de um empate, mas ineficaz quando se joga por vitória.</p>
+      </div>
+    </div>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Moderno</span><span>Ataque Steinitz — 3.d4</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Ataque Steinitz / Moderno</span>
+          <span class="move">3. d4</span> <span class="comment">— Ataca o centro em vez de capturar em e5</span><br>
+          <span class="move">3… Cxe4</span> <span class="comment">— Pretas capturam o peão central</span><br>
+          <span class="move">4. Bd3</span> <span class="comment">— Desenvolvimento com ganho de tempo</span><br>
+          <span class="move">4… d5</span> <span class="comment">— Defende o cavalo e estabiliza o centro</span><br>
+          <span class="move">5. Cxe5</span> <span class="comment">— Transpõe para linha clássica</span>
+        </div>
+        <p>O Ataque Steinitz é uma boa arma surpresa para as brancas. Em vez de capturar em e5 de imediato, elas avançam o peão d para minar o centro adversário. Jogadores que não conhecem essa linha podem acabar numa posição desfavorável.</p>
+        <div class="callout-tip p-3 mt-3">
+          <strong>💡 Dica Estratégica</strong>
+          O peão em e5 das brancas concede mais espaço na ala do rei, mas as pretas obtêm controle firme do centro e da ala da dama com os peões c5-d5. Jogo desequilibrado e interessante para ambos os lados.
+        </div>
+      </div>
+    </div>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Surpresa</span><span>Três Cavalos — 3.Cc3</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Três Cavalos</span>
+          <span class="move">3. Cc3</span> <span class="comment">— Desenvolvimento, não ataca e5 diretamente</span><br>
+          <span class="move">3… Bb4</span> <span class="comment">— Única maneira de manter a teoria da Petrov</span><br>
+          <span class="move">4. Cxe5</span><br>
+          <span class="move">4… 0-0</span> <span class="comment">— Roque, pretas desenvolvem rapidamente</span>
+        </div>
+        <p>A variante dos Três Cavalos é a menos jogada das três opções principais e constitui um bom elemento de surpresa. Muitas vezes transpõe para o Jogo dos Quatro Cavalos se as pretas responderem com 3…Cc6. As brancas geralmente conseguem o par de bispos em troca de peões dobrados no c.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="armadilhas">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">05</span><h2 class="section-title">Armadilhas e Erros Comuns</h2>
+    </div>
+    <div class="callout-danger p-3 mb-4">
+      <strong>⚠️ Armadilha Fatal — O Erro mais Comum</strong>
+      Muitos iniciantes jogam 3…Cxe4?? imediatamente após 3.Cxe5, tentando manter a simetria. Isso é um erro grave que pode custar o jogo!
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">A Armadilha — Nunca faça 3…Cxe4!!</span>
+      <span class="move">3. Cxe5</span><br>
+      <span class="move">3… Cxe4??</span> <span class="comment">— ERRO — tenta espelhar, mas cai numa armadilha</span><br>
+      <span class="move">4. De2!</span> <span class="comment">— Ataca o cavalo E crava-o ao rei ao mesmo tempo</span><br>
+      <span class="move">4… Cf6??</span> <span class="comment">— Parece natural, mas perde a dama!</span><br>
+      <span class="move">5. Cc6+!</span> <span class="comment">— Xeque descoberto — ganha a dama preta</span>
+    </div>
+    <p>A regra fundamental para as pretas é: <strong>nunca capturar em e4 antes de jogar 3…d6</strong>. Após 3.Cxe5 Cxe4 4.De2!, o cavalo está preso e as pretas não têm resposta satisfatória.</p>
+    <h3 class="mt-4 mb-3">Armadilha de Anand (5.Cc3)</h3>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Erro histórico de Anand em 1988</span>
+      <span class="move">5. Cc3</span><br>
+      <span class="move">5… Bf5??</span> <span class="comment">— Jogado por Anand em 1988 — erro!</span><br>
+      <span class="move">6. De2</span> <span class="comment">— Anand resignou: 6…De7 7.Cd5 perde peça</span>
+    </div>
+    <div class="callout p-3">
+      <strong>📌 Regra de Ouro</strong>
+      Contra 5.Cc3, a resposta correta das pretas é sempre 5…Cxc3, aceitando os peões dobrados das brancas em vez de tentar ativar o bispo prematuramente.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="gambito-stafford">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">06</span><h2 class="section-title">Gambito Stafford (3…Cc6)</h2>
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Gambito Stafford — Arma de Surpresa</span>
+      <span class="move">3. Cxe5</span><br>
+      <span class="move">3… Cc6!?</span> <span class="comment">— Gambito — oferta de peão por ataque</span><br>
+      <span class="move">4. Cxc6</span> <span class="comment">— Brancas aceitam o gambito</span><br>
+      <span class="move">4… dxc6</span> <span class="comment">— Pretas recuperam estrutura, mas ficam com peões dobrados</span>
+    </div>
+    <p>O Gambito Stafford é uma linha agressiva que se popularizou bastante no xadrez online blitz nos últimos anos. As pretas oferecem um peão para obter desenvolvimento acelerado e criar ameaças imediatas ao rei branco. Embora objetivamente inferior com jogo preciso das brancas, o Stafford é extremamente perigoso para quem não o conhece. Vídeos do GM Eric Rosen tornaram o Stafford viral na internet xadrezística.</p>
+    <div class="callout p-3 mt-3">
+      <strong>🎯 Para quem é indicado?</strong>
+      Jogadores que preferem xadrez tático e ataques agressivos encontrarão no Stafford uma ferramenta divertida para partidas blitz e rápidas.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="gambito-cochrane">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">07</span><h2 class="section-title">Gambito Cochrane (4.Cxf7)</h2>
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Gambito Cochrane — Das Brancas</span>
+      <span class="move">3. Cxe5 d6 4. Cf3 Cxe4 5. d4</span><br>
+      <span class="move">4. Cxf7!?</span> <span class="comment">— Sacrifício de peça — toma o bispo f7</span><br>
+      <span class="move">4… Rxf7</span> <span class="comment">— Rei obrigado a capturar</span><br>
+      <span class="move">5. d4</span> <span class="comment">— Brancas ganham dois peões; rei preto fica exposto</span>
+    </div>
+    <p>O Gambito Cochrane é uma das linhas mais folclóricas do xadrez. As brancas sacrificam um cavalo pelo bispo f7, expondo o rei preto e ganhando dois peões em compensação. Em análises de alto nível, as pretas costumam ganhar um terceiro peão e coordenar suas forças para vencer — o rei em f7, apesar de exposto, não está necessariamente em perigo com jogo cuidadoso.</p>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="jogadores">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">08</span><h2 class="section-title">Grandes Especialistas da Petrov</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead><tr><th>Jogador</th><th>País</th><th>Contribuição à Petrov</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Alexander Petrov</strong> (1794–1867)</td><td>Rússia</td><td>Deu nome à abertura; primeiro grande teórico russo</td></tr>
+          <tr><td><strong>Pedro Damiano</strong> (~1480–1544)</td><td>Portugal</td><td>Primeiras análises registradas da defesa (c. 1512)</td></tr>
+          <tr><td><strong>Tigran Petrosian</strong></td><td>URSS</td><td>Primeiro a usar no Campeonato Mundial (1969)</td></tr>
+          <tr><td><strong>Vladimir Kramnik</strong></td><td>Rússia</td><td>Maior especialista moderno; usou para neutralizar a elite</td></tr>
+          <tr><td><strong>Artur Yusupov</strong></td><td>Rússia/Alemanha</td><td>Enorme volume de partidas com alta qualidade técnica</td></tr>
+          <tr><td><strong>Fabiano Caruana</strong></td><td>EUA</td><td>Revitalizou a Petrov com 3 vitórias nos Candidatos 2018</td></tr>
+          <tr><td><strong>Ruslan Ponomariov</strong></td><td>Ucrânia</td><td>Especialista na variante 3.d4; partidas brilhantes</td></tr>
+          <tr><td><strong>Daniel Fridman</strong></td><td>Alemanha</td><td>Especialista contemporâneo com estudos aprofundados</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="partidas">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">09</span><h2 class="section-title">Partidas Clássicas Comentadas</h2>
+    </div>
+    <h3 class="mt-4 mb-2">Partida 1 — Kramnik: A Arte do Final Técnico</h3>
+    <p>Uma das partidas-modelo de Kramnik demonstra a ideia estratégica central das pretas: isolar o peão a2 das brancas, deixar peões pendurados em c e d, neutralizar a iniciativa branca e converter um final de torres ligeiramente superior.</p>
+    <h3 class="mt-4 mb-2">Partida 2 — 7…Bg4! como resposta a 8.Te1</h3>
+    <p>Após 7…Be7, as brancas dispõem de 8.Te1. Nesse caso, 8…Bg4! é um lance forte, bem executado pelo GM Daniel Fridman. Após a eventual captura Bxe4 dxe4 Txe4, as pretas recuperam o peão com um final levemente favorável.</p>
+    <h3 class="mt-4 mb-2">Partida 3 — Ponomariov vs. Svidler: Sacrifício de Torre (3.d4)</h3>
+    <p>Na Copa do Mundo da FIDE, Ponomariov executou o sacrifício brilhante <strong>16…Te4!</strong> contra Svidler, criando ameaças irreversíveis. A captura imediata seria refutada por 17…fxe4 18.Bxe4 com o peão de h2 caindo e linhas abertas contra o rei branco.</p>
+    <h3 class="mt-4 mb-2">Partida 4 — Caruana vs. Grischuk: Candidatos 2018</h3>
+    <p>A vitória mais emblemática de Caruana com a Petrov. Com a estrutura 4.dxe5, o peão avançado em e5 concedeu espaço às brancas na ala do rei, mas as pretas obtiveram controle firme do centro. Partida decisiva para a vitória de Caruana no torneio dos Candidatos.</p>
+    <h3 class="mt-4 mb-2">Partida 5 — Andreikin: 5.Cc3 e Roque Longo</h3>
+    <p>Na variante 5.Cc3 Cxc3 6.dxc3, as brancas planejam o roque longo. A ideia de Giri (introduzida na Elite em 2012) para as pretas é realizar o roque curto e construir um forte centro com …c6 e …d5. Andreikin demonstrou essa ideia de forma modelar.</p>
+    <h3 class="mt-4 mb-2">Partida 6 — Gambito Cochrane na Prática</h3>
+    <p>Com 4.Cxf7!?, as brancas entregam uma peça por dois peões. Na partida analisada, as brancas chegam a ganhar um terceiro peão, mas as pretas mantêm vantagem e vencem com ataque no final — demonstrando que o rei em f7 não está tão inseguro quanto parece.</p>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5" id="conselho">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">10</span><h2 class="section-title">Recomendações Práticas</h2>
+    </div>
+    <h3 class="mt-4 mb-2">Para quem está começando</h3>
+    <p>O primeiro passo é memorizar a regra de ouro: <strong>nunca 3…Cxe4 antes de 3…d6</strong>. Esse único detalhe evita a armadilha mais comum e permite jogar a abertura com segurança.</p>
+    <h3 class="mt-4 mb-2">Qual variante estudar primeiro?</h3>
+    <p>Recomenda-se começar pela <strong>Variante Clássica (3.Cxe5)</strong>, dominando a linha principal com 3…d6 4.Cf3 Cxe4 5.d4 d5 6.Bd3 Be7. É a linha mais frequente. Depois, explore o <strong>Ataque de Nimzowitsch (5.Cc3)</strong>, que tem crescido muito em popularidade no xadrez de elite.</p>
+    <h3 class="mt-4 mb-2">Para jogadores intermediários</h3>
+    <p>Estude os planos estratégicos das pretas: como isolar peões brancos, quando trocar bispos vs. cavalos, e como converter finais técnicos de torre. O estudo das partidas de Kramnik é indispensável.</p>
+    <h3 class="mt-4 mb-2">Para jogadores avançados</h3>
+    <p>A variante com 3.d4 merece atenção especial, pois é rica em possibilidades táticas que muitos adversários subestimam. A linha do Gambito Cochrane (4.Cxf7) também precisa ser conhecida — tanto para jogar com ela quanto para rebatê-la.</p>
+    <div class="callout-tip p-3 my-4">
+      <strong>✅ A Petrov é ideal para você se…</strong>
+      Você valoriza solidez acima de tudo; prefere jogo técnico e posicional a ataques selvagens; quer uma abertura confiável contra adversários mais fortes; e aprecia uma abertura com longa tradição histórica e filosófica.
+    </div>
+    <h3 class="mt-4 mb-2">Quando evitar a Petrov</h3>
+    <p>Se você precisa vencer a qualquer custo com as pretas, a Petrov pode não ser a melhor escolha — algumas linhas das brancas (especialmente a linha da Dama com 5.De2) são desenhadas para forçar o empate. Nesse caso, aberturas como a Defesa Siciliana ou a Defesa Francesa oferecem mais desequilíbrio.</p>
+  </section>
+
+  <hr class="my-5">
+
+  <section class="mb-5">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">+</span><h2 class="section-title">Glossário Rápido</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead><tr><th>Termo</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ECO C42</strong></td><td>Código para a Petrov clássica</td></tr>
+          <tr><td><strong>ECO C43</strong></td><td>Código para a variante Moderna/Steinitz (3.d4)</td></tr>
+          <tr><td><strong>Roque longo</strong></td><td>Roque na ala da dama (0-0-0) — comum nas brancas no Ataque de Nimzowitsch</td></tr>
+          <tr><td><strong>Gambito Stafford</strong></td><td>3…Cc6 — sacrifício de peão por iniciativa agressiva</td></tr>
+          <tr><td><strong>Gambito Cochrane</strong></td><td>4.Cxf7 — sacrifício de cavalo pelas brancas para expor o rei preto</td></tr>
+          <tr><td><strong>Simetria</strong></td><td>Estrutura onde ambos os lados têm peões nos mesmos arquivos — típica da Petrov</td></tr>
+          <tr><td><strong>Peão isolado</strong></td><td>Peão sem peões vizinhos — alvo estratégico frequente nos finais da Petrov</td></tr>
+          <tr><td><strong>Xeque descoberto</strong></td><td>Xeque dado ao mover uma peça que revela o ataque de outra — central na armadilha 4.De2!</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<footer class="py-4 text-center">
+  <p class="mb-1">Dossiê Defesa Petrov / Petroff &nbsp;·&nbsp; Compilado a partir de fontes especializadas em xadrez &nbsp;·&nbsp; Para fins educacionais</p>
+  <p class="mb-0">xadrezforte.com.br &nbsp;·&nbsp; chess.com &nbsp;·&nbsp; simplifychess.com &nbsp;·&nbsp; 365chess.com &nbsp;·&nbsp; lichess.org</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

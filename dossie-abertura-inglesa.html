@@ -1,0 +1,515 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dossiê Completo – Abertura Inglesa</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--gold:#d4a017;--gold-dark:#b8860b;--cream:#faf8f2;--dark-bg:#1a1a1a;--accent-red:#8b1a1a;--border:#ddd5c0;--blue:#1a3a5c;--blue-light:#e8f0f8;}
+    body{font-family:'Inter',sans-serif;background:var(--cream);color:#2c2c2c;}
+    .cover{background:var(--dark-bg);color:#fff;padding:80px 0 70px;position:relative;overflow:hidden;}
+    .cover::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,.015) 40px,rgba(255,255,255,.015) 80px);}
+    .cover-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+    .cover h1{font-family:'Crimson Text',serif;font-size:clamp(36px,6vw,58px);font-weight:600;line-height:1.1;}
+    .cover h1 span{color:var(--gold);}
+    .cover-meta{border-top:1px solid #333;}
+    .cover-meta-item strong{color:var(--gold);display:block;font-size:13px;}
+    .cover-meta-item span{color:#888;font-size:12px;letter-spacing:1px;}
+    .board-deco{position:absolute;right:5%;top:50%;transform:translateY(-50%);opacity:.07;font-size:120px;line-height:1;user-select:none;}
+    .toc-box{background:var(--dark-bg);border-left:4px solid var(--gold);color:#fff;}
+    .toc-box h2{font-family:'Crimson Text',serif;color:var(--gold);font-size:22px;letter-spacing:1px;}
+    .toc-list{list-style:none;padding:0;counter-reset:toc;}
+    .toc-list li{counter-increment:toc;display:flex;gap:12px;padding:5px 0;font-size:13.5px;color:#ccc;}
+    .toc-list li::before{content:counter(toc,decimal-leading-zero);color:var(--gold);font-weight:700;min-width:26px;flex-shrink:0;}
+    .toc-list a{color:inherit;text-decoration:none;}.toc-list a:hover{color:#fff;}
+    .section-num{background:var(--dark-bg);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:2px;padding:3px 10px;white-space:nowrap;}
+    .section-title{font-family:'Crimson Text',serif;font-size:30px;font-weight:600;color:#1a1a1a;border-bottom:2px solid var(--gold);padding-bottom:6px;margin:0;flex:1;}
+    h3{font-family:'Crimson Text',serif;font-size:21px;color:var(--accent-red);}
+    h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#2c2c2c;}
+    .moves-box{background:var(--dark-bg);color:#e0e0e0;border-left:3px solid var(--gold);font-family:'Courier New',monospace;font-size:14px;line-height:2.2;}
+    .move-label{display:block;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+    .move{color:#fff;font-weight:600;}.comment{color:#999;font-style:italic;font-family:'Inter',sans-serif;font-size:12px;}
+    .var-card{border:1px solid var(--border);background:#fff;}
+    .var-card-header{background:var(--dark-bg);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;}
+    .badge-var{background:var(--gold);color:var(--dark-bg);font-size:10px;font-weight:700;padding:2px 8px;letter-spacing:1px;text-transform:uppercase;}
+    .callout{background:#f0ede5;border-left:4px solid var(--gold);}
+    .callout-danger{background:#fff5f5;border-left:4px solid var(--accent-red);}
+    .callout-tip{background:#f1f8f1;border-left:4px solid #2e7d32;}
+    .callout-blue{background:var(--blue-light);border-left:4px solid var(--blue);}
+    .callout strong,.callout-danger strong,.callout-tip strong,.callout-blue strong{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+    .callout strong{color:var(--gold-dark);}.callout-danger strong{color:var(--accent-red);}.callout-tip strong{color:#2e7d32;}.callout-blue strong{color:var(--blue);}
+    .table thead th{background:var(--dark-bg)!important;color:var(--gold)!important;font-size:12px;letter-spacing:1px;text-transform:uppercase;border:none;}
+    .table tbody tr:hover td{background:#e8e4d8;}
+    blockquote{border-left:3px solid var(--gold);background:#f0ede5;font-family:'Crimson Text',serif;font-size:19px;font-style:italic;}
+    blockquote cite{display:block;font-size:13px;font-style:normal;color:#888;margin-top:6px;}
+    footer{background:var(--dark-bg);color:#555;font-size:12px;letter-spacing:1px;}
+    hr{border-color:var(--border);}
+  </style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="board-deco">&#9820;&#9819;&#9821;&#9822;</div>
+  <div class="container position-relative" style="max-width:860px;">
+    <p class="cover-tag mb-3">Dossiê de Abertura · Xadrez</p>
+    <h1 class="mb-2">Abertura <span>Inglesa</span></h1>
+    <p class="text-secondary fw-light mb-4" style="font-size:16px;">O Guia Completo — História, Variantes, Teoria e Partidas Práticas</p>
+    <div class="cover-meta pt-3 d-flex flex-wrap gap-4">
+      <div class="cover-meta-item"><strong>Notação</strong><span>1.c4</span></div>
+      <div class="cover-meta-item"><strong>ECO</strong><span>A10 – A39</span></div>
+      <div class="cover-meta-item"><strong>Também chamada</strong><span>English Opening</span></div>
+      <div class="cover-meta-item"><strong>Nível</strong><span>Intermediário a Avançado</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5" style="max-width:860px;">
+
+  <nav class="toc-box p-4 p-md-5 my-5">
+    <h2 class="mb-3">Sumário</h2>
+    <ol class="toc-list">
+      <li><a href="#historia">História e Origem</a></li>
+      <li><a href="#conceito">Conceito e Filosofia</a></li>
+      <li><a href="#pros-cons">Vantagens e Desvantagens</a></li>
+      <li><a href="#variantes">Visão Geral das Variantes</a></li>
+      <li><a href="#siciliano">Siciliano Invertido (1…e5)</a></li>
+      <li><a href="#simetrico">Inglês Simétrico (1…c5)</a></li>
+      <li><a href="#botvinnik">Sistema Botvinnik</a></li>
+      <li><a href="#armadilhas">Armadilhas e Erros Comuns</a></li>
+      <li><a href="#jogadores">Grandes Especialistas</a></li>
+      <li><a href="#partidas">Partidas Clássicas Comentadas</a></li>
+      <li><a href="#conselho">Recomendações Práticas</a></li>
+    </ol>
+  </nav>
+
+  <!-- 01 -->
+  <section class="mb-5" id="historia">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">01</span><h2 class="section-title">História e Origem</h2>
+    </div>
+    <p>A Abertura Inglesa deve seu nome ao célebre mestre britânico <strong>Howard Staunton</strong> (1810–1874), a quem o famoso conjunto de peças padrão também homenageia. Staunton empregou o lance 1.c4 em seis partidas contra o francês <strong>Pierre de Saint-Amant</strong> no match de 1843, considerado um dos primeiros confrontos de nível mundial da história do xadrez. Apesar de sua origem registrada no século XIX, a abertura permaneceu relativamente obscura por décadas.</p>
+    <p>O salto definitivo para o xadrez de elite ocorreu nos anos 1930, quando o ex-campeão mundial soviético <strong>Mikhail Botvinnik</strong> adotou o 1.c4 como arma central de seu repertório. Botvinnik desenvolveu o sistema que hoje leva seu nome — um triângulo de peões em c4-d3-e4 combinado com o fiancheto do bispo em g2 — e demonstrou toda a profundidade estratégica da abertura perante a nata do xadrez mundial.</p>
+    <p>O auge da Inglesa como abertura de elite veio nas décadas de <strong>1960 a 1980</strong>, quando nomes como <strong>Tigran Petrosian</strong>, <strong>Jan Timman</strong> e <strong>Garry Kasparov</strong> a incorporaram a seus repertórios. Até <strong>Bobby Fischer</strong>, devoto incondicional do 1.e4, a usou para vencer Boris Spassky na sexta partida do Campeonato Mundial de 1972. No século XXI, <strong>Magnus Carlsen</strong> consolidou a Inglesa como abertura predileta para fugir de preparações adversárias e extrair vantagens posicionais sutis.</p>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 02 -->
+  <section class="mb-5" id="conceito">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">02</span><h2 class="section-title">Conceito e Filosofia</h2>
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Posição Inicial da Abertura Inglesa</span>
+      <span class="move">1. c4</span> <span class="comment">— Peão da ala da dama avança dois passos, controlando d5 indiretamente</span>
+    </div>
+    <p>A Abertura Inglesa parte de um princípio <strong>hipermoderno</strong>: em vez de ocupar o centro com peões imediatamente (como 1.e4 ou 1.d4), as brancas <strong>controlam o centro à distância</strong>, usando o peão c4 para pressionar a casa d5 sem avançar os peões centrais de imediato. Isso confere às brancas enorme flexibilidade — o avanço de d4 ou e4 é adiado e decidido de acordo com o que as pretas fizerem.</p>
+    <p>A abertura é altamente <strong>transposicional</strong>: muitas linhas chegam às mesmas posições que surgem de outras aberturas, mas por ordens de lances diferentes. Isso pode tirar o adversário de seu terreno de conforto, forçando-o a jogar estruturas que ele estuda como resposta ao 1.d4 ou 1.e4, mas de forma ligeiramente diferente e menos familiar.</p>
+    <blockquote class="p-4 my-4">
+      "A Inglesa é o abrigo dos jogadores que não querem que o adversário saiba o que está vindo. Você joga 1.c4 e ainda não decidiu nada — isso é poder."
+      <cite>— Ideia recorrente entre comentaristas do circuito profissional</cite>
+    </blockquote>
+    <p>A filosofia das brancas pode ser resumida em três pilares: <strong>controle central indireto</strong> (via peças e bispos fiancheteados), <strong>flexibilidade máxima</strong> (transpõe para Siciliano invertido, Reti, Grünfeld invertido ou Gambito da Dama conforme o contexto) e <strong>pressão na ala da dama</strong>, aproveitando o peão c4 como alavanca de espaço.</p>
+    <div class="callout-blue p-3 mt-4">
+      <strong>🔄 Alta Transposicionalidade</strong>
+      Após 1.c4 Cf6 2.Cc3 e6, por exemplo, as brancas podem jogar 3.d4 e a partida imediatamente se torna um Gambito da Dama ou uma Defesa Nimzo-Indiana. Conhecer os sistemas para onde a Inglesa transpõe é parte fundamental do estudo.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 03 -->
+  <section class="mb-5" id="pros-cons">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">03</span><h2 class="section-title">Vantagens e Desvantagens</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="h-100 p-4" style="background:#f0f8f0;border-top:3px solid #2e7d32;">
+          <h4 style="color:#2e7d32;">✓ Vantagens para as Brancas</h4>
+          <ul class="mb-0" style="font-size:14px;">
+            <li class="mb-2">Enorme flexibilidade — transpõe para múltiplos sistemas</li>
+            <li class="mb-2">Tira o adversário de suas linhas preferidas</li>
+            <li class="mb-2">Pressão duradoura na ala da dama via peão c4</li>
+            <li class="mb-2">Evita preparações teóricas anti-e4 e anti-d4</li>
+            <li class="mb-2">Sistema Botvinnik funciona contra quase qualquer resposta</li>
+            <li>Ideal para jogo posicional e de longo prazo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-4" style="background:#fff5f5;border-top:3px solid #8b1a1a;">
+          <h4 style="color:#8b1a1a;">✗ Desvantagens</h4>
+          <ul class="mb-0" style="font-size:14px;">
+            <li class="mb-2">Desenvolvimento mais lento — pretas podem centralizar</li>
+            <li class="mb-2">Menos chances de ataque direto ao rei nas fases iniciais</li>
+            <li class="mb-2">Permite 1…e5 com peão sólido no centro adversário</li>
+            <li class="mb-2">Requer profundo entendimento posicional</li>
+            <li class="mb-2">Volume imenso de teoria nas variantes avançadas</li>
+            <li>Não indicada para iniciantes sem base posicional</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 04 -->
+  <section class="mb-5" id="variantes">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">04</span><h2 class="section-title">Visão Geral das Variantes</h2>
+    </div>
+    <p>Após <strong>1.c4</strong>, as pretas têm múltiplas respostas que definem completamente o caráter do jogo.</p>
+    <div class="table-responsive mb-4">
+      <table class="table table-striped table-hover align-middle">
+        <thead><tr><th>Resposta das Pretas</th><th>Nome</th><th>Caráter do Jogo</th><th>ECO</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1…e5</strong></td><td>Siciliano Invertido</td><td>Desequilibrado, rico em táticas</td><td>A21–A29</td></tr>
+          <tr><td><strong>1…c5</strong></td><td>Inglês Simétrico</td><td>Posicional, lento, nuançado</td><td>A30–A39</td></tr>
+          <tr><td><strong>1…Cf6</strong></td><td>Variante Indiana / Reti</td><td>Flexível, transpositional</td><td>A13–A16</td></tr>
+          <tr><td><strong>1…e6</strong></td><td>Anglo-Francesa</td><td>Sólido, fechado</td><td>A10–A11</td></tr>
+          <tr><td><strong>1…d5</strong></td><td>Anglo-Escandinava</td><td>Incomum — armadilha frequente</td><td>A10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout p-3">
+      <strong>📌 Nota sobre Transposições</strong>
+      Após 1.c4 Cf6 2.Cc3, o jogo pode facilmente transpor para um Gambito da Dama (3.d4), uma Defesa Nimzo-Indiana (…e6 + …Bb4) ou uma Defesa Grünfeld (…d5 + …g6). O jogador de Inglesa precisa ter familiaridade com todas essas estruturas.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 05 -->
+  <section class="mb-5" id="siciliano">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">05</span><h2 class="section-title">Siciliano Invertido (1…e5)</h2>
+    </div>
+    <p>A resposta mais popular e agressiva das pretas. Ao jogar 1…e5, cria-se uma posição que se assemelha à Defesa Siciliana com cores invertidas — mas com uma diferença crucial: <strong>as brancas têm um tempo extra</strong>. Isso significa que as brancas podem executar planos que seriam lentos demais para as pretas na Siciliana normal.</p>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Principal</span><span>Variante dos Quatro Cavalos — 1.c4 e5 2.Cc3 Cf6 3.Cf3 Cc6</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Quatro Cavalos do Inglês</span>
+          <span class="move">1. c4 e5</span><br>
+          <span class="move">2. Cc3 Cf6</span><br>
+          <span class="move">3. Cf3 Cc6</span> <span class="comment">— Quatro cavaleiros — posição simétrica e flexível</span><br>
+          <span class="move">4. g3 Bb4</span> <span class="comment">— Pretas fixam o cavaleiro c3, criando tensão</span><br>
+          <span class="move">5. Bg2 0-0</span><br>
+          <span class="move">6. 0-0 e4</span> <span class="comment">— Avanço agressivo antes que as brancas joguem d4</span><br>
+          <span class="move">7. Cg5 Bxc3</span> <span class="comment">— Pretas eliminam o cavaleiro antes de perder o bispo</span><br>
+          <span class="move">8. bxc3 Te8</span> <span class="comment">— Defesa do peão e4 — posição altamente desequilibrada</span>
+        </div>
+        <p>Esta é uma das linhas mais complexas da Inglesa. As brancas ficam com o par de bispos e uma massa de peões centrais, mas com peões dobrados em c. O peão avançado em e4 das pretas é tanto uma força como um alvo potencial. Exige entendimento profundo dos desequilíbrios estruturais.</p>
+        <div class="callout-tip p-3 mt-3">
+          <strong>💡 Ideia Estratégica Chave</strong>
+          O par de bispos das brancas é uma vantagem a longo prazo em posições abertas. As pretas precisam manter o peão em e4 ou trocar por estrutura sólida. Ideal para quem joga por vitória com as brancas.
+        </div>
+      </div>
+    </div>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Moderno</span><span>Sistema Bremen — 1.c4 e5 2.Cc3 Cf6 3.g3</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Sistema Bremen</span>
+          <span class="move">3. g3</span> <span class="comment">— Fiancheto imediato, sem Cf3 primeiro</span><br>
+          <span class="move">3… d5</span> <span class="comment">— Resposta central sólida das pretas</span><br>
+          <span class="move">4. cxd5 Cxd5</span><br>
+          <span class="move">5. Bg2</span> <span class="comment">— Bispo fiancheteado domina a grande diagonal</span><br>
+          <span class="move">5… Cb6</span> <span class="comment">— Cavaleiro recua mantendo pressão no centro</span><br>
+          <span class="move">6. Cf3 Cc6</span> <span class="comment">— Jogo rico em planos para ambos os lados</span>
+        </div>
+        <p>No Sistema Bremen, as brancas aceleram o fiancheto antes de desenvolver o cavaleiro para f3. Um dos sistemas favoritos de <strong>Magnus Carlsen</strong> dentro da Inglesa, especialmente para evitar as linhas mais analisadas do Quatro Cavalos.</p>
+      </div>
+    </div>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Fechado</span><span>Variante Fechada — 1.c4 e5 2.Cc3 Cc6 3.g3 g6</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Variante Fechada</span>
+          <span class="move">2… Cc6</span> <span class="comment">— Pretas jogam como brancas fariam na Siciliana Fechada</span><br>
+          <span class="move">3. g3 g6</span> <span class="comment">— Ambos fianchetam na ala do rei</span><br>
+          <span class="move">4. Bg2 Bg7</span><br>
+          <span class="move">5. d3 d6</span> <span class="comment">— Estrutura fechada — batalha de manobras a longo prazo</span><br>
+          <span class="move">6. Cge2</span> <span class="comment">— Cavaleiro em e2 — plano Botvinnik</span>
+        </div>
+        <p>A Variante Fechada leva ao tipo de jogo mais estratégico e lento da Inglesa. Brancas dominam a ala da dama com c4-b4; pretas buscam contraataque no flanco do rei com …f5-f4. A forma como cada lado decide o desenvolvimento do cavaleiro de rei impacta profundamente o caráter do jogo.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 06 -->
+  <section class="mb-5" id="simetrico">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">06</span><h2 class="section-title">Inglês Simétrico (1…c5)</h2>
+    </div>
+    <p>A resposta mais sólida das pretas. Ao espelhar o peão, as pretas também reivindicam espaço na ala da dama e travam uma batalha equilibrada pelo centro. O resultado é frequentemente um jogo lento e manobreiro, repleto de nuances posicionais.</p>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Clássico</span><span>Simétrico dos Quatro Cavalos — 1.c4 c5 2.Cf3 Cf6 3.Cc3 Cc6</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Quatro Cavalos Simétrico</span>
+          <span class="move">1. c4 c5</span><br>
+          <span class="move">2. Cf3 Cf6</span><br>
+          <span class="move">3. Cc3 Cc6</span><br>
+          <span class="move">4. g3 g6</span><br>
+          <span class="move">5. Bg2 Bg7</span><br>
+          <span class="move">6. 0-0 0-0</span><br>
+          <span class="move">7. d4!</span> <span class="comment">— Brancas quebram a simetria primeiro — vantagem de tempo</span><br>
+          <span class="move">7… cxd4</span><br>
+          <span class="move">8. Cxd4</span> <span class="comment">— Cavaleiro centralizado com bela pressão</span>
+        </div>
+        <p>Este é o momento crítico do Simétrico: as brancas avançam d4 antes das pretas, criando tensão central e ganhando espaço. Se as pretas capturam em d4, as brancas recapturam com o cavalo ficando com controle central superior. A posição após 8.Cxd4 é rica em possibilidades para ambos os lados.</p>
+      </div>
+    </div>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Avançado</span><span>Defesa Ouriço (Hedgehog) — …b6 e …Bb7</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Defesa Ouriço</span>
+          <span class="move">1. c4 c5 2. Cf3 Cf6 3. Cc3 e6</span><br>
+          <span class="move">4. g3 b6</span> <span class="comment">— Pretas preparam fiancheto da dama</span><br>
+          <span class="move">5. Bg2 Bb7</span> <span class="comment">— Bispo na grande diagonal — "ouriço" se forma</span><br>
+          <span class="move">6. 0-0 Be7</span><br>
+          <span class="move">7. d4 cxd4</span> <span class="comment">— Pretas trocam para abrir a coluna c</span><br>
+          <span class="move">8. Dxd4</span> <span class="comment">— Posição típica do Ouriço</span>
+        </div>
+        <p>A Defesa Ouriço é uma das formações mais profundas do xadrez moderno. As pretas aceitam posição aparentemente comprimida — peões em a6, b6, d6, e6, cavalos recuados — mas aguardam o momento certo para o contra-ataque liberador com …b5 ou …d5. A posição das pretas é como um ouriço: inofensiva na aparência, mas repleta de espinhos.</p>
+        <div class="callout-danger p-3 mt-3">
+          <strong>⚠️ Cuidado com a Expansão Prematura das Brancas</strong>
+          As brancas devem evitar avançar demais — os peões superextendidos podem se tornar alvos. Uma ofensiva apressada pode ser rebatida com violência pelo contra-ataque das pretas.
+        </div>
+      </div>
+    </div>
+
+    <div class="var-card mb-4">
+      <div class="var-card-header d-flex align-items-center gap-3 p-3">
+        <span class="badge-var">Extremo</span><span>Linha Ultra-Simétrica — Ambos Fianchetam</span>
+      </div>
+      <div class="p-4">
+        <div class="moves-box p-4 mb-3">
+          <span class="move-label">Ultra-Simétrico</span>
+          <span class="move">1. c4 c5 2. Cc3 Cc6</span><br>
+          <span class="move">3. g3 g6 4. Bg2 Bg7</span> <span class="comment">— Espelhamento total dos bispos fiancheteados</span><br>
+          <span class="move">5. Cf3 Cf6</span> <span class="comment">— Qual dos lados avança d4 primeiro?</span>
+        </div>
+        <p>O caso extremo da Inglesa: ambos os lados espelham cada movimento e constroem setups idênticos com bispos fiancheteados. O duelo passa a ser puramente estratégico — qual lado quebra a simetria com d4 primeiro, e quem capitaliza melhor sobre essa ruptura. Posição fascinante para jogadores posicionais avançados.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 07 -->
+  <section class="mb-5" id="botvinnik">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">07</span><h2 class="section-title">Sistema Botvinnik</h2>
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Sistema Botvinnik — Triângulo c4-d3-e4</span>
+      <span class="move">1. c4</span> <span class="comment">— Inglesa</span><br>
+      <span class="move">2. Cc3</span> <span class="comment">— Cavaleiro apoia c4 e futuro e4</span><br>
+      <span class="move">3. g3</span> <span class="comment">— Prepara fiancheto</span><br>
+      <span class="move">4. Bg2</span> <span class="comment">— Bispo poderoso domina a grande diagonal</span><br>
+      <span class="move">5. e4</span> <span class="comment">— Completa o triângulo c4-d3-e4 — controle absoluto de d5</span><br>
+      <span class="move">6. Cge2</span> <span class="comment">— Cavaleiro em e2, sem bloquear o bispo g2</span><br>
+      <span class="move">7. d3</span> <span class="comment">— Estrutura completa</span>
+    </div>
+    <p>O Sistema Botvinnik é um <strong>sistema universal</strong> — não uma variante única, mas um plano de desenvolvimento que funciona contra praticamente qualquer resposta das pretas. A ideia central é construir o triângulo de peões c4-d3-e4, criando uma "pinça" em torno da casa d5 e impedindo as pretas de se estabelecerem no centro.</p>
+    <p>O bispo em g2 pressiona ao longo da diagonal h1-a8, e o cavaleiro vai para e2 (não f3) para não bloquear esse bispo. Uma vez completado o setup, as brancas têm múltiplos planos: ataque no flanco do rei com f4-f5, pressão na ala da dama com b4, ou um poderoso cavalo centralizado em d5.</p>
+    <div class="callout-tip p-3 mt-3">
+      <strong>✅ Por que aprender o Sistema Botvinnik primeiro?</strong>
+      Por ser um sistema, não exige memorização profunda de linhas específicas. O mesmo setup funciona independente das respostas adversárias. Ideal para jogadores que preferem entender sobre memorizar.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 08 -->
+  <section class="mb-5" id="armadilhas">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">08</span><h2 class="section-title">Armadilhas e Erros Comuns</h2>
+    </div>
+
+    <h3 class="mt-2 mb-3">Armadilha da Captura Prematura — 3…dxc4</h3>
+    <div class="callout-danger p-3 mb-4">
+      <strong>⚠️ Erro Frequente na Linha 1…d5</strong>
+      Após 1.c4 e6 2.Cf3 d5 3.g3, muitos jogadores tentam capturar em c4 imediatamente. A resposta 4.Da4+! desmonta o plano por completo.
+    </div>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Armadilha da Captura Prematura em c4</span>
+      <span class="move">1. c4 e6 2. Cf3 d5</span><br>
+      <span class="move">3. g3 dxc4??</span> <span class="comment">— Tenta ganhar o peão sem desenvolvimento suficiente</span><br>
+      <span class="move">4. Da4+!</span> <span class="comment">— Xeque com ganho de tempo — recupera c4 imediatamente</span><br>
+      <span class="move">4… Cc6</span> <span class="comment">— Único para bloquear o xeque</span><br>
+      <span class="move">5. Bg2</span> <span class="comment">— Brancas concluem o fiancheto com tempo e boa posição</span>
+    </div>
+    <p>A regra geral: capturar o peão c4 só funciona se as pretas já estiverem bem desenvolvidas e puderem manter o peão extra com peças ativas. Numa posição onde as brancas têm Da4+ ou Bg2 com recuperação imediata, a captura prematura resulta em perda de tempo e posição deteriorada.</p>
+
+    <h3 class="mt-4 mb-3">Erro no Inglês Simétrico — Copiar sem Plano</h3>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Armadilha de Imitação Excessiva</span>
+      <span class="move">1. c4 c5 2. Cf3 Cf6 3. Cc3 Cc6</span><br>
+      <span class="move">4. g3 g6 5. Bg2 Bg7 6. 0-0 0-0</span><br>
+      <span class="move">7. d4!</span> <span class="comment">— Brancas quebram a simetria com vantagem de tempo</span><br>
+      <span class="move">7… cxd4 8. Cxd4 Cxd4??</span> <span class="comment">— Troca desnecessária — libera o bispo branco g2</span><br>
+      <span class="move">9. Dxd4</span> <span class="comment">— Dama centralizada com enorme pressão — brancas claramente melhores</span>
+    </div>
+    <p>No Inglês Simétrico, as pretas não devem continuar "copiando" depois que as brancas quebrem com d4. É necessário ter um plano independente. A resposta correta após 7.d4 é geralmente 7…d5 ou 7…cxd4 8.Cxd4 d6, mantendo tensão sem simplificar em favor das brancas.</p>
+
+    <h3 class="mt-4 mb-3">Armadilha do 1…d5 Imediato</h3>
+    <div class="moves-box p-4 mb-4">
+      <span class="move-label">Anglo-Escandinava — Erro Grave</span>
+      <span class="move">1. c4 d5??</span> <span class="comment">— Imediato — peão não pode ser recapturado com peão</span><br>
+      <span class="move">2. cxd5 Dxd5</span><br>
+      <span class="move">3. Cc3!</span> <span class="comment">— Dama é atacada — brancas ganham tempo de desenvolvimento</span><br>
+      <span class="move">3… De5+??</span> <span class="comment">— Tentativa desesperada</span><br>
+      <span class="move">4. e4!</span> <span class="comment">— Brancas ganham dois peões centrais + tempo — vantagem clara</span>
+    </div>
+    <div class="callout p-3">
+      <strong>📌 Diferença com a Escandinava</strong>
+      Ao contrário da Defesa Escandinava (1.e4 d5), após 1.c4 d5 2.cxd5 Dxd5 as brancas ainda têm seus peões centrais intactos (d2 e e2), criando pressão muito maior sobre a dama exposta. As pretas ficam com desvantagem estrutural clara a longo prazo.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 09 -->
+  <section class="mb-5" id="jogadores">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">09</span><h2 class="section-title">Grandes Especialistas da Inglesa</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead><tr><th>Jogador</th><th>País</th><th>Contribuição à Abertura Inglesa</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Howard Staunton</strong> (1810–1874)</td><td>Inglaterra</td><td>Pioneiro do 1.c4 — deu nome à abertura no match de 1843 contra Saint-Amant</td></tr>
+          <tr><td><strong>Mikhail Botvinnik</strong></td><td>URSS</td><td>Tornou-a abertura de elite nos anos 1930; criou o sistema que leva seu nome</td></tr>
+          <tr><td><strong>Tigran Petrosian</strong></td><td>URSS</td><td>Usou a Inglesa para neutralizar adversários com precisão defensiva invulgar</td></tr>
+          <tr><td><strong>Bobby Fischer</strong></td><td>EUA</td><td>Devoto do 1.e4, mas usou o 1.c4 para vencer Spassky no Mundial de 1972</td></tr>
+          <tr><td><strong>Garry Kasparov</strong></td><td>URSS/Rússia</td><td>Alternava com eficiência entre 1.e4 e 1.c4; contribuições teóricas extensas</td></tr>
+          <tr><td><strong>Anatoly Karpov</strong></td><td>Rússia</td><td>Especialista no lado das pretas — defesas contra a Inglesa tornaram-se referência</td></tr>
+          <tr><td><strong>Jan Timman</strong></td><td>Holanda</td><td>Um dos maiores especialistas dos anos 1970–1980; volume imenso de partidas</td></tr>
+          <tr><td><strong>Magnus Carlsen</strong></td><td>Noruega</td><td>Usa amplamente no século XXI para fugir de preparações; grande contribuição ao Sistema Bremen</td></tr>
+          <tr><td><strong>Vasyl Ivanchuk</strong></td><td>Ucrânia</td><td>Partidas brilhantes e criativas no Siciliano Invertido; combinações táticas raras</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 10 -->
+  <section class="mb-5" id="partidas">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">10</span><h2 class="section-title">Partidas Clássicas Comentadas</h2>
+    </div>
+
+    <h3 class="mt-4 mb-2">Partida 1 — Fischer vs. Spassky, Campeonato Mundial 1972 (Jogo 6)</h3>
+    <p>A partida mais famosa já disputada com a Inglesa. Fischer, conhecido por seu fervor ao 1.e4, surpreendeu o mundo ao jogar 1.c4 na sexta partida do match. Com jogo posicional impecável, Fischer dominou o centro, restringiu as peças adversárias e executou uma ofensiva de peões no flanco da dama que deixou Spassky indefeso. A vitória tornou-se referência sobre como vencer com a Inglesa através da superioridade posicional pura.</p>
+
+    <h3 class="mt-4 mb-2">Partida 2 — Botvinnik vs. Capablanca, AVRO 1938</h3>
+    <p>Considerada por muitos a mais bela partida da história do xadrez. Numa estrutura derivada de linhas próximas à Inglesa invertida, Botvinnik executou o sacrifício de bispo 30…Bxh2!, abrindo linhas contra o rei branco de forma aparentemente impossível. A técnica fria ao converter a vantagem material foi decisiva para seu prestígio como candidato ao título mundial.</p>
+
+    <h3 class="mt-4 mb-2">Partida 3 — Kasparov: Sistema Botvinnik em Ação</h3>
+    <p>Uma partida modelo do Sistema Botvinnik. Kasparov construiu pacientemente o triângulo c4-d3-e4, posicionou o cavaleiro em d5 com efeito devastador e lançou uma ofensiva irresistível no flanco do rei enquanto as peças adversárias ficaram restritas à ala da dama. Ilustra como o controle de d5 pode ser o fator absolutamente decisivo.</p>
+
+    <h3 class="mt-4 mb-2">Partida 4 — Magnus Carlsen: Sistema Bremen na Elite</h3>
+    <p>Carlsen demonstrou de forma modelar o Sistema Bremen: desenvolvimento rápido com g3-Bg2, pressão constante nas casas claras do centro, e transição para o final ligeiramente favorável onde sua superior técnica foi determinante. Um exemplo perfeito de como a Inglesa pode ser usada para afixar uma vantagem mínima e convertê-la sem riscos.</p>
+
+    <h3 class="mt-4 mb-2">Partida 5 — Defesa Ouriço: O Contra-ataque Liberador</h3>
+    <p>Uma partida modelo da Defesa Ouriço onde as pretas suportaram a pressão por mais de 30 lances, construindo pacientemente. O avanço liberador …b5! abriu a posição de forma explosiva, desestabilizando toda a estrutura branca. As pretas converteram a vantagem resultante demonstrando por que o Ouriço é temível mesmo em posições aparentemente passivas.</p>
+
+    <h3 class="mt-4 mb-2">Partida 6 — Ivanchuk: Sacrifício Brilhante no Simétrico</h3>
+    <p>Ivanchuk executou o sacrifício 18…Cxd4! no Inglês Simétrico, aparentemente oferecendo um cavalo por dois peões, mas obtendo iniciativa irresistível e linhas abertas contra o rei adversário. O cálculo preciso transformou uma posição aparentemente equilibrada num ataque combinatório brilhante — uma das melhores partidas sobre como desequilibrar posições simétricas.</p>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- 11 -->
+  <section class="mb-5" id="conselho">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">11</span><h2 class="section-title">Recomendações Práticas</h2>
+    </div>
+
+    <h3 class="mt-4 mb-2">A Inglesa é para você?</h3>
+    <p>A Abertura Inglesa exige uma base posicional sólida e compreensão de estruturas de peões. <strong>Não é recomendada para iniciantes</strong> que ainda estão desenvolvendo princípios básicos de abertura. O grande número de variantes e as frequentes transposições podem se tornar um labirinto sem orientação correta.</p>
+
+    <div class="callout-tip p-3 my-4">
+      <strong>✅ A Inglesa é ideal para você se…</strong>
+      Você prefere jogo posicional e de longo prazo; quer surpreender adversários especializados em defesas anti-e4 ou anti-d4; aprecia flexibilidade sem depender de memorização massiva; e joga em nível intermediário ou acima (aproximadamente 1400 ELO ou mais).
+    </div>
+
+    <h3 class="mt-4 mb-2">Por onde começar?</h3>
+    <p>O caminho mais recomendado é começar pelo <strong>Sistema Botvinnik</strong>. Por ser um sistema universal, o setup c4-d3-e4-g3-Bg2-Cge2 funciona contra a maioria das respostas das pretas sem exigir memorização de linhas específicas. Depois, expanda para o Siciliano Invertido (1…e5) e o Inglês Simétrico (1…c5).</p>
+
+    <h3 class="mt-4 mb-2">Para jogadores intermediários</h3>
+    <p>Estude o <strong>Siciliano Invertido</strong> em profundidade, com foco na Variante dos Quatro Cavalos e no Sistema Bremen. Aprenda a reconhecer quando transpor para o Gambito da Dama e quando manter jogo independente. O estudo das partidas de Kasparov e Carlsen com a Inglesa é indispensável para absorver os planos típicos.</p>
+
+    <h3 class="mt-4 mb-2">Para jogadores avançados</h3>
+    <p>A <strong>Defesa Ouriço</strong> merece atenção especial — tanto para jogá-la como brancas quanto para rebatê-la. O Inglês Simétrico em suas linhas mais profundas (especialmente a linha Ultra-Simétrica) é rico em possibilidades que os motores de xadrez ainda exploram ativamente. O estudo das contribuições de Carlsen e Karpov ao repertório moderno é fundamental neste nível.</p>
+
+    <h3 class="mt-4 mb-2">Quando evitar a Inglesa</h3>
+    <p>Se você precisa de armas diretas e táticas em partidas onde o tempo de preparação é mínimo, a Inglesa pode não ser a melhor escolha — ela exige entendimento profundo para extrair o máximo. Em partidas blitz e bullet de curtíssima duração, aberturas com linhas mais forçadas tendem a funcionar melhor para a maioria dos jogadores.</p>
+
+    <div class="callout-blue p-3 mt-4">
+      <strong>📚 Recursos Recomendados</strong>
+      Para aprofundar o estudo: "A Complete Guide to the English Opening" de Nikolaos Ntirlis; os cursos de Magnus Carlsen sobre aberturas com 1.c4; e as coleções de partidas de Botvinnik em lichess.org e chess.com. Em português, xadrezforte.com.br e carevchess.com.br oferecem material de qualidade.
+    </div>
+  </section>
+
+  <hr class="my-5">
+
+  <!-- GLOSSÁRIO -->
+  <section class="mb-5">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <span class="section-num">+</span><h2 class="section-title">Glossário Rápido</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle">
+        <thead><tr><th>Termo</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ECO A10–A39</strong></td><td>Família de códigos da Abertura Inglesa no sistema de classificação ECO</td></tr>
+          <tr><td><strong>Siciliano Invertido</strong></td><td>1.c4 e5 — posição espelhada da Defesa Siciliana, com brancas um tempo à frente</td></tr>
+          <tr><td><strong>Inglês Simétrico</strong></td><td>1.c4 c5 — pretas espelham o peão branco; batalha posicional pelo centro</td></tr>
+          <tr><td><strong>Sistema Botvinnik</strong></td><td>Triângulo c4-d3-e4 + fiancheto Bg2 + Cge2 — sistema universal das brancas</td></tr>
+          <tr><td><strong>Defesa Ouriço</strong></td><td>Setup comprimido das pretas com …b6, …Bb7, …e6, aguardando contra-ataque liberador</td></tr>
+          <tr><td><strong>Fiancheto</strong></td><td>Desenvolvimento do bispo na segunda casa diagonal (g2 ou b2) — central na Inglesa</td></tr>
+          <tr><td><strong>Formação Maroczy</strong></td><td>Peões brancos em c4 e e4 — controle firme de d5, típico no Siciliano Invertido</td></tr>
+          <tr><td><strong>Transposição</strong></td><td>Quando ordens de lances diferentes chegam à mesma posição — frequente na Inglesa</td></tr>
+          <tr><td><strong>Hipermodernismo</strong></td><td>Filosofia xadrezística que controla o centro com peças à distância, em vez de peões diretos</td></tr>
+          <tr><td><strong>Par de Bispos</strong></td><td>Vantagem de ter os dois bispos enquanto o adversário tem menos — comum no Siciliano Invertido</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<footer class="py-4 text-center">
+  <p class="mb-1">Dossiê Abertura Inglesa &nbsp;·&nbsp; Compilado a partir de fontes especializadas em xadrez &nbsp;·&nbsp; Para fins educacionais</p>
+  <p class="mb-0">chess.com &nbsp;·&nbsp; xadrezforte.com.br &nbsp;·&nbsp; carevchess.com.br &nbsp;·&nbsp; lichess.org &nbsp;·&nbsp; chessable.com</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
