@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentes em Xeque – Manual Completo de Xadrez</title>
+<style>
+  @font-face {
+    font-family: 'DisplayFont';
+    src: url('/usr/share/fonts/truetype/google-fonts/Lora-Variable.ttf');
+    font-weight: 100 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'DisplayFont';
+    src: url('/usr/share/fonts/truetype/google-fonts/Lora-Italic-Variable.ttf');
+    font-weight: 100 900;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'BodyFont';
+    src: url('/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'BodyFont';
+    src: url('/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'BodyFont';
+    src: url('/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'MonoFont';
+    src: url('/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'MonoFont';
+    src: url('/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'SansFont';
+    src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Regular.ttf');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'SansFont';
+    src: url('/usr/share/fonts/truetype/google-fonts/Poppins-Bold.ttf');
+    font-weight: 700;
+  }
+</style>
+<style>
+  :root {
+    --preto: #0e0e0e;
+    --branco: #f5f0e8;
+    --ouro: #c9a84c;
+    --ouro-claro: #e8d5a0;
+    --ouro-escuro: #8a6d28;
+    --cinza: #2a2a2a;
+    --cinza-medio: #4a4a4a;
+    --cinza-claro: #d0cdc7;
+    --vermelho: #8b1a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--preto);
+    color: var(--branco);
+    font-family: 'BodyFont', Georgia, serif;
+    font-size: 13pt;
+    line-height: 1.75;
+  }
+
+  /* ──────────────── CAPA ──────────────── */
+  .capa {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: var(--preto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    padding: 60px 50px;
+  }
+
+  .capa::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.08) 39px, rgba(201,168,76,0.08) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.08) 39px, rgba(201,168,76,0.08) 40px);
+    background-size: 40px 40px;
+  }
+
+  .capa-borda {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.3);
+    pointer-events: none;
+  }
+  .capa-borda::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .capa-conteudo {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .capa-ícone {
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 30px rgba(201,168,76,0.4));
+  }
+
+  .capa-projeto {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 9pt;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--ouro);
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .capa-titulo {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 62pt;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 0.95;
+    color: var(--branco);
+    text-shadow: 0 0 60px rgba(201,168,76,0.2);
+    margin-bottom: 8px;
+  }
+
+  .capa-subtitulo {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 24pt;
+    font-weight: 400;
+    color: var(--ouro);
+    letter-spacing: 4px;
+    margin-bottom: 50px;
+  }
+
+  .capa-linha {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+    margin: 0 auto 50px;
+  }
+
+  .capa-autor {
+    font-family: 'BodyFont', 'Liberation Serif', Georgia, serif;
+    font-size: 16pt;
+    font-style: italic;
+    color: var(--ouro-claro);
+    margin-bottom: 6px;
+  }
+
+  .capa-contato {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 9pt;
+    color: var(--cinza-claro);
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+
+  .capa-cantos {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--ouro);
+    border-style: solid;
+    opacity: 0.5;
+  }
+  .capa-cantos.tl { top: 30px; left: 30px; border-width: 2px 0 0 2px; }
+  .capa-cantos.tr { top: 30px; right: 30px; border-width: 2px 2px 0 0; }
+  .capa-cantos.bl { bottom: 30px; left: 30px; border-width: 0 0 2px 2px; }
+  .capa-cantos.br { bottom: 30px; right: 30px; border-width: 0 2px 2px 0; }
+
+  /* ──────────────── PÁGINA GERAL ──────────────── */
+  .pagina {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: var(--branco);
+    color: var(--preto);
+    padding: 25mm 22mm 22mm 22mm;
+    page-break-after: always;
+    position: relative;
+  }
+
+  /* ──────────────── SUMÁRIO ──────────────── */
+  .sumario-pagina {
+    background: var(--cinza);
+  }
+
+  .sumario-titulo {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 32pt;
+    font-weight: 700;
+    color: var(--ouro);
+    margin-bottom: 6px;
+  }
+
+  .sumario-linha-dec {
+    width: 60px;
+    height: 2px;
+    background: var(--ouro);
+    margin-bottom: 40px;
+  }
+
+  .sumario-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    color: var(--branco);
+  }
+
+  .sumario-item:last-child { border-bottom: none; }
+
+  .sumario-num {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    color: var(--ouro);
+    min-width: 28px;
+    opacity: 0.8;
+  }
+
+  .sumario-nome {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 13pt;
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .sumario-dots {
+    flex: 1;
+    border-bottom: 1px dotted rgba(201,168,76,0.25);
+    margin: 0 8px;
+    min-width: 30px;
+    position: relative;
+    bottom: 3px;
+  }
+
+  .sumario-pag {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    color: var(--ouro);
+    opacity: 0.8;
+  }
+
+  .sumario-secao {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 7pt;
+    letter-spacing: 3px;
+    color: var(--ouro);
+    opacity: 0.6;
+    margin: 22px 0 8px;
+    text-transform: uppercase;
+  }
+
+  /* ──────────────── CAPÍTULOS ──────────────── */
+  .capitulo-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--cinza-claro);
+    position: relative;
+  }
+
+  .capitulo-num {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    letter-spacing: 4px;
+    color: var(--ouro-escuro);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .capitulo-titulo {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 30pt;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--preto);
+    margin-bottom: 14px;
+  }
+
+  .capitulo-intro {
+    font-family: 'BodyFont', 'Liberation Serif', Georgia, serif;
+    font-size: 13pt;
+    font-style: italic;
+    color: var(--cinza-medio);
+    border-left: 3px solid var(--ouro);
+    padding-left: 16px;
+    line-height: 1.6;
+  }
+
+  /* ──────────────── SEÇÕES ──────────────── */
+  h2 {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--preto);
+    margin: 32px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--cinza-claro);
+  }
+
+  h3 {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 13pt;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ouro-escuro);
+    margin: 22px 0 8px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* ──────────────── LISTAS ──────────────── */
+  ul, ol {
+    margin: 10px 0 14px 20px;
+  }
+
+  li {
+    margin-bottom: 6px;
+    padding-left: 4px;
+  }
+
+  ul li::marker {
+    color: var(--ouro-escuro);
+  }
+
+  /* ──────────────── BOXES / CARDS ──────────────── */
+  .box {
+    border-radius: 2px;
+    padding: 18px 22px;
+    margin: 18px 0;
+    position: relative;
+  }
+
+  .box-titulo {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .box-estrategia {
+    background: #1a1a1a;
+    color: var(--branco);
+    border-left: 4px solid var(--ouro);
+  }
+  .box-estrategia .box-titulo { color: var(--ouro); }
+
+  .box-ciencia {
+    background: #f0ece2;
+    border: 1px solid var(--cinza-claro);
+    border-left: 4px solid var(--vermelho);
+    color: var(--preto);
+  }
+  .box-ciencia .box-titulo { color: var(--vermelho); }
+
+  .box-dica {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--ouro-claro);
+    color: var(--preto);
+  }
+  .box-dica .box-titulo { color: var(--ouro-escuro); }
+
+  .box-exercicio {
+    background: #f7f4ee;
+    border: 1px dashed var(--cinza-claro);
+    color: var(--preto);
+  }
+  .box-exercicio .box-titulo { color: var(--cinza-medio); }
+
+  /* ──────────────── TABELAS ──────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 11pt;
+  }
+
+  thead {
+    background: var(--preto);
+    color: var(--branco);
+  }
+
+  thead th {
+    padding: 10px 14px;
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  tbody tr:nth-child(odd) { background: #f5f0e8; }
+  tbody tr:nth-child(even) { background: #ede8de; }
+
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--cinza-claro);
+  }
+
+  .td-peca {
+    font-size: 18pt;
+    text-align: center;
+    width: 40px;
+  }
+
+  .td-nome {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-weight: 700;
+  }
+
+  .td-valor {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 10pt;
+    color: var(--ouro-escuro);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* ──────────────── DESTAQUE ──────────────── */
+  .destaque-frase {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 20pt;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--preto);
+    text-align: center;
+    padding: 24px 20px;
+    border-top: 2px solid var(--ouro);
+    border-bottom: 2px solid var(--ouro);
+    margin: 28px 0;
+  }
+
+  /* ──────────────── TABULEIRO ──────────────── */
+  .tabuleiro-mini {
+    display: grid;
+    grid-template-columns: repeat(8, 28px);
+    grid-template-rows: repeat(8, 28px);
+    margin: 16px auto;
+    width: fit-content;
+    border: 2px solid var(--preto);
+    box-shadow: 4px 4px 0 var(--ouro-escuro);
+  }
+
+  .casa {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .casa.clara { background: #f0d9b5; }
+  .casa.escura { background: #b58863; }
+  .casa.destaque { outline: 3px solid var(--ouro); outline-offset: -3px; }
+
+  .tabuleiro-legenda {
+    text-align: center;
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    color: var(--cinza-medio);
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  /* ──────────────── RODAPÉ ──────────────── */
+  .rodape {
+    position: absolute;
+    bottom: 14mm;
+    left: 22mm;
+    right: 22mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--cinza-claro);
+    padding-top: 8px;
+  }
+
+  .rodape-projeto {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 7pt;
+    color: var(--cinza-medio);
+    letter-spacing: 2px;
+    opacity: 0.7;
+  }
+
+  .rodape-pag {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 8pt;
+    color: var(--ouro-escuro);
+  }
+
+  /* ──────────────── GRADE PEÇA ──────────────── */
+  .grade-pecas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+
+  .card-peca {
+    background: #f5f0e8;
+    border: 1px solid var(--cinza-claro);
+    border-top: 3px solid var(--ouro);
+    padding: 14px 16px;
+    border-radius: 1px;
+  }
+
+  .card-peca-icone {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .card-peca-nome {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 13pt;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card-peca-desc {
+    font-size: 10.5pt;
+    color: var(--cinza-medio);
+    line-height: 1.55;
+  }
+
+  /* ──────────────── PUZZLE ──────────────── */
+  .puzzle-box {
+    background: var(--preto);
+    color: var(--branco);
+    padding: 20px 22px;
+    margin: 16px 0;
+    position: relative;
+  }
+
+  .puzzle-num {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 7pt;
+    letter-spacing: 4px;
+    color: var(--ouro);
+    margin-bottom: 8px;
+  }
+
+  .puzzle-enunciado {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-size: 13pt;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .puzzle-solucao {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 9pt;
+    background: rgba(201,168,76,0.15);
+    border-left: 2px solid var(--ouro);
+    padding: 8px 12px;
+    color: var(--ouro-claro);
+  }
+
+  .puzzle-solucao-label {
+    font-size: 7pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ouro);
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+
+  /* ──────────────── ABERTURA ──────────────── */
+  .abertura-linha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cinza-claro);
+    font-size: 11pt;
+  }
+
+  .abertura-lance {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 9pt;
+    color: var(--ouro-escuro);
+    min-width: 80px;
+  }
+
+  .abertura-nome {
+    font-family: 'DisplayFont', 'Liberation Serif', Georgia, serif;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  .abertura-tipo {
+    font-family: 'MonoFont', 'Courier New', monospace;
+    font-size: 7pt;
+    background: var(--cinza-claro);
+    padding: 2px 8px;
+    letter-spacing: 1px;
+  }
+
+  /* ──────────────── CHECKLIST ──────────────── */
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--ouro-escuro);
+    flex-shrink: 0;
+    margin-top: 2px;
+    border-radius: 1px;
+  }
+
+  .check-texto {
+    font-size: 11.5pt;
+  }
+
+  .check-detalhe {
+    font-size: 10pt;
+    color: var(--cinza-medio);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* ──────────────── PRINT ──────────────── */
+  @media print {
+    body { background: white; }
+    .pagina, .capa { margin: 0; width: 100%; box-shadow: none; }
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ CAPA ════════════════════════════════ -->
+<div class="capa">
+  <div class="capa-borda"></div>
+  <div class="capa-cantos tl"></div>
+  <div class="capa-cantos tr"></div>
+  <div class="capa-cantos bl"></div>
+  <div class="capa-cantos br"></div>
+
+  <div class="capa-conteudo">
+    <div class="capa-ícone">♟</div>
+    <div class="capa-projeto">Projeto Educacional</div>
+    <div class="capa-titulo">Mentes<br>em Xeque</div>
+    <div class="capa-subtitulo">Manual Completo</div>
+    <div class="capa-linha"></div>
+    <div class="capa-autor">Prof. Nilson Giuvannucci</div>
+    <div class="capa-contato">@mentes_em_xeque &nbsp;·&nbsp; 2ª Edição</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ SUMÁRIO ════════════════════════════════ -->
+<div class="pagina sumario-pagina">
+  <div class="sumario-titulo">Sumário</div>
+  <div class="sumario-linha-dec"></div>
+
+  <div class="sumario-secao">Introdução</div>
+  <div class="sumario-item">
+    <span class="sumario-num">—</span>
+    <span class="sumario-nome">Apresentação</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">03</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">01</span>
+    <span class="sumario-nome">Benefícios do Xadrez</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">04</span>
+  </div>
+
+  <div class="sumario-secao">Fundamentos</div>
+  <div class="sumario-item">
+    <span class="sumario-num">02</span>
+    <span class="sumario-nome">Fundamentos Estratégicos</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">05</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">03</span>
+    <span class="sumario-nome">Uso Ideal de Cada Peça</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">07</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">04</span>
+    <span class="sumario-nome">Dicas Gerais do Professor</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">10</span>
+  </div>
+
+  <div class="sumario-secao">Didática</div>
+  <div class="sumario-item">
+    <span class="sumario-num">05</span>
+    <span class="sumario-nome">Desafio da Rainha</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">11</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">06</span>
+    <span class="sumario-nome">Tática no Xadrez</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">12</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">07</span>
+    <span class="sumario-nome">Métodos de Raciocínio</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">14</span>
+  </div>
+
+  <div class="sumario-secao">Aprofundamento</div>
+  <div class="sumario-item">
+    <span class="sumario-num">08</span>
+    <span class="sumario-nome">Aberturas</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">15</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">09</span>
+    <span class="sumario-nome">Finais Essenciais</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">17</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">10</span>
+    <span class="sumario-nome">Puzzles Graduais</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">18</span>
+  </div>
+
+  <div class="sumario-secao">Recursos</div>
+  <div class="sumario-item">
+    <span class="sumario-num">11</span>
+    <span class="sumario-nome">Aplicativos e Recursos</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">20</span>
+  </div>
+  <div class="sumario-item">
+    <span class="sumario-num">—</span>
+    <span class="sumario-nome">Referências Bibliográficas</span>
+    <span class="sumario-dots"></span>
+    <span class="sumario-pag">21</span>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">♟</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ APRESENTAÇÃO ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Apresentação</div>
+    <div class="capitulo-titulo">Um Jogo Para a Vida</div>
+    <div class="capitulo-intro">
+      Este manual foi desenvolvido com finalidade pedagógica para o ensino estruturado do xadrez,
+      formando jogadores conscientes, capazes de compreender o jogo além dos movimentos superficiais.
+    </div>
+  </div>
+
+  <p>O xadrez é uma das atividades intelectuais mais antigas e ricas da humanidade. Com mais de 1.500 anos de história, atravessou civilizações, culturas e continentes, mantendo-se sempre como um espelho da inteligência humana.</p>
+
+  <p>O <strong>Projeto Mentes em Xeque</strong> nasce do compromisso de levar esse patrimônio cultural ao ambiente educacional de forma acessível, rigorosa e apaixonante. Cada capítulo foi concebido para construir, progressivamente, uma compreensão profunda do jogo — da movimentação básica à estratégia avançada.</p>
+
+  <p>Mais do que um manual de regras, esta obra é um convite ao pensamento. Cada partida é um laboratório onde hipóteses são testadas, erros são aprendizados e vitórias são conquistas da mente.</p>
+
+  <div class="destaque-frase">
+    "No xadrez, como na vida, é o que fazemos com os recursos disponíveis que define nosso destino."
+  </div>
+
+  <p>Este material é indicado para estudantes a partir de 8 anos, professores de ensino fundamental e médio, e qualquer pessoa interessada em desenvolver o pensamento lógico e estratégico através do jogo.</p>
+
+  <p>Boas partidas!</p>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">03</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 1 – BENEFÍCIOS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 01</div>
+    <div class="capitulo-titulo">Benefícios do Xadrez</div>
+    <div class="capitulo-intro">
+      A ciência confirma o que jogadores intuitivamente sabem: o xadrez transforma mentes.
+    </div>
+  </div>
+
+  <p>O xadrez não é apenas um jogo de entretenimento. Décadas de pesquisa nas áreas de neurociência, psicologia cognitiva e pedagogia demonstram que a prática regular do xadrez produz efeitos mensuráveis e duradouros no desenvolvimento intelectual e emocional dos jogadores.</p>
+
+  <div class="box box-ciencia">
+    <div class="box-titulo">🔬 Evidência Científica</div>
+    <p>Estudos publicados no <em>Journal of Neuroscience</em> (2016) e na <em>Frontiers in Psychology</em> (2019) demonstraram que jogadores de xadrez apresentam maior ativação bilateral nos lobos frontal e parietal durante a resolução de problemas, regiões associadas ao planejamento, memória de trabalho e raciocínio espacial.</p>
+    <p>Uma meta-análise de Ferguson (2014) com 24 estudos independentes concluiu que a instrução sistemática de xadrez eleva o desempenho acadêmico geral em até 17,3% comparado a grupos controle.</p>
+  </div>
+
+  <h2>Habilidades Desenvolvidas</h2>
+
+  <div class="grade-pecas">
+    <div class="card-peca">
+      <div class="card-peca-icone">🧠</div>
+      <div class="card-peca-nome">Concentração</div>
+      <div class="card-peca-desc">Manter o foco por longos períodos, filtrando distrações e sustentando atenção dirigida a objetivos.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">💾</div>
+      <div class="card-peca-nome">Memória</div>
+      <div class="card-peca-desc">Reconhecimento de padrões, memorização de estruturas e recuperação estratégica de conhecimento.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">🗺️</div>
+      <div class="card-peca-nome">Planejamento</div>
+      <div class="card-peca-desc">Visão de longo prazo, antecipação de consequências e organização sequencial de ações.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">⚖️</div>
+      <div class="card-peca-nome">Tomada de Decisão</div>
+      <div class="card-peca-desc">Avaliação de alternativas sob pressão, gestão de riscos e comprometimento com escolhas.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">🎭</div>
+      <div class="card-peca-nome">Controle Emocional</div>
+      <div class="card-peca-desc">Resiliência após erros, compostura em situações adversas e regulação da impulsividade.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">♟</div>
+      <div class="card-peca-nome">Pensamento Estratégico</div>
+      <div class="card-peca-desc">Visão sistêmica, identificação de padrões complexos e adaptação a mudanças de contexto.</div>
+    </div>
+  </div>
+
+  <h2>O Xadrez na Escola</h2>
+  <p>Países como Armênia, Rússia e Hungria incluem o xadrez em seus currículos nacionais obrigatórios. No Brasil, o projeto de lei nº 2.601/2011 incentiva a inclusão do xadrez como atividade curricular complementar em escolas públicas.</p>
+  <p>O ambiente escolar se beneficia do xadrez pois ele exige — e portanto treina — exatamente as competências da Base Nacional Curricular Comum (BNCC): pensamento computacional, resolução de problemas, comunicação e argumentação.</p>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">04</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 2 – FUNDAMENTOS ESTRATÉGICOS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 02</div>
+    <div class="capitulo-titulo">Fundamentos Estratégicos</div>
+    <div class="capitulo-intro">
+      Grandes jogadores não pensam em movimentos isolados — pensam em estruturas, planos e princípios.
+    </div>
+  </div>
+
+  <p>A estratégia no xadrez é a arte de criar planos de longo prazo que melhorem progressivamente sua posição. Enquanto a tática resolve problemas imediatos, a estratégia define o rumo de toda a partida. Os cinco fundamentos a seguir são pilares do jogo posicional moderno.</p>
+
+  <h2>2.1 Controle do Centro</h2>
+
+  <p>O centro do tabuleiro — as casas d4, e4, d5 e e5 — é o coração estratégico da partida. Uma peça no centro controla mais casas, tem maior mobilidade e pode transitar rapidamente para qualquer flanco.</p>
+
+  <div class="tabuleiro-mini" id="tab-centro">
+    <!-- 8 linhas, começando pela rank 8 -->
+  </div>
+  <div class="tabuleiro-legenda">As quatro casas centrais: e4, d4, e5, d5</div>
+
+  <div class="box box-estrategia">
+    <div class="box-titulo">♟ Princípio Fundamental</div>
+    <p>Em uma posição equilibrada, a peça que controla mais espaço central geralmente tem vantagem estrutural. Avançar peões centrais na abertura (1.e4 ou 1.d4) é a primeira expressão desse princípio.</p>
+  </div>
+
+  <h2>2.2 Estrutura de Peões</h2>
+
+  <p>Nimzowitch chamava os peões de "alma do xadrez". A estrutura de peões define os planos disponíveis para ambos os lados e persiste por todo o jogo. Fraquezas na estrutura raramente se curam sozinhas.</p>
+
+  <p><strong>Evite estas estruturas problemáticas:</strong></p>
+  <ul>
+    <li><strong>Peão isolado:</strong> não tem peões vizinhos que o protejam. Pode ser bloqueado e atacado facilmente. O quadrado à sua frente se torna uma casa forte para o adversário.</li>
+    <li><strong>Peões dobrados:</strong> dois peões na mesma coluna. Perdem eficiência defensiva e de controle espacial. Geralmente surgem de capturas em colunas.</li>
+    <li><strong>Peão atrasado:</strong> não pode avançar sem apoio de outros peões. Frequentemente torna-se alvo fixo em coluna semiaberta.</li>
+  </ul>
+
+  <h2>2.3 Abertura de Linhas</h2>
+  <p>Sacrifícios de peões bem calculados podem abrir colunas para torres e diagonais para bispos. A ideia é trocar material "estático" (peão) por atividade dinâmica de peças maiores. Bobby Fischer venceu inúmeras partidas com gambitos de peão que explosivamente ativavam suas torres e bispos.</p>
+
+  <h2>2.4 Peão Passado</h2>
+  <p>Um peão passado não encontra oponente direto em sua coluna nem nas colunas adjacentes. Nas palavras de Capablanca: <em>"um peão passado deve ser empurrado com toda a força disponível."</em> No final de jogo, cada casa avançada o aproxima da promoção — e da vitória.</p>
+
+  <h2>2.5 Restrição</h2>
+  <p>Limitar a mobilidade das peças adversárias é tão valioso quanto desenvolver as suas próprias. Peões avançados estrategicamente podem "enterrar" cavalos adversários, que dependem de casas livres para serem eficazes. Um cavalo restrito é quase uma peça a menos.</p>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">05</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 3 – PEÇAS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 03</div>
+    <div class="capitulo-titulo">Uso Ideal de Cada Peça</div>
+    <div class="capitulo-intro">
+      Cada peça tem uma personalidade. Conhecê-la é o primeiro passo para usá-la com maestria.
+    </div>
+  </div>
+
+  <h2>Tabela de Valor Relativo das Peças</h2>
+
+  <p>O valor relativo das peças é uma referência fundamental para avaliar trocas. Esses valores são aproximados — o contexto posicional sempre prevalece.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Peça</th>
+        <th>Símbolo</th>
+        <th>Valor (pontos)</th>
+        <th>Observação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-nome">Peão</td>
+        <td class="td-peca">♙</td>
+        <td class="td-valor">1</td>
+        <td>Base de toda estratégia posicional</td>
+      </tr>
+      <tr>
+        <td class="td-nome">Cavalo</td>
+        <td class="td-peca">♘</td>
+        <td class="td-valor">3</td>
+        <td>Melhor em posições fechadas</td>
+      </tr>
+      <tr>
+        <td class="td-nome">Bispo</td>
+        <td class="td-peca">♗</td>
+        <td class="td-valor">3</td>
+        <td>Melhor em posições abertas</td>
+      </tr>
+      <tr>
+        <td class="td-nome">Torre</td>
+        <td class="td-peca">♖</td>
+        <td class="td-valor">5</td>
+        <td>Domina colunas e fileiras abertas</td>
+      </tr>
+      <tr>
+        <td class="td-nome">Rainha</td>
+        <td class="td-peca">♕</td>
+        <td class="td-valor">9</td>
+        <td>Combinação de bispo + torre</td>
+      </tr>
+      <tr>
+        <td class="td-nome">Rei</td>
+        <td class="td-peca">♔</td>
+        <td class="td-valor">∞</td>
+        <td>Insubstituível — sua perda encerra o jogo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3.1 Peões — A Alma do Jogo</h2>
+  <p>Desprezados por iniciantes, os peões são a espinha dorsal de qualquer plano estratégico. São eles que definem o caráter da posição: aberta, fechada, dinâmica ou estática. Avançar um peão é um compromisso irreversível — por isso cada passo deve ser ponderado.</p>
+  <ul>
+    <li><strong>Controle do centro:</strong> e4/d4 pelas brancas, e5/d5 pelas pretas.</li>
+    <li><strong>Estrutura sólida:</strong> evite criar fraquezas desnecessárias.</li>
+    <li><strong>Abertura de linhas:</strong> sacrifícios calculados para ativar peças.</li>
+    <li><strong>Restrição de peças:</strong> limite a mobilidade dos cavalos adversários.</li>
+  </ul>
+
+  <h2>3.2 Cavalos — Saltadores Táticos</h2>
+  <p>O cavalo é a peça mais imprevisível do tabuleiro. Seu movimento em "L" permite saltar sobre outras peças e atingir casas que nenhuma outra peça alcança diretamente. É campeão em posições fechadas e fechadas.</p>
+  <ul>
+    <li><strong>Postos avançados:</strong> d5, e5, c4, f4 são casas ideais — centralizadas e seguras.</li>
+    <li><strong>Garfo:</strong> o cavalo ataca duas peças simultaneamente — uma das táticas mais comuns.</li>
+    <li><strong>Bloqueio:</strong> um cavalo à frente de um peão passado adversário é devastador.</li>
+    <li><strong>Evite cantos:</strong> nas casas a1, a8, h1 ou h8, o cavalo controla apenas 2 casas.</li>
+  </ul>
+
+  <div class="box box-dica">
+    <div class="box-titulo">💡 Regra Prática</div>
+    <p>Um cavalo no centro controla 8 casas. Um cavalo no canto controla apenas 2. Sempre que possível, recentralize seu cavalo em vez de deixá-lo na borda.</p>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">07</span>
+  </div>
+</div>
+
+<div class="pagina">
+  <h2>3.3 Bispos — Dominadores de Diagonais</h2>
+  <p>Os bispos são especialistas em posições abertas. Cada bispo percorre 13 casas no tabuleiro vazio — sua força depende de diagonais desobstruídas. Ter o "par de bispos" (ambos os bispos) é uma vantagem reconhecida na teoria moderna.</p>
+  <ul>
+    <li><strong>Diagonais longas:</strong> prefira posicioná-los em grandes diagonais (a1-h8, a8-h1).</li>
+    <li><strong>Par de bispos:</strong> grande vantagem em posições abertas — cobrem todas as cores.</li>
+    <li><strong>Fianchetto:</strong> bispo em g2 (brancas) ou g7 (pretas) cria fortress posicional impressionante.</li>
+    <li><strong>Bispo mau:</strong> evite peões fixos nas mesmas casas do seu bispo — ele ficará bloqueado.</li>
+  </ul>
+
+  <h2>3.4 Torres — Poder nas Colunas</h2>
+  <p>As torres são as rainhas do final. Na abertura e no meio-jogo, devem ser ativadas conectando-as e colocando-as em colunas abertas. Uma torre penetrando a sétima fileira adversária é capaz de destruir estruturas inteiras sozinha.</p>
+  <ul>
+    <li><strong>Colunas abertas:</strong> ocupe-as antes do adversário — torres pedem colunas abertas.</li>
+    <li><strong>Conexão:</strong> torres conectadas se protegem mutuamente e dobram pressão.</li>
+    <li><strong>Sétima fileira:</strong> na 7ª fileira adversária, a torre captura peões e restringe o rei.</li>
+    <li><strong>Torres dobradas:</strong> pressão máxima em colunas estratégicas ou contra o rei.</li>
+  </ul>
+
+  <h2>3.5 Rainha — A Peça Mais Poderosa</h2>
+  <p>A rainha combina o poder do bispo e da torre. Com alcance de até 27 casas no centro, é a peça mais versátil. Justamente por isso, deve ser protegida da exposição precoce — perdê-la geralmente decide a partida.</p>
+  <ul>
+    <li><strong>Não a desenvolva cedo demais:</strong> ela pode ser atacada por peças menores, perdendo tempo.</li>
+    <li><strong>Crie ameaças múltiplas:</strong> o poder da rainha está em forçar o adversário a dividir sua defesa.</li>
+    <li><strong>Final de jogo:</strong> com rei e rainha vs rei, o xeque-mate é sempre possível.</li>
+  </ul>
+
+  <h2>3.6 Rei — A Peça Mais Importante</h2>
+  <p>O rei é o objetivo e a motivação de toda a partida. No início e meio-jogo, é uma peça a ser protegida. No final, transforma-se em combatente ativo — necessário para apoiar peões e caçar peças adversárias.</p>
+  <ul>
+    <li><strong>Roque cedo:</strong> coloque seu rei em segurança antes de abrir o jogo.</li>
+    <li><strong>Estrutura protetora:</strong> peões à frente do rei roque devem ser mantidos intactos quando possível.</li>
+    <li><strong>Rei ativo no final:</strong> marche seu rei para o centro quando não há mais perigo de xeque-mate.</li>
+    <li><strong>Oposição:</strong> em finais de rei e peão, a oposição (reis frente a frente) é técnica decisiva.</li>
+  </ul>
+
+  <div class="box box-exercicio">
+    <div class="box-titulo">📝 Exercício de Avaliação</div>
+    <p>Analise uma posição com as seguintes peças: brancas têm rei, dois peões centrais e um bispo; pretas têm rei, uma torre e um cavalo.</p>
+    <p><strong>Questão:</strong> Materialmente, quem está em vantagem? Calcule usando a tabela de valores e indique qual lado prefere posição aberta ou fechada e por quê.</p>
+    <p><em>Solução discutida em aula.</em></p>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">08</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 4 – DICAS GERAIS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 04</div>
+    <div class="capitulo-titulo">Dicas Gerais do Professor</div>
+    <div class="capitulo-intro">
+      O jogo é mais do que peças no tabuleiro — é comunicação entre mentes.
+    </div>
+  </div>
+
+  <p>O xadrez é um jogo de equipe. Cada peça deve trabalhar em harmonia com as demais, protegendo aliadas, atacando em coordenação e contribuindo para um plano unificado. Uma peça brilhante isolada raramente supera um conjunto medíocre bem coordenado.</p>
+
+  <h2>Checklist Pré-Jogada</h2>
+  <p>Antes de mover qualquer peça, passe sistematicamente por esta lista:</p>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <div class="check-texto"><strong>O que o adversário ameaça?</strong></div>
+      <div class="check-detalhe">Identifique capturas imediatas, xeques e ameaças táticas antes de pensar no seu lance.</div>
+    </div>
+  </div>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <div class="check-texto"><strong>Minha peça está protegida?</strong></div>
+      <div class="check-detalhe">Verifique se o destino da peça que você moverá ficará seguro após o lance.</div>
+    </div>
+  </div>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <div class="check-texto"><strong>Esta troca é boa para mim?</strong></div>
+      <div class="check-detalhe">Use a tabela de valores. Nunca troque uma torre (5) por um bispo (3) sem compensação clara.</div>
+    </div>
+  </div>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <div class="check-texto"><strong>Este lance melhora minha posição?</strong></div>
+      <div class="check-detalhe">Cada movimento deve ter um propósito: desenvolver, atacar, defender ou melhorar coordenação.</div>
+    </div>
+  </div>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <div class="check-texto"><strong>Existe lance melhor?</strong></div>
+      <div class="check-detalhe">Antes de jogar, pergunte-se: há outra opção que eu não considerei? Reserve 10 segundos para isso.</div>
+    </div>
+  </div>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <div class="check-texto"><strong>O meu rei está seguro?</strong></div>
+      <div class="check-detalhe">Verifique se o lance que você vai fazer não expõe o rei a xeques ou ataques.</div>
+    </div>
+  </div>
+
+  <h2>Princípios de Boas Trocas</h2>
+  <table>
+    <thead>
+      <tr><th>Troca</th><th>Resultado</th><th>Avaliação</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Torre por Torre</td><td>0 pontos</td><td>✓ Equilibrada</td></tr>
+      <tr><td>Bispo por Cavalo</td><td>0 pontos</td><td>✓ Equilibrada (contexto decide)</td></tr>
+      <tr><td>Torre por Bispo</td><td>−2 pontos</td><td>✗ Desvantagem material</td></tr>
+      <tr><td>Rainha por Torre + Bispo</td><td>+1 ponto</td><td>✓ Ligeira vantagem material</td></tr>
+      <tr><td>Rainha por Torre + Peão</td><td>−3 pontos</td><td>✗ Normalmente ruim</td></tr>
+    </tbody>
+  </table>
+
+  <div class="destaque-frase">
+    "Observe todas as peças antes de jogar.<br>Um segundo de atenção pode salvar uma peça — ou uma partida."
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">10</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 5 – DESAFIO DA RAINHA ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 05</div>
+    <div class="capitulo-titulo">Desafio da Rainha</div>
+    <div class="capitulo-intro">
+      Uma variante pedagógica que força o desenvolvimento real das peças menores.
+    </div>
+  </div>
+
+  <p>O <strong>Desafio da Rainha</strong> é uma variante pedagógica criada para combater o hábito mais comum e destrutivo dos iniciantes: mover a rainha antes de desenvolver as demais peças. Sem a rainha disponível de imediato, o jogador é obrigado a aprender a coordenar cavalos, bispos e torres.</p>
+
+  <h2>Regras da Variante</h2>
+
+  <ul>
+    <li>As damas de ambos os lados começam <strong>fora do tabuleiro</strong>, ao lado do quadro.</li>
+    <li>Peões promovidos <strong>não podem virar rainha</strong> — apenas torre, bispo ou cavalo.</li>
+    <li>Para reintegrar a rainha ao jogo, o jogador deve capturar:
+      <ul>
+        <li>As <strong>duas torres</strong> adversárias, <em>ou</em></li>
+        <li>Os <strong>dois cavalos</strong> adversários, <em>ou</em></li>
+        <li>Os <strong>dois bispos</strong> adversários.</li>
+      </ul>
+    </li>
+    <li>Ao recolocar a rainha em sua casa inicial, ela <strong>não pode estar ameaçada</strong> imediatamente, nem pode dar xeque ao ser recolocada.</li>
+    <li>O xeque-mate com quaisquer peças (sem a rainha) é <strong>permitido a qualquer momento</strong>.</li>
+  </ul>
+
+  <h2>Objetivo Pedagógico</h2>
+
+  <div class="box box-dica">
+    <div class="box-titulo">🎯 Competências Treinadas</div>
+    <ul>
+      <li><strong>Desenvolvimento das peças:</strong> cavalos e bispos precisam ser ativados rapidamente.</li>
+      <li><strong>Reduzir dependência da dama:</strong> muitos iniciantes esperam que a rainha resolva tudo.</li>
+      <li><strong>Melhorar coordenação:</strong> xeque-matar sem a rainha exige entrosamento real entre as peças.</li>
+      <li><strong>Valorizar peças menores:</strong> cavalos e bispos ganham novo significado quando são o caminho para recuperar a rainha.</li>
+    </ul>
+  </div>
+
+  <h2>Sugestão de Aplicação em Aula</h2>
+  <p>Aplique a variante em duplas com tempo de 15 minutos por lado. Após a partida, proponha análise conjunta: em que momento cada jogador tentou recuperar a rainha? Qual sequência de capturas foi utilizada? O resultado teria sido diferente com a rainha desde o início?</p>
+
+  <div class="box box-exercicio">
+    <div class="box-titulo">📝 Reflexão Pós-Partida</div>
+    <p>Pergunte aos alunos: "Foi mais difícil ou mais fácil jogar sem a rainha do que você esperava?" e "Que peça você descobriu ser mais poderosa do que imaginava?"</p>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">11</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 6 – TÁTICA ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 06</div>
+    <div class="capitulo-titulo">Tática no Xadrez</div>
+    <div class="capitulo-intro">
+      Estratégia define o plano. Tática executa. E nas táticas se ganham partidas.
+    </div>
+  </div>
+
+  <p>A tática é o conjunto de manobras de curto prazo que exploram fraquezas imediatas do adversário. Enquanto a estratégia opera em planos de vários lances, a tática resolve sequências concretas — frequentemente de 1 a 4 lances — que resultam em ganho material ou xeque-mate.</p>
+
+  <h2>Os Temas Táticos Fundamentais</h2>
+
+  <h3>Garfo (Fork)</h3>
+  <p>Um único lance ataca duas ou mais peças simultaneamente. O adversário só pode salvar uma. O cavalo é o campeão do garfo, mas bispos, torres e até peões podem realizá-lo. <em>Exemplo clássico: Cxd5 atacando a rainha em e7 e a torre em c3 ao mesmo tempo.</em></p>
+
+  <h3>Espeto (Skewer)</h3>
+  <p>A peça mais valiosa é atacada na linha, e ao escapar, expõe uma peça atrás. É o oposto do Raio-X. Torres e bispos são os especialistas. <em>Exemplo: bispo em b3 espeta a rainha em g8, que ao mover revela a torre em h8.</em></p>
+
+  <h3>Raio-X (X-Ray / Discovery)</h3>
+  <p>Uma peça se move revelando um ataque de outra peça atrás dela. O "ataque descoberto" pode ser duplamente perigoso quando a peça que se move também ataca. <em>Exemplo: cavalo sai de e4 para d6, e o bispo em b3 ataca a rainha em g8.</em></p>
+
+  <h3>Cravada (Pin)</h3>
+  <p>Uma peça não pode se mover sem expor uma peça mais valiosa atrás dela. Há a cravada absoluta (mover deixaria o rei em xeque, é ilegal) e a relativa (mover perderia material). <em>Exemplo: bispo em b5 crava o cavalo em c6, que não pode mover sem expor o rei.</em></p>
+
+  <h3>Atração e Desvio</h3>
+  <p><strong>Atração:</strong> forçar uma peça inimiga para uma casa onde pode ser capturada ou atacada. <strong>Desvio:</strong> forçar uma peça defensora a abandonar sua função protetora, geralmente via sacrifício.</p>
+
+  <h3>Sobrecarga</h3>
+  <p>Uma peça adversária defende dois alvos simultaneamente. Ao atacar um, o adversário fica sem defesa para o outro. <em>Exemplo: a rainha adversária defende um bispo e o rei — atacar o bispo sobrecarrega a rainha.</em></p>
+
+  <h3>Sacrifício de Peça</h3>
+  <p>Entregar material deliberadamente para obter compensação em posição, ataque, ou forçar xeque-mate. Os sacrifícios na casa h7 (♗xh7+) são clássicos no ataque ao rei.</p>
+
+  <div class="box box-estrategia">
+    <div class="box-titulo">♟ Como Treinar Táticas</div>
+    <p>A melhor forma de aprender táticas é resolver puzzles diariamente. Comece com mates em 1, avance para mates em 2, e depois trabalhe temas isolados (apenas garfos, depois apenas cravadas). Plataformas como Lichess.org oferecem puzzles categorizados por tema e dificuldade — totalmente gratuitos.</p>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">12</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 7 – RACIOCÍNIO ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 07</div>
+    <div class="capitulo-titulo">Métodos de Raciocínio</div>
+    <div class="capitulo-intro">
+      Pensar bem no xadrez não é uma questão de talento — é um método que se aprende.
+    </div>
+  </div>
+
+  <p>Grandes jogadores não analisam o tabuleiro de forma aleatória. Eles seguem processos estruturados que minimizam erros e maximizam a qualidade do pensamento. O método CCT é uma das abordagens mais práticas para jogadores em desenvolvimento.</p>
+
+  <h2>O Método CCT</h2>
+  <p>CCT significa <strong>Capturas, Cheques, Táticas</strong>. Antes de fazer qualquer lance, o jogador percorre sistematicamente três categorias de candidatos:</p>
+
+  <div class="box box-estrategia">
+    <div class="box-titulo">🧮 CCT — Passo a Passo</div>
+    <p><strong>C — Capturas:</strong> quais peças posso capturar? Vale a pena capturar? O adversário pode recapturar com vantagem?</p>
+    <p><strong>C — Cheques:</strong> existe algum xeque disponível? O xeque cria outras ameaças? O adversário tem defesa adequada?</p>
+    <p><strong>T — Táticas:</strong> há garfos, espetos, cravadas ou ataques descobertos disponíveis? Alguma peça adversária está sobrecarregada?</p>
+  </div>
+
+  <h2>Processo Estruturado de Cálculo</h2>
+
+  <p>Alexander Kotov, em <em>Think Like a Grandmaster</em>, propôs um processo de cálculo que permanece referência:</p>
+
+  <ol>
+    <li><strong>Identifique os candidatos:</strong> liste os 2 a 4 lances mais plausíveis. Não calcule todos — filtre os óbvios.</li>
+    <li><strong>Calcule variações:</strong> para cada candidato, calcule as respostas adversárias e suas continuações.</li>
+    <li><strong>Avalie as posições finais:</strong> após cada linha calculada, avalie quem está melhor e por quê.</li>
+    <li><strong>Compare e decida:</strong> escolha o candidato com a melhor avaliação final.</li>
+    <li><strong>Confirme:</strong> antes de jogar, verifique uma última vez se não há tática que invalide sua escolha.</li>
+  </ol>
+
+  <div class="box box-dica">
+    <div class="box-titulo">💡 Armadilha Comum</div>
+    <p>Jogadores iniciantes frequentemente calculam uma linha longa (7-8 lances) antes de confirmar que o primeiro lance da sequência é seguro. Resultado: calculam uma variante brilhante que não existe porque o adversário tem uma resposta óbvia no lance 1. Sempre valide o início da sequência antes de calcular o fim.</p>
+  </div>
+
+  <h2>Exercício de Cálculo Guiado</h2>
+
+  <div class="box box-exercicio">
+    <div class="box-titulo">📝 Exemplo Prático</div>
+    <p><strong>Posição:</strong> brancas têm rei em g1, rainha em d1, torre em e1. Pretas têm rei em g8, rainha em d8, bispo em c8.</p>
+    <p><strong>Lance das brancas:</strong> aplique CCT.</p>
+    <ul>
+      <li><em>Capturas:</em> há alguma peça desprotegida? Não diretamente.</li>
+      <li><em>Cheques:</em> Txe8+ é possível? Se Txe8+ Dxe8, o que acontece? A dama preta vai para e8 desprotegida — Dxe8#! Xeque-mate!</li>
+      <li><em>Conclusão:</em> CCT revela o mate em 2 que não seria óbvio sem metodologia.</li>
+    </ul>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">14</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 8 – ABERTURAS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 08</div>
+    <div class="capitulo-titulo">Aberturas</div>
+    <div class="capitulo-intro">
+      Os primeiros lances moldam toda a partida. Entenda os princípios antes de memorizar variantes.
+    </div>
+  </div>
+
+  <p>A abertura é a fase dos primeiros 10 a 15 lances, durante a qual ambos os lados mobilizam suas forças para o combate. A teoria de aberturas tem séculos de desenvolvimento, mas três princípios universais norteiam qualquer escolha:</p>
+
+  <h2>Os Três Princípios das Aberturas</h2>
+
+  <div class="grade-pecas">
+    <div class="card-peca">
+      <div class="card-peca-icone">1️⃣</div>
+      <div class="card-peca-nome">Desenvolva as Peças</div>
+      <div class="card-peca-desc">Leve cavalos e bispos para casas ativas. Uma peça não desenvolvida é uma peça que não participa da luta.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">2️⃣</div>
+      <div class="card-peca-nome">Controle o Centro</div>
+      <div class="card-peca-desc">Ocupe ou influencie as casas e4, d4, e5, d5. Peças no centro têm maior mobilidade.</div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">3️⃣</div>
+      <div class="card-peca-nome">Faça o Roque</div>
+      <div class="card-peca-desc">Coloque seu rei em segurança e conecte suas torres o quanto antes.</div>
+    </div>
+  </div>
+
+  <h2>Aberturas Recomendadas para Iniciantes</h2>
+
+  <div class="abertura-linha">
+    <span class="abertura-lance">1.e4 e5</span>
+    <span class="abertura-nome">Abertura do Peão do Rei</span>
+    <span class="abertura-tipo">Aberta</span>
+  </div>
+  <div class="abertura-linha">
+    <span class="abertura-lance">1.e4 e5 2.Cf3 Cc6 3.Bb5</span>
+    <span class="abertura-nome">Abertura Espanhola (Ruy López)</span>
+    <span class="abertura-tipo">Clássica</span>
+  </div>
+  <div class="abertura-linha">
+    <span class="abertura-lance">1.e4 e5 2.Cf3 Cc6 3.Bc4</span>
+    <span class="abertura-nome">Abertura Italiana</span>
+    <span class="abertura-tipo">Sólida</span>
+  </div>
+  <div class="abertura-linha">
+    <span class="abertura-lance">1.d4 d5 2.c4</span>
+    <span class="abertura-nome">Gambito da Dama</span>
+    <span class="abertura-tipo">Fechada</span>
+  </div>
+  <div class="abertura-linha">
+    <span class="abertura-lance">1.e4 c5</span>
+    <span class="abertura-nome">Defesa Siciliana</span>
+    <span class="abertura-tipo">Semi-aberta</span>
+  </div>
+  <div class="abertura-linha">
+    <span class="abertura-lance">1.e4 e6</span>
+    <span class="abertura-nome">Defesa Francesa</span>
+    <span class="abertura-tipo">Semi-fechada</span>
+  </div>
+
+  <h2>Armadilhas de Abertura Comuns</h2>
+
+  <div class="box box-estrategia">
+    <div class="box-titulo">⚠️ Armadilha: O Mate do Pastor</div>
+    <p>1.e4 e5 2.Bc4 Cc6? 3.Dh5! Cf6?? 4.Dxf7# — Xeque-mate!</p>
+    <p>Esta armadilha pega desprevenidos mesmo jogadores intermediários. A defesa correta das pretas é 3...g6!, atacando a dama e bloqueando a diagonal. Lembre: <em>observe a rainha adversária antes de qualquer lance</em>.</p>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">15</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 9 – FINAIS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 09</div>
+    <div class="capitulo-titulo">Finais Essenciais</div>
+    <div class="capitulo-intro">
+      Saber ganhar o que já está ganho é uma habilidade que separa bons de ótimos jogadores.
+    </div>
+  </div>
+
+  <p>Os finais são a fase menos estudada por iniciantes e a mais decisiva. Capablanca, tricampeão mundial, recomendava estudar finais antes de qualquer outra coisa: é nos finais que se entende o valor real das peças e do rei.</p>
+
+  <h2>Oposição</h2>
+  <p>Dois reis em oposição se enfrentam na mesma linha ou coluna com exatamente uma casa entre eles. Quem <em>não</em> tem o movimento está em <strong>oposição</strong>.</p>
+  <p>No final de rei e peão contra rei, a oposição é frequentemente a diferença entre empate e vitória. O rei do lado mais forte deve conquistar a oposição para avançar seu peão.</p>
+
+  <div class="box box-dica">
+    <div class="box-titulo">💡 Regra Prática — Oposição</div>
+    <p>Se você precisa conquistar terreno com seu rei e o adversário bloqueia, mova seu rei para o lado oposto da oposição. Quando o adversário precisar mover, você assume a oposição e avança.</p>
+  </div>
+
+  <h2>Regra do Quadrado</h2>
+  <p>Para saber se um rei consegue alcançar um peão passado antes que ele promova, sem calcular cada lance, use a Regra do Quadrado:</p>
+  <ol>
+    <li>Trace um quadrado imaginário cujo lado vai da posição atual do peão até a fileira de promoção.</li>
+    <li>Se o rei adversário está dentro ou pode entrar nesse quadrado com seu próximo lance, ele alcança o peão.</li>
+    <li>Se está fora, o peão promove antes de ser alcançado.</li>
+  </ol>
+
+  <h2>Finais Básicos Obrigatórios</h2>
+  <table>
+    <thead>
+      <tr><th>Final</th><th>Resultado teórico</th><th>Técnica-chave</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Rei + Rainha vs Rei</td><td>Vitória</td><td>Arrimar o rei adversário à borda</td></tr>
+      <tr><td>Rei + Torre vs Rei</td><td>Vitória</td><td>Técnica do "escadinha"</td></tr>
+      <tr><td>Rei + 2 Bispos vs Rei</td><td>Vitória</td><td>Coordenação dos bispos</td></tr>
+      <tr><td>Rei + Peão vs Rei</td><td>Depende</td><td>Oposição + quadrado</td></tr>
+      <tr><td>Bispos de cores opostas</td><td>Empate frequente</td><td>Bispo errado no canto</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-exercicio">
+    <div class="box-titulo">📝 Exercício — Regra do Quadrado</div>
+    <p>Peão branco em e4, rei preto em h8. As brancas jogam e5. O rei preto consegue parar o peão?</p>
+    <p>Construa o quadrado: e4-e8-a8-a4 (lado = 4 casas). O rei preto está em h8 — fora do quadrado! O peão promove. Resposta: <strong>Não, o rei não alcança.</strong></p>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">17</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 10 – PUZZLES ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 10</div>
+    <div class="capitulo-titulo">Puzzles Graduais</div>
+    <div class="capitulo-intro">
+      Resolver puzzles diariamente é o treino mais eficiente para melhorar no xadrez.
+    </div>
+  </div>
+
+  <p>Os puzzles — também chamados de problemas ou exercícios táticos — treinam o reconhecimento de padrões, que é a principal habilidade que diferencia jogadores experientes de iniciantes. A repetição de padrões cria automatismos que se ativam na partida real.</p>
+
+  <h2>Mates em 1</h2>
+
+  <div class="puzzle-box">
+    <div class="puzzle-num">PUZZLE 01 &nbsp;·&nbsp; MATE EM 1</div>
+    <div class="puzzle-enunciado">Brancas jogam e dão xeque-mate em 1 lance.<br>Torre branca em h1. Rei preto em h8. Peões pretos em g7 e f7. Rainha branca em e5.</div>
+    <div class="puzzle-solucao">
+      <div class="puzzle-solucao-label">Solução</div>
+      Dh8# — A rainha vai para h8, protegida pela torre em h1. O rei preto não tem escape.
+    </div>
+  </div>
+
+  <div class="puzzle-box">
+    <div class="puzzle-num">PUZZLE 02 &nbsp;·&nbsp; MATE EM 1</div>
+    <div class="puzzle-enunciado">Brancas jogam e dão xeque-mate em 1 lance.<br>Cavalo branco em f5. Rei preto em g8. Torres pretas em a8 e h8. Bispo branco em c4.</div>
+    <div class="puzzle-solucao">
+      <div class="puzzle-solucao-label">Solução</div>
+      Ch6# — O cavalo vai para h6, dando xeque que o rei não pode escapar. As torres não ajudam.
+    </div>
+  </div>
+
+  <h2>Mates em 2</h2>
+
+  <div class="puzzle-box">
+    <div class="puzzle-num">PUZZLE 03 &nbsp;·&nbsp; MATE EM 2</div>
+    <div class="puzzle-enunciado">Brancas jogam e dão xeque-mate em 2 lances.<br>Rainha branca em d3. Torre branca em h1. Rei preto em g8. Peão preto em h7.</div>
+    <div class="puzzle-solucao">
+      <div class="puzzle-solucao-label">Solução</div>
+      1.Dg6+ hxg6 (forçado) 2.Th8# — O sacrifício da rainha força a abertura da coluna h para o mate da torre.
+    </div>
+  </div>
+
+  <h2>Puzzle Tático — Garfo</h2>
+
+  <div class="puzzle-box">
+    <div class="puzzle-num">PUZZLE 04 &nbsp;·&nbsp; GARFO DE CAVALO</div>
+    <div class="puzzle-enunciado">Brancas jogam e ganham material com um garfo de cavalo.<br>Cavalo branco em d4. Rainha preta em c6. Rei preto em e8. Torre preta em a1.</div>
+    <div class="puzzle-solucao">
+      <div class="puzzle-solucao-label">Solução</div>
+      1.Ce6! — O cavalo vai para e6 atacando simultaneamente a rainha em c6 e o rei em e8 (xeque!). O rei deve sair do xeque e as brancas capturam a rainha no próximo lance.
+    </div>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">18</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CAP 11 – APLICATIVOS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Capítulo 11</div>
+    <div class="capitulo-titulo">Aplicativos e Recursos</div>
+    <div class="capitulo-intro">
+      A tecnologia é aliada do aprendizado — saiba escolher as ferramentas certas.
+    </div>
+  </div>
+
+  <p>Nunca foi tão fácil treinar xadrez fora do tabuleiro físico. As plataformas digitais oferecem partidas, puzzles, análises com inteligência artificial e comunidades globais — tudo no celular ou computador. Conheça os principais recursos:</p>
+
+  <h2>Plataformas Online</h2>
+
+  <div class="grade-pecas">
+    <div class="card-peca">
+      <div class="card-peca-icone">♟</div>
+      <div class="card-peca-nome">Chess.com</div>
+      <div class="card-peca-desc">Maior plataforma do mundo. Aulas, puzzles, partidas online, análise com IA e comunidades por nível. Versão gratuita robusta, premium amplia recursos. <em>chess.com</em></div>
+    </div>
+    <div class="card-peca">
+      <div class="card-peca-icone">♞</div>
+      <div class="card-peca-nome">Lichess.org</div>
+      <div class="card-peca-desc">100% gratuito e código aberto. Puzzles ilimitados categorizados por tema, análise completa com Stockfish, torneios e estudo colaborativo. <em>lichess.org</em></div>
+    </div>
+  </div>
+
+  <h2>Aplicativos Complementares</h2>
+
+  <table>
+    <thead>
+      <tr><th>Aplicativo</th><th>Função</th><th>Recomendação Pedagógica</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Chess Clock</strong></td>
+        <td>Cronômetro digital para partidas</td>
+        <td>Use em todas as partidas presenciais para criar hábito de gestão do tempo</td>
+      </tr>
+      <tr>
+        <td><strong>Pocket Chess</strong></td>
+        <td>Tabuleiro offline para análise</td>
+        <td>Ideal para configurar posições específicas e analisar sem internet</td>
+      </tr>
+      <tr>
+        <td><strong>Rei do Chess</strong></td>
+        <td>Plataforma em português</td>
+        <td>Recomendado para iniciantes que preferem interface em PT-BR</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Recomendações por Nível</h2>
+
+  <div class="box box-dica">
+    <div class="box-titulo">🎯 Rotina Semanal Sugerida</div>
+    <ul>
+      <li><strong>Iniciante (0–800 ELO):</strong> 10 puzzles de Mate em 1 por dia no Lichess. 2 partidas de 10 minutos por semana.</li>
+      <li><strong>Básico (800–1200 ELO):</strong> 15 puzzles mistos por dia. 1 lição de abertura por semana no Chess.com. Analise todas as partidas após o jogo.</li>
+      <li><strong>Intermediário (1200–1600 ELO):</strong> Estude finais básicos. Resolva puzzles temáticos. Assista análises de grandes partidas comentadas.</li>
+    </ul>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">20</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ REFERÊNCIAS ════════════════════════════════ -->
+<div class="pagina">
+  <div class="capitulo-header">
+    <div class="capitulo-num">Referências</div>
+    <div class="capitulo-titulo">Bibliográficas</div>
+  </div>
+
+  <p>As obras abaixo constituem a base bibliográfica deste manual e são referências indispensáveis para qualquer estudante sério do jogo. As edições utilizadas seguem padronização ABNT:</p>
+
+  <div style="margin: 24px 0;">
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">CAPABLANCA, José Raul. <strong>Chess Fundamentals</strong>. New York: Harcourt, Brace and Company, 1921. (Reimpressão: Ishi Press International, 2010).</p>
+
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">NIMZOWITSCH, Aron. <strong>My System</strong>. 2. ed. London: G. Bell and Sons, 1929. (Edição em inglês: Cadogan Books, 1991).</p>
+
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">SILMAN, Jeremy. <strong>How to Reassess Your Chess</strong>. 4. ed. Los Angeles: Siles Press, 2010.</p>
+
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">POLGAR, Laszlo. <strong>5334 Chess Problems, Combinations and Games</strong>. New York: Black Dog & Leventhal Publishers, 1994.</p>
+
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">KOTOV, Alexander. <strong>Think Like a Grandmaster</strong>. London: Batsford, 1971. (Reimpressão: Cadogan Books, 1995).</p>
+
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">FIDE — Federação Internacional de Xadrez. <strong>Laws of Chess</strong>. Lausanne: FIDE, 2023. Disponível em: <em>fide.com/FIDE/handbook/LawsOfChess.pdf</em>. Acesso em: jan. 2025.</p>
+
+    <p style="margin-bottom: 14px; text-indent: -20px; padding-left: 20px;">FERGUSON, Robert. <strong>The Use of Modern Chess Instruction as a Vehicle to Improve Student Learning in Mathematics</strong>. American Chess School, 2014.</p>
+  </div>
+
+  <h2>Recursos Online Consultados</h2>
+  <ul>
+    <li>Chess.com – <em>chess.com</em></li>
+    <li>Lichess.org – <em>lichess.org</em></li>
+    <li>ChessBase – <em>chessbase.com</em></li>
+    <li>FIDE – <em>fide.com</em></li>
+  </ul>
+
+  <div class="destaque-frase" style="margin-top: 40px;">
+    "O xadrez é a arte de análise."<br>
+    <span style="font-size: 13pt; font-weight: 400;">— Mikhail Botvinnik</span>
+  </div>
+
+  <div class="rodape">
+    <span class="rodape-projeto">MENTES EM XEQUE &nbsp;·&nbsp; PROF. NILSON GIUVANNUCCI</span>
+    <span class="rodape-pag">21</span>
+  </div>
+</div>
+
+<!-- Tabuleiro Script -->
+<script>
+  // Renderiza tabuleiro central illustrativo
+  const tab = document.getElementById('tab-centro');
+  if (tab) {
+    for (let r = 7; r >= 0; r--) {
+      for (let c = 0; c < 8; c++) {
+        const casa = document.createElement('div');
+        const isClara = (r + c) % 2 === 1;
+        casa.className = 'casa ' + (isClara ? 'clara' : 'escura');
+        // Destacar casas centrais: d4=3,4 e4=4,4 d5=3,5 e5=4,5
+        // (col d=3, e=4; rank 4=r3, rank 5=r4 em 0-index)
+        if ((c === 3 || c === 4) && (r === 3 || r === 4)) {
+          casa.style.outline = '3px solid #c9a84c';
+          casa.style.outlineOffset = '-3px';
+        }
+        tab.appendChild(casa);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
