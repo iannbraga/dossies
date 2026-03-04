@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Lenda do Escudo de Petrov — O Jogo Russo</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+   RAIZ E RESET
+═══════════════════════════════════════════ */
+    :root {
+      --perg: #f5ead6;
+      --perg-escuro: #e8d5b0;
+      --tinta: #2c1a0e;
+      --tinta-suave: #4a2e1a;
+      --rubi: #8b1a1a;
+      --rubi-claro: #c0392b;
+      --ouro: #b8860b;
+      --ouro-claro: #d4a017;
+      --esmeralda: #1a5c3a;
+      --esmeralda-claro: #2e8b57;
+      --azul-real: #1a2a5c;
+      --borda: #8b6914;
+      --sombra: rgba(44, 26, 14, 0.4);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #1a0f06;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, #2a1508 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, #0d1a08 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='%231a0f06'/%3E%3Cpath d='M30 5 L55 30 L30 55 L5 30 Z' fill='none' stroke='%23251206' stroke-width='0.5'/%3E%3C/svg%3E");
+      font-family: 'IM Fell English', Georgia, serif;
+      color: var(--tinta);
+      min-height: 100vh;
+    }
+
+    /* ═══════════════════════════════════════════
+   ORNAMENTOS SVG INLINE
+═══════════════════════════════════════════ */
+    .ornamento-topo {
+      text-align: center;
+      font-size: 1.4rem;
+      color: var(--ouro);
+      letter-spacing: 12px;
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+      font-family: serif;
+    }
+
+    /* ═══════════════════════════════════════════
+   CAPA / HEADER
+═══════════════════════════════════════════ */
+    .capa {
+      background:
+        linear-gradient(180deg, rgba(26, 15, 6, 0.7) 0%, rgba(26, 15, 6, 0.2) 40%, rgba(26, 15, 6, 0.8) 100%),
+        radial-gradient(ellipse at center, #3d2208 0%, #1a0f06 70%);
+      border-bottom: 4px solid var(--ouro);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .capa::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23b8860b' stroke-width='0.4' opacity='0.15'%3E%3Ccircle cx='60' cy='60' r='50'/%3E%3Ccircle cx='60' cy='60' r='35'/%3E%3Cpath d='M10 60 L110 60 M60 10 L60 110 M25 25 L95 95 M95 25 L25 95'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 120px 120px;
+    }
+
+    .capa-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .brasao {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 20px rgba(184, 134, 11, 0.6));
+      animation: pulsar 4s ease-in-out infinite;
+    }
+
+    @keyframes pulsar {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 20px rgba(184, 134, 11, 0.6));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 40px rgba(184, 134, 11, 0.9));
+      }
+    }
+
+    .capa h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      color: var(--ouro-claro);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(184, 134, 11, 0.4);
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    .capa .subtitulo {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      color: #c9a84c;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .ficha-heraldica {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .ficha-item {
+      background: rgba(184, 134, 11, 0.15);
+      border: 1px solid rgba(184, 134, 11, 0.4);
+      color: #e0c068;
+      padding: 0.4rem 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    .divisor-capa {
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--ouro), transparent);
+      margin: 1.5rem auto;
+    }
+
+    /* ═══════════════════════════════════════════
+   NAVEGAÇÃO — MAPA DO REINO
+═══════════════════════════════════════════ */
+    .nav-reino {
+      background: #150c04;
+      border-bottom: 3px double var(--ouro);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .nav-titulo {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--ouro);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      opacity: 0.7;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #c9a84c;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(184, 134, 11, 0.3);
+      border-radius: 2px;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background: rgba(184, 134, 11, 0.2);
+      color: #f0d080;
+      border-color: var(--ouro);
+    }
+
+    /* ═══════════════════════════════════════════
+   CONTAINER PRINCIPAL — PERGAMINHO
+═══════════════════════════════════════════ */
+    .pergaminho-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1rem 4rem;
+    }
+
+    /* ═══════════════════════════════════════════
+   CAPÍTULOS
+═══════════════════════════════════════════ */
+    .capitulo {
+      background-color: var(--perg);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, var(--perg-escuro) 0%, var(--perg) 8%, var(--perg) 92%, var(--perg-escuro) 100%);
+      border: 2px solid var(--borda);
+      border-radius: 4px;
+      padding: 3rem 3.5rem;
+      margin: 2.5rem 0;
+      position: relative;
+      box-shadow:
+        0 8px 40px var(--sombra),
+        inset 0 0 80px rgba(184, 134, 11, 0.04);
+    }
+
+    /* Cantos ornamentais */
+    .capitulo::before,
+    .capitulo::after {
+      content: '✦';
+      position: absolute;
+      font-size: 1.2rem;
+      color: var(--ouro);
+      opacity: 0.5;
+    }
+
+    .capitulo::before {
+      top: 10px;
+      left: 14px;
+    }
+
+    .capitulo::after {
+      bottom: 10px;
+      right: 14px;
+    }
+
+    .canto-br,
+    .canto-tl {
+      position: absolute;
+      font-size: 1.2rem;
+      color: var(--ouro);
+      opacity: 0.5;
+    }
+
+    .canto-br {
+      bottom: 10px;
+      left: 14px;
+      content: '✦';
+    }
+
+    .canto-tl {
+      top: 10px;
+      right: 14px;
+    }
+
+    /* Número do capítulo */
+    .num-capitulo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.65rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      opacity: 0.8;
+    }
+
+    /* Título do capítulo */
+    .capitulo h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      color: var(--rubi);
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .capitulo h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: var(--esmeralda);
+      margin: 1.8rem 0 0.7rem;
+      letter-spacing: 1px;
+      border-bottom: 1px solid rgba(30, 92, 58, 0.3);
+      padding-bottom: 0.4rem;
+    }
+
+    .capitulo h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      color: var(--rubi);
+      margin: 1.2rem 0 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .divisor-capitulo {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--ouro);
+      letter-spacing: 8px;
+      margin: 1.2rem 0;
+      opacity: 0.6;
+    }
+
+    /* ═══════════════════════════════════════════
+   PARÁGRAFO — LETRA CAPITULAR
+═══════════════════════════════════════════ */
+    .capitulo p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--tinta);
+      text-align: justify;
+      margin-bottom: 1rem;
+      hyphens: auto;
+    }
+
+    .capitulo p+p {
+      text-indent: 1.5em;
+    }
+
+    /* Letra capitular apenas no primeiro parágrafo de cada capítulo */
+    .capitular::first-letter {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4rem;
+      line-height: 0.75;
+      float: left;
+      margin: 0.1em 0.1em 0 0;
+      color: var(--rubi);
+      text-shadow: 2px 2px 0 rgba(139, 26, 26, 0.2);
+    }
+
+    /* ═══════════════════════════════════════════
+   PERGAMINHOS DE LANCES (códigos de xadrez)
+═══════════════════════════════════════════ */
+    .manuscrito {
+      background: #2c1a0e;
+      background-image: linear-gradient(180deg, #241508 0%, #2c1a0e 100%);
+      border: 1px solid var(--ouro);
+      border-left: 4px solid var(--ouro);
+      border-radius: 3px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+      font-family: 'Cinzel', monospace;
+      font-size: 0.85rem;
+      color: #e8d4a0;
+      line-height: 2.1;
+      position: relative;
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .manuscrito::before {
+      content: '⚔ Crônica dos Lances';
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ouro);
+      margin-bottom: 0.8rem;
+      opacity: 0.8;
+      border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+      padding-bottom: 0.5rem;
+    }
+
+    .manuscrito .lance-bom {
+      color: #86efac;
+    }
+
+    .manuscrito .lance-ruim {
+      color: #fca5a5;
+    }
+
+    .manuscrito .glosa {
+      color: #94a3b8;
+      font-style: italic;
+      font-family: 'IM Fell English', serif;
+      font-size: 0.82rem;
+    }
+
+    /* ═══════════════════════════════════════════
+   CAIXAS DE DECRETO / AVISO / SABEDORIA
+═══════════════════════════════════════════ */
+    .decreto {
+      border: 1px solid;
+      border-radius: 4px;
+      padding: 1rem 1.3rem;
+      margin: 1.2rem 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.8rem;
+      align-items: start;
+    }
+
+    .decreto .simbolo {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .decreto .corpo strong {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .decreto .corpo p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-indent: 0 !important;
+    }
+
+    .decreto .corpo p+p {
+      text-indent: 0 !important;
+    }
+
+    .decreto-perigo {
+      background: #fdf0f0;
+      border-color: var(--rubi);
+    }
+
+    .decreto-perigo .corpo strong {
+      color: var(--rubi);
+    }
+
+    .decreto-sabio {
+      background: #f0f7f0;
+      border-color: var(--esmeralda);
+    }
+
+    .decreto-sabio .corpo strong {
+      color: var(--esmeralda);
+    }
+
+    .decreto-ouro {
+      background: #fdf8e8;
+      border-color: var(--ouro);
+    }
+
+    .decreto-ouro .corpo strong {
+      color: var(--ouro-claro);
+    }
+
+    .decreto-azul {
+      background: #eef2fb;
+      border-color: var(--azul-real);
+    }
+
+    .decreto-azul .corpo strong {
+      color: var(--azul-real);
+    }
+
+    /* ═══════════════════════════════════════════
+   BRASÕES — PROS E CONTRAS
+═══════════════════════════════════════════ */
+    .escudos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin: 1.2rem 0;
+    }
+
+    @media (max-width: 580px) {
+      .escudos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .escudo {
+      border-radius: 4px;
+      padding: 1.2rem;
+    }
+
+    .escudo-virtude {
+      background: linear-gradient(160deg, #f0faf4 0%, #e0f5e8 100%);
+      border: 2px solid var(--esmeralda);
+      border-top: 5px solid var(--esmeralda);
+    }
+
+    .escudo-fraqueza {
+      background: linear-gradient(160deg, #fdf0f0 0%, #fce4e4 100%);
+      border: 2px solid var(--rubi);
+      border-top: 5px solid var(--rubi);
+    }
+
+    .escudo h4 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .escudo-virtude h4 {
+      color: var(--esmeralda);
+    }
+
+    .escudo-fraqueza h4 {
+      color: var(--rubi);
+    }
+
+    .escudo ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+
+    .escudo li {
+      padding: 0.35rem 0;
+      font-size: 0.92rem;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .escudo li:last-child {
+      border-bottom: none;
+    }
+
+    .escudo li::before {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .escudo-virtude li::before {
+      content: '⚔';
+      font-size: 0.7rem;
+      color: var(--esmeralda);
+    }
+
+    .escudo-fraqueza li::before {
+      content: '☠';
+      font-size: 0.7rem;
+      color: var(--rubi);
+    }
+
+    /* ═══════════════════════════════════════════
+   TABELA DE HERÓIS
+═══════════════════════════════════════════ */
+    .tabela-herois {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 0.9rem;
+    }
+
+    .tabela-herois thead tr {
+      background: var(--tinta);
+      color: var(--ouro-claro);
+    }
+
+    .tabela-herois th {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.7rem 1rem;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    .tabela-herois td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--perg-escuro);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .tabela-herois tr:nth-child(even) td {
+      background: rgba(184, 134, 11, 0.05);
+    }
+
+    .tabela-herois tr:hover td {
+      background: rgba(184, 134, 11, 0.1);
+    }
+
+    .tabela-herois td:first-child {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+    }
+
+    /* ═══════════════════════════════════════════
+   CARTÕES DE BATALHA (partidas)
+═══════════════════════════════════════════ */
+    .batalha {
+      background: linear-gradient(135deg, #eef4ff 0%, #e8f0fa 100%);
+      border: 1px solid #b0c4de;
+      border-left: 5px solid var(--azul-real);
+      border-radius: 4px;
+      padding: 1.1rem 1.3rem;
+      margin: 1rem 0;
+    }
+
+    .batalha-titulo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      color: var(--azul-real);
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .vitoria-tag {
+      background: var(--esmeralda);
+      color: white;
+      font-size: 0.7rem;
+      font-family: 'Cinzel', serif;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 1px;
+    }
+
+    .batalha p {
+      font-size: 0.95rem;
+      margin: 0;
+      text-indent: 0 !important;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════
+   GLOSSÁRIO
+═══════════════════════════════════════════ */
+    .verbete {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0.8rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px dashed rgba(184, 134, 11, 0.3);
+      font-size: 0.93rem;
+      align-items: baseline;
+    }
+
+    .verbete:last-child {
+      border-bottom: none;
+    }
+
+    .verbete dt {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      color: var(--rubi);
+      letter-spacing: 0.5px;
+    }
+
+    .verbete dd {
+      color: var(--tinta-suave);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 560px) {
+      .verbete {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+   EPÍLOGO
+═══════════════════════════════════════════ */
+    .epigrafe {
+      font-style: italic;
+      text-align: center;
+      color: var(--tinta-suave);
+      border-top: 1px solid rgba(184, 134, 11, 0.4);
+      border-bottom: 1px solid rgba(184, 134, 11, 0.4);
+      padding: 1rem 2rem;
+      margin: 1.5rem 0;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .rodape-pergaminho {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #8a7050;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border-top: 2px solid #3a2008;
+    }
+
+    .rodape-pergaminho .runa {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+
+    /* ═══════════════════════════════════════════
+   RESPONSIVO
+═══════════════════════════════════════════ */
+    @media (max-width: 640px) {
+      .capitulo {
+        padding: 1.8rem 1.4rem;
+      }
+
+      .capitulo h2 {
+        font-size: 1.3rem;
+      }
+
+      .manuscrito {
+        font-size: 0.78rem;
+      }
+
+      .verbete {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ═══════════════════════════════════════════
+   ANIMAÇÃO DE ENTRADA
+═══════════════════════════════════════════ */
+    @keyframes surgir {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .capitulo {
+      animation: surgir 0.6s ease both;
+    }
+
+    .capitulo:nth-child(2) {
+      animation-delay: 0.05s;
+    }
+
+    .capitulo:nth-child(3) {
+      animation-delay: 0.10s;
+    }
+
+    .capitulo:nth-child(4) {
+      animation-delay: 0.15s;
+    }
+
+    .capitulo:nth-child(5) {
+      animation-delay: 0.20s;
+    }
+
+    .capitulo:nth-child(6) {
+      animation-delay: 0.25s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════ CAPA ════════════════════ -->
+  <div class="capa">
+    <div class="capa-inner">
+      <span class="brasao">🏰</span>
+      <div class="ornamento-topo">⸻ ✦ ⸻</div>
+      <h1>A Lenda do Escudo de Petrov</h1>
+      <p class="subtitulo">Crônicas do Jogo Russo &nbsp;·&nbsp; Defesa Petrov / Petroff</p>
+      <div class="divisor-capa"></div>
+      <p
+        style="color:#c9a84c; font-style:italic; font-size:1rem; max-width:500px; margin:0 auto 1.5rem; line-height:1.8;">
+        "Não é o escudo que vence a guerra —<br>é o cavaleiro que sabe quando usá-lo."
+      </p>
+      <div class="ficha-heraldica">
+        <span class="ficha-item">⚔ Lances: 1.e4 e5 2.Cf3 Cf6</span>
+        <span class="ficha-item">📜 ECO: C42 – C43</span>
+        <span class="ficha-item">🌍 O Jogo Russo</span>
+        <span class="ficha-item">🛡 Defesa das Pretas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════ NAV ════════════════════ -->
+  <nav class="nav-reino">
+    <p class="nav-titulo">⚜ Mapa do Reino ⚜</p>
+    <ul class="nav-links">
+      <li><a href="#origem">I · Origem</a></li>
+      <li><a href="#filosofia">II · Filosofia</a></li>
+      <li><a href="#virtudes">III · Virtudes</a></li>
+      <li><a href="#caminhos">IV · Caminhos</a></li>
+      <li><a href="#armadilhas">V · Armadilhas</a></li>
+      <li><a href="#stafford">VI · Stafford</a></li>
+      <li><a href="#cochrane">VII · Cochrane</a></li>
+      <li><a href="#herois">VIII · Heróis</a></li>
+      <li><a href="#batalhas">IX · Batalhas</a></li>
+      <li><a href="#conselhos">X · Conselhos</a></li>
+      <li><a href="#erros">XI · Erros Fatais</a></li>
+      <li><a href="#damiano">XII · Maldição Damiano</a></li>
+      <li><a href="#grimorio">XIII · Grimório</a></li>
+      <li><a href="#glossario">XIV · Léxico</a></li>
+    </ul>
+  </nav>
+
+  <div class="pergaminho-wrapper">
+
+    <!-- ════════════════════ CAP I ════════════════════ -->
+    <section class="capitulo" id="origem">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo I ✦</p>
+      <h2>A Fundação do Reino — História e Origem</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Há muito tempo, nos confins do mundo medieval do tabuleiro, os reinos das Brancas e das
+        Pretas travam batalhas eternas pelo domínio do centro sagrado. A maioria dos guerreiros das Pretas, ao ver seu
+        peão ameaçado pelo cavaleiro branco, apressava-se a erguir escudos e recuar. Mas havia uma escola de guerreiros
+        que pensava de forma diferente — e sua doutrina ficaria para sempre conhecida como <em>o Escudo de Petrov</em>.
+      </p>
+
+      <p>A origem dessa filosofia guerreira remonta ao sábio português <strong>Pedro Damiano</strong>, que por volta do
+        ano 1512 registrou em seus pergaminhos as primeiras análises conhecidas dessa manobra. Mais de seiscentas
+        batalhas foram documentadas usando essa estratégia até o ano de 1899 — um número impressionante para uma época
+        sem exércitos permanentes. No auge de sua popularidade, por volta de 1920, um em cada doze duelos de cavaleiros
+        começava com este esquema.</p>
+
+      <p>Mas foi o grande mestre russo <strong>Alexander Dmitrievich Petrov</strong> (1794–1867) — o Cavaleiro do Norte,
+        o primeiro grande estrategista russo da história — quem estudou, aprofundou e difundiu essa doutrina defensiva
+        por todo o continente. Em honra a seus ensinamentos, a manobra recebeu seu nome eternamente: <em>a Defesa
+          Petrov</em>, também chamada de <em>Jogo Russo</em>.</p>
+
+      <p>Durante gerações, generais menos corajosos usaram o Escudo de Petrov apenas para garantir tréguas honrosas. Sua
+        primeira aparição num grande torneio de Campeonatos foi em 1969, quando o lendário <strong>Tigran
+          Petrosian</strong>, o "Rei de Ferro", brandiu esse escudo contra <strong>Boris Spassky</strong>. Mas foi no
+        século XXI que dois heróis — <strong>Vladimir Kramnik</strong> e <strong>Fabiano Caruana</strong> — mostraram ao
+        mundo que o escudo também pode ser uma lança.</p>
+
+      <div class="decreto decreto-ouro">
+        <span class="simbolo">📜</span>
+        <div class="corpo">
+          <strong>Pergaminho Histórico</strong>
+          <p>O próprio Alexander Petrov deixou registrada uma batalha do século XIX onde, no vigésimo quarto lance,
+            executou uma manobra brilhante que nenhum inimigo havia previsto — uma joia preservada nas crônicas do
+            xadrez como prova viva de sua genialidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP II ════════════════════ -->
+    <section class="capitulo" id="filosofia">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo II ✦</p>
+      <h2>A Filosofia do Escudo — Conceito e Estratégia</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">O campo de batalha se abre com os dois reinos avançando seus peões centrais frente a frente —
+        dois soldados corajosos plantando bandeira no coração do tabuleiro. O cavaleiro branco galopa até f3, apontando
+        sua lança diretamente para o peão preto em e5. Todo general esperaria que as Pretas erguessem defesas. Mas a
+        escola de Petrov ensina outra coisa:</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">1. e4</span> <span class="glosa">— O Reino Branco avança seu peão sagrado ao
+          centro</span><br>
+        <span class="lance-bom">1… e5</span> <span class="glosa">— O Reino Negro espelha, reivindicando os mesmos
+          campos</span><br>
+        <span class="lance-bom">2. Cf3</span> <span class="glosa">— O Cavaleiro Branco galopa, ameaçando o peão
+          negro</span><br>
+        <span class="lance-bom">2… Cf6!</span> <span class="glosa">— O Cavaleiro Negro responde NÃO com escudo, mas com
+          contra-ataque!</span>
+      </div>
+
+      <p>Em vez de defender o peão ameaçado, o cavaleiro negro salta para f6 e aponta sua própria lança para o peão
+        branco em e4. É a filosofia do espelho, da reciprocidade — a arte marcial que diz: <em>"Se você me ataca, eu
+          ataco de volta com igual força."</em></p>
+
+      <p>O resultado é uma posição quase perfeitamente simétrica, como dois reinos refletidos num lago. As fortalezas
+        são idênticas, os campos controlados são iguais. Nenhum dos lados conquistou vantagem clara — e é exatamente
+        isso que as Pretas desejam.</p>
+
+      <div class="epigrafe">
+        "O Escudo de Petrov não busca a vitória imediata.<br>
+        Ele preserva o guerreiro, aguarda o erro inimigo,<br>
+        e então castiga com força devastadora."<br>
+        <small>— Ensinamento da Escola do Norte</small>
+      </div>
+
+      <p>Em grandes torneios com muitas rodadas, este escudo revela seu valor estratégico mais profundo: jogar de Pretas
+        buscando a trégua honrosa, economizando as forças para atacar com as Brancas. O General Aaron Nimzowitsch — cujo
+        nome batiza uma das sub-variantes desta escola — sentenciou: <em>"A abertura é uma corrida; não desperdice tempo
+          com frivolidades."</em> O espírito é idêntico ao de Petrov: desenvolver as tropas, manter o centro, não
+        desperdiçar lances.</p>
+    </section>
+
+    <!-- ════════════════════ CAP III ════════════════════ -->
+    <section class="capitulo" id="virtudes">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo III ✦</p>
+      <h2>Virtudes e Fraquezas do Escudo</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Todo escudo tem seu valor e seus limites. Antes de empunhar o Escudo de Petrov, o guerreiro
+        sábio deve conhecer tanto sua resistência quanto suas fendas. Os mestres da Escola do Norte ensinavam seus
+        aprendizes desta forma:</p>
+
+      <div class="escudos">
+        <div class="escudo escudo-virtude">
+          <h4>⚜ Virtudes do Escudo</h4>
+          <ul>
+            <li>Mobilização rápida das tropas</li>
+            <li>Fortaleza sólida, difícil de assaltar</li>
+            <li>Evita a teoria colossal das Guerras Espanhola e Italiana</li>
+            <li>Equalização confiável contra inimigos mais poderosos</li>
+            <li>Excelente para guerreiros de estilo posicional e paciente</li>
+            <li>Muitos inimigos não conhecem as passagens secretas</li>
+          </ul>
+        </div>
+        <div class="escudo escudo-fraqueza">
+          <h4>☠ Fraquezas do Escudo</h4>
+          <ul>
+            <li>As Brancas mantêm leve avanço na mobilização</li>
+            <li>Batalhas podem tornar-se monótonas e lentas</li>
+            <li>Exige estudo de muitas variantes teóricas</li>
+            <li>Vitórias são mais difíceis em certas linhas</li>
+            <li>A Linha da Dama (5.De2) quase sempre força trégua</li>
+            <li>Armadilha mortal no 3º lance derruba incautos</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="decreto decreto-ouro">
+        <span class="simbolo">⚔</span>
+        <div class="corpo">
+          <strong>Quando Evitar o Escudo</strong>
+          <p>Se o guerreiro das Pretas precisar absolutamente de vitória — não de trégua —, o Escudo de Petrov pode ser
+            uma armadilha para si mesmo. Certas linhas das Brancas foram forjadas precisamente para forçar a paz
+            perpétua. Nesses casos, as escolas Siciliana e Francesa oferecem campos de batalha mais desequilibrados e
+            oportunidades para a glória.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP IV ════════════════════ -->
+    <section class="capitulo" id="caminhos">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo IV ✦</p>
+      <h2>Os Quatro Caminhos do Inimigo — Variantes Principais</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Após os lances iniciais <strong>1.e4 e5 2.Cf3 Cf6</strong>, o general branco se vê diante de
+        uma encruzilhada. Quatro são os caminhos que ele pode tomar, cada um com suas recompensas e armadilhas. O
+        guerreiro das Pretas deve conhecê-los todos.</p>
+
+      <div class="decreto decreto-azul">
+        <span class="simbolo">🗺</span>
+        <div class="corpo">
+          <strong>Os Caminhos Menores (a evitar)</strong>
+          <p>O Caminho da Hesitação (3.d3) bloqueia o próprio bispo branco sem ganho algum. O Caminho Italiano (3.Bc4)
+            leva à Variante Italiana da Petrov, onde as Pretas continuam normalmente. O Caminho dos Três Cavaleiros
+            (3.Cc3) é mais uma fuga da batalha do que um ataque — as Pretas geralmente transpõem para o Jogo dos Quatro
+            Cavaleiros, ou avançam para a Defesa Philidor.</p>
+        </div>
+      </div>
+
+      <h3>⚔ O Caminho Principal — A Captura Clássica (3.Cxe5)</h3>
+      <p>Este é o caminho mais ousado: o cavaleiro branco desce sobre o peão negro em e5, acreditando que ele está
+        indefeso. Aqui reside a armadilha mais famosa do Escudo de Petrov — e também sua mais bela resposta.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5</span> <span class="glosa">— O Cavaleiro Branco desce como gavião sobre o
+          peão</span><br>
+        <span class="lance-bom">3… d6!</span> <span class="glosa">— OBRIGATÓRIO: a lança expulsa o invasor antes de
+          tudo</span><br>
+        <span class="lance-bom">4. Cf3</span> <span class="glosa">— O Cavaleiro recua, envergonhado</span><br>
+        <span class="lance-bom">4… Cxe4</span> <span class="glosa">— Agora, com segurança, o Cavaleiro Negro
+          captura</span><br>
+        <span class="lance-bom">5. d4</span> <span class="glosa">— As Brancas reivindicam o centro sagrado</span><br>
+        <span class="lance-bom">5… d5</span> <span class="glosa">— As Pretas espelham — o cartão de visitas do
+          Escudo</span><br>
+        <span class="lance-bom">6. Bd3</span> <span class="glosa">— O Bispo Branco aponta para o futuro</span><br>
+        <span class="lance-bom">6… Be7</span> <span class="glosa">— As Pretas preparam o Roque Sagrado</span>
+      </div>
+
+      <p>Esta é a Linha Clássica — a mais disputada de todas. A estrutura simétrica após 5…d5 é o cartão de visitas da
+        escola, um campo de batalha idêntico para os dois reinos onde o vencedor será aquele com melhor técnica e
+        paciência.</p>
+
+      <h3>🗡 A Tática do Duplo Cavaleiro — Ataque de Nimzowitsch (5.Cc3)</h3>
+      <p>Eis uma manobra traiçoeira: o segundo cavaleiro branco avança, oferecendo-se para ser capturado e dobrar os
+        próprios peões. É um sacrifício calculado — perde-se a perfeição da estrutura em troca de mobilização fulgurante
+        e planos de ataque pelo flanco do rei inimigo.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">5. Cc3!</span> <span class="glosa">— O segundo Cavaleiro avança e se oferece ao
+          sacrifício</span><br>
+        <span class="lance-bom">5… Cxc3</span> <span class="glosa">— CORRETO: capturar e desorganizar os peões
+          brancos</span><br>
+        <span class="lance-bom">6. dxc3</span> <span class="glosa">— Peões dobrados, mas diagonal aberta para o Roque
+          Longo</span><br>
+        <span class="lance-bom">6… Be7</span> <span class="glosa">— Sistema defensivo recomendado pelos sábios</span>
+      </div>
+
+      <div class="decreto decreto-perigo">
+        <span class="simbolo">⚠</span>
+        <div class="corpo">
+          <strong>Armadilha do Nimzowitsch</strong>
+          <p>Contra 5.Cc3, jogar 5…d5 é uma armadilha — as Brancas respondem 6.De2, cravando o cavaleiro ao rei, e 7.d3
+            captura um peão de graça. A captura 5…Cxc3 é obrigatória. Não existe outra resposta honrosa.</p>
+        </div>
+      </div>
+
+      <h3>👑 A Manobra da Rainha — Linha da Dama (5.De2)</h3>
+      <p>Quando a Rainha Branca avança para e2 e crava o cavaleiro negro ao próprio rei, a situação fica tensa. Mas o
+        desfecho quase sempre é o mesmo: as damas trocam, os reis se abrigam, e a batalha se encerra em trégua digna —
+        em oito de cada dez confrontos de elite.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">5. De2</span> <span class="glosa">— A Rainha crava o Cavaleiro Negro ao Rei</span><br>
+        <span class="lance-bom">5… De7</span> <span class="glosa">— A única resposta honrosa: defende o
+          Cavaleiro</span><br>
+        <span class="glosa">6. d3 — As Rainhas se aproximam... a troca é inevitável. Trégua ~80%.</span>
+      </div>
+
+      <h3>🗼 A Marcha dos Soldados — Ataque Steinitz (3.d4)</h3>
+      <p>Em vez de capturar o peão em e5, o general branco avança seu soldado d até d4 — atacando o centro negro de
+        outro ângulo. Esta é a arma surpresa. Generais que não conhecem esta formação podem cair numa posição difícil
+        antes de perceber o que aconteceu.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. d4</span> <span class="glosa">— O soldado marcha, atacando o centro em vez de
+          capturar</span><br>
+        <span class="lance-bom">3… Cxe4</span> <span class="glosa">— As Pretas capturam o peão central
+          exposto</span><br>
+        <span class="lance-bom">4. Bd3</span> <span class="glosa">— O Bispo aponta para o cavaleiro com ganho de
+          tempo</span><br>
+        <span class="lance-bom">4… d5</span> <span class="glosa">— As Pretas firmam o centro e protegem o
+          Cavaleiro</span><br>
+        <span class="lance-bom">5. Cxe5</span> <span class="glosa">— A posição transpõe para a Linha Clássica</span>
+      </div>
+
+      <div class="decreto decreto-sabio">
+        <span class="simbolo">💡</span>
+        <div class="corpo">
+          <strong>Sabedoria do Steinitz</strong>
+          <p>O peão branco avançado em e5 concede mais território na ala do rei, mas as Pretas obtêm domínio firme do
+            centro e da ala da rainha com seus peões em c5-d5. Um campo de batalha desequilibrado e interessante para
+            ambos os lados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP V ════════════════════ -->
+    <section class="capitulo" id="armadilhas">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo V ✦</p>
+      <h2>As Armadilhas da Floresta Escura</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Todo caminho pelo Escudo de Petrov atravessa a Floresta Escura — um trecho traiçoeiro onde
+        guerreiros inexperientes caem em buracos ocultos. As duas armadilhas mais mortíferas têm nomes e memória
+        próprias. Todo aprendiz deve aprender a contorná-las antes de qualquer coisa.</p>
+
+      <h3>☠ A Armadilha do Espelho Quebrado — 3…Cxe4??</h3>
+
+      <p>O erro mais comum de toda a escola. O guerreiro das Pretas, embriagado pela filosofia do espelho — "se você
+        captura o meu, eu capturo o seu" — esquece que há uma <em>ordem</em> nas coisas. Ele captura em e4 antes de
+        expulsar o invasor branco com d6. O resultado é catastrófico.</p>
+
+      <div class="decreto decreto-perigo">
+        <span class="simbolo">💀</span>
+        <div class="corpo">
+          <strong>A Armadilha Fatal — Jamais Faça 3…Cxe4!!</strong>
+          <p>Muitos guerreiros novatos, ao ver o cavaleiro branco capturar em e5, tentam espelhar imediatamente. Isso é
+            um erro grave que pode custar o reino inteiro!</p>
+        </div>
+      </div>
+
+      <div class="manuscrito">
+        <span class="lance-ruim">3. Cxe5</span><br>
+        <span class="lance-ruim">3… Cxe4??</span> <span class="glosa">— ERRO: tenta espelhar, mas cai na
+          armadilha</span><br>
+        <span class="lance-bom">4. De2!</span> <span class="glosa">— A Rainha sai: ataca o Cavaleiro E o crava ao Rei
+          simultaneamente</span><br>
+        <span class="lance-ruim">4… Cf6??</span> <span class="glosa">— Parece natural, mas é a ruína total</span><br>
+        <span class="lance-bom">5. Cc6+!</span> <span class="glosa">— Xeque Descoberto! A Rainha Negra em d8 está sem
+          defesa</span>
+      </div>
+
+      <p>Após o Xeque Descoberto em c6, o Rei Negro deve mover-se — e a Rainha Negra em d8 é capturada sem piedade. O
+        reino das Pretas desmorona antes mesmo da batalha começar de verdade.</p>
+
+      <div class="decreto decreto-ouro">
+        <span class="simbolo">⚜</span>
+        <div class="corpo">
+          <strong>A Regra de Ouro do Escudo</strong>
+          <p>Grave isto como lei suprema: <strong>nunca capturar em e4 antes de jogar 3…d6</strong>. Primeiro, expulse o
+            invasor. Só depois, capture o peão. Esta única regra salva reinos.</p>
+        </div>
+      </div>
+
+      <h3>🏹 A Armadilha do Bispo Prematuro — A Lição de Anand (5.Cc3)</h3>
+
+      <p>Mesmo os maiores heróis tropeçam. Em 1988, o jovem Anand — que mais tarde se tornaria um dos maiores campeões
+        da história — cometeu este erro e teve de render-se imediatamente.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">5. Cc3</span><br>
+        <span class="lance-ruim">5… Bf5??</span> <span class="glosa">— Jogado pelo jovem Anand em 1988 —
+          erro!</span><br>
+        <span class="lance-bom">6. De2</span> <span class="glosa">— Anand rendeu-se: 6…De7 7.Cd5 perde uma peça</span>
+      </div>
+
+      <div class="decreto decreto-sabio">
+        <span class="simbolo">📌</span>
+        <div class="corpo">
+          <strong>Lei do Nimzowitsch</strong>
+          <p>Contra 5.Cc3, a resposta correta das Pretas é sempre 5…Cxc3 — aceitar os peões dobrados do inimigo em vez
+            de tentar ativar o bispo prematuramente. Quem apressa o passo, tropeça na pedra.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP VI ════════════════════ -->
+    <section class="capitulo" id="stafford">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo VI ✦</p>
+      <h2>O Guerreiro Louco — Gambito Stafford (3…Cc6)</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Há guerreiros que não querem escudos. Há guerreiros que atiram fora a armadura, desembainham
+        a espada e carregam de peito aberto — apostando que o susto e a velocidade valem mais do que a proteção. O
+        Gambito Stafford é a filosofia desses loucos corajosos.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5</span><br>
+        <span class="lance-bom">3… Cc6!?</span> <span class="glosa">— O Cavaleiro avança sem pedir permissão —
+          gambito!</span><br>
+        <span class="lance-bom">4. Cxc6</span> <span class="glosa">— As Brancas aceitam o presente envenenado</span><br>
+        <span class="lance-bom">4… dxc6</span> <span class="glosa">— As Pretas recuperam a estrutura, mas com peões
+          dobrados</span>
+      </div>
+
+      <p>As Pretas sacrificam um peão — entregam território — em troca de mobilização relampejante e ameaças imediatas
+        ao castelo branco. Objetivamente, com jogo preciso das Brancas, o Gambito Stafford é inferior. Mas no campo de
+        batalha real, contra um inimigo que não o conhece, é devastador.</p>
+
+      <p>O bardo <strong>Eric Rosen</strong> tornou este gambito famoso em toda a Internet xadrezística com seus
+        pergaminhos em vídeo — e desde então todo guerreiro de partidas rápidas deve estar preparado para ele.</p>
+
+      <div class="decreto decreto-sabio">
+        <span class="simbolo">🎯</span>
+        <div class="corpo">
+          <strong>Para Qual Guerreiro Foi Forjado</strong>
+          <p>O Stafford pertence ao guerreiro tático, ao amante de batalhas caóticas e sacrifícios espetaculares. Em
+            partidas rápidas e relâmpago, é uma arma temível. Em duelos longos e formais, exige precisão extrema das
+            Pretas para compensar o peão sacrificado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP VII ════════════════════ -->
+    <section class="capitulo" id="cochrane">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo VII ✦</p>
+      <h2>O Cavaleiro Suicida — Gambito Cochrane (4.Cxf7)</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Dentre todas as manobras registradas nas crônicas do Escudo de Petrov, nenhuma é mais
+        folclórica, mais dramática e mais debatida pelos sábios do que o Gambito Cochrane. É o ataque do cavaleiro
+        suicida: ele invade o castelo inimigo pelo ponto f7, captura o bispo que guarda o acesso ao rei, e então perece
+        — entregando-se à execução em troca de dois peões e da esperança de que o Rei Negro fique permanentemente
+        exposto.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5 d6</span><br>
+        <span class="lance-bom">4. Cf3 Cxe4</span><br>
+        <span class="lance-bom">4. Cxf7!?</span> <span class="glosa">— O Cavaleiro invade o castelo e se
+          sacrifica!</span><br>
+        <span class="lance-bom">4… Rxf7</span> <span class="glosa">— O Rei Negro é forçado a capturar o
+          invasor</span><br>
+        <span class="lance-bom">5. d4</span> <span class="glosa">— As Brancas ganham dois peões; o Rei Negro está
+          exposto</span>
+      </div>
+
+      <p>As análises dos grandes sábios mostram que as Pretas costumam ganhar um terceiro peão e coordenar suas forças
+        para vencer a batalha — o Rei em f7, apesar de exposto aos ventos, não está necessariamente condenado com um
+        jogo cuidadoso. Até o lendário <strong>Magnus Carlsen</strong> foi visto usando esta manobra em batalhas
+        oficiais.</p>
+
+      <div class="decreto decreto-sabio">
+        <span class="simbolo">🛡</span>
+        <div class="corpo">
+          <strong>Dica de Sobrevivência para o Rei Exposto</strong>
+          <p>Após 4…Rxf7, quase toda análise recomenda Rg8 — recuar o Rei para uma posição menos exposta. A troca de
+            peões c5×d4 para reduzir o material e conduzir para um final também é estratégia aprovada pelos mestres. O
+            Rei exposto pode sobreviver — e vencer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP VIII ════════════════════ -->
+    <section class="capitulo" id="herois">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo VIII ✦</p>
+      <h2>O Panteão dos Heróis — Grandes Especialistas</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">A história do Escudo de Petrov é também a história dos guerreiros que o empunharam com mais
+        maestria. Seus nomes estão gravados nas pedras do grande Panteão do Xadrez, para que as gerações futuras possam
+        aprender com suas campanhas.</p>
+
+      <table class="tabela-herois">
+        <thead>
+          <tr>
+            <th>⚜ Herói</th>
+            <th>Reino</th>
+            <th>Feito Lendário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Alexander Petrov</strong><br><small>(1794–1867)</small></td>
+            <td>Rússia</td>
+            <td>O fundador — deu nome ao Escudo; primeiro grande estrategista russo da história. Sua partida do século
+              XIX com o lance brilhante no movimento 24 é preservada como relíquia.</td>
+          </tr>
+          <tr>
+            <td><strong>Pedro Damiano</strong><br><small>(~1480–1544)</small></td>
+            <td>Portugal</td>
+            <td>O escriba — registrou as primeiras análises do Escudo por volta de 1512. Também emprestou seu nome à
+              armadilha mais fatal da abertura.</td>
+          </tr>
+          <tr>
+            <td><strong>Tigran Petrosian</strong></td>
+            <td>URSS</td>
+            <td>O Rei de Ferro — primeiro a usar o Escudo num Campeonato Mundial, em 1969, como arma de trégua calculada
+              contra Spassky.</td>
+          </tr>
+          <tr>
+            <td><strong>Vladimir Kramnik</strong></td>
+            <td>Rússia</td>
+            <td>O Cavaleiro de Gelo — maior especialista moderno. Transformou o Escudo de Petrov de arma defensiva em
+              instrumento de vitória contra a elite mundial.</td>
+          </tr>
+          <tr>
+            <td><strong>Artur Yusupov</strong></td>
+            <td>Rússia / Alemanha</td>
+            <td>O Guardião da Tradição — considerado o mais dedicado especialista da escola, com maior quantidade
+              <em>e</em> qualidade de batalhas documentadas.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Fabiano Caruana</strong></td>
+            <td>EUA</td>
+            <td>O Ressuscitador — revitalizou o Escudo no Torneio dos Candidatos de 2018, vencendo três Grandes Mestres
+              com ele e quebrando todos os estigmas sobre a abertura.</td>
+          </tr>
+          <tr>
+            <td><strong>Ruslan Ponomariov</strong></td>
+            <td>Ucrânia</td>
+            <td>O Especialista do Steinitz — mestre da variante 3.d4; suas batalhas são referência obrigatória para quem
+              estuda essa linha.</td>
+          </tr>
+          <tr>
+            <td><strong>Anatoly Karpov</strong></td>
+            <td>Rússia</td>
+            <td>O Artesão — especialista consagrado, suas campanhas demonstram um refinamento técnico raramente
+              igualado.</td>
+          </tr>
+          <tr>
+            <td><strong>Daniel Fridman</strong></td>
+            <td>Alemanha</td>
+            <td>O Estudioso — especialista contemporâneo com análises aprofundadas, cujas vitórias são citadas nos
+              tratados modernos da escola.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ════════════════════ CAP IX ════════════════════ -->
+    <section class="capitulo" id="batalhas">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo IX ✦</p>
+      <h2>As Grandes Batalhas — Partidas Clássicas</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">As crônicas do Escudo de Petrov estão repletas de batalhas épicas que ensinaram gerações de
+        estrategistas. Eis as mais importantes, preservadas para o estudo dos futuros guerreiros.</p>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha I — Kovacevic × Kramnik · Belgrado, 1997</span>
+          <span class="vitoria-tag">Pretas Vitoriosas</span>
+        </div>
+        <p>Uma das campanhas-modelo de Kramnik demonstra a ideia estratégica central da escola: isolar o peão avançado
+          das Brancas, deixar soldados pendurados sem apoio, neutralizar toda iniciativa inimiga e converter o final com
+          uma única torre em vantagem. Desde os primeiros lances, ficou claro que as Pretas chegavam ao final com
+          fortaleza estrutural superior.</p>
+      </div>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha II — Beukema × Fridman · Bélgica, 2019</span>
+          <span class="vitoria-tag">Pretas Vitoriosas</span>
+        </div>
+        <p>Uma partida que demonstra a flexibilidade da ordem de lances na Linha Clássica. Após a inversão 7…Bg4 (em vez
+          do mais comum 7…Be7), seguida de 8.Te1 Be7, as Pretas conduziram o GM Fridman a um final levemente superior —
+          jogado com precisão cirúrgica digna dos melhores escribas da escola.</p>
+      </div>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha III — Svidler × Ponomariov · Copa do Mundo, Moscou, 2001</span>
+          <span class="vitoria-tag">Pretas Vitoriosas</span>
+        </div>
+        <p>Na semifinal da Copa do Mundo, Ponomariov — que acabaria vencendo o torneio inteiro — executou o sacrifício
+          brilhante 16…Te4! contra Svidler, criando ameaças que não podiam ser contidas. A captura imediata seria ruína:
+          17.Bxe4 fxe4 e o peão de h2 cai, abrindo as comportas do castelo branco para o dilúvio negro.</p>
+      </div>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha IV — Grischuk × Caruana · Candidatos, Berlim, 2018</span>
+          <span class="vitoria-tag">Pretas Vitoriosas</span>
+        </div>
+        <p>A batalha que mudou a história do Escudo de Petrov no século XXI. Na variante 3.d4, com o peão branco
+          avançando para e5 e as Pretas dominando o centro com c5-d5, Caruana conduziu uma campanha perfeita e venceu
+          com as Pretas — garantindo a conquista do Torneio dos Candidatos. O próprio Caruana analisou e publicou a
+          partida. Um documento histórico.</p>
+      </div>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha V — Andreikin e a Variante Moderna com 5.Cc3</span>
+          <span class="vitoria-tag">Referência Teórica</span>
+        </div>
+        <p>Na sub-variante mais moderna — 5.Cc3 Cxc3 6.dxc3, com as Brancas planejando o Roque Longo e ataque ao rei —
+          Dmitry Andreikin demonstrou de forma modelar a resposta correta das Pretas: Roque Curto, centro com c6 e d5,
+          cavaleiro oscilando entre f6, f8 e b6. Uma partida de manual para quem estuda este caminho.</p>
+      </div>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha VI — Karjakin × Polgar · 2008, Ataque Moderno</span>
+          <span class="vitoria-tag">Brancas Vitoriosas</span>
+        </div>
+        <p>Na linha 3.d4 exd4 4.e5 Ce4 5.Dxd4 d5, o centro se abre completamente. Karjakin demonstrou as possibilidades
+          agressivas desta variante quando as Pretas não reagem com precisão exata. Partida obrigatória para quem estuda
+          o Ataque ao Centro — tanto para usá-lo quanto para defendê-lo.</p>
+      </div>
+
+      <div class="batalha">
+        <div class="batalha-titulo">
+          <span>⚔ Batalha VII — O Gambito Cochrane na Prática</span>
+          <span class="vitoria-tag">Pretas Vitoriosas</span>
+        </div>
+        <p>Com 4.Cxf7!?, as Brancas entregam o cavaleiro por dois peões e apostam no Rei exposto. As Pretas chegam a
+          acumular três peões de vantagem material. Com jogo cuidadoso — Rg8, troca de peões para simplificar, final
+          técnico — as Pretas coordenam suas forças e vencem. O próprio Magnus Carlsen já ousou este gambito em batalhas
+          oficiais.</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP X ════════════════════ -->
+    <section class="capitulo" id="conselhos">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo X ✦</p>
+      <h2>Os Conselhos do Mestre — Recomendações Práticas</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Todo guerreiro que deseja empunhar o Escudo de Petrov com maestria deve seguir os conselhos
+        dos grandes mestres da escola. Eles foram forjados em séculos de batalhas, vitórias e derrotas. Ignorá-los é
+        caminhar para a derrota com os olhos abertos.</p>
+
+      <h3>⚜ Para o Aprendiz que Começa</h3>
+      <p>O primeiro e único ensinamento é a Regra de Ouro: <strong>nunca capturar em e4 antes de jogar 3…d6</strong>.
+        Este único detalhe, gravado a fogo na memória, permite ao aprendiz jogar o Escudo com segurança desde o primeiro
+        dia. Tudo o mais pode ser aprendido depois. Isso não pode.</p>
+
+      <h3>⚔ Qual Caminho Estudar Primeiro</h3>
+      <p>Os sábios recomendam começar pela Variante Clássica (3.Cxe5), dominando a linha principal com 3…d6 4.Cf3 Cxe4
+        5.d4 d5 6.Bd3 Be7. É o caminho mais frequente em todos os reinos. Depois, explore o Ataque de Nimzowitsch
+        (5.Cc3), que cresce em popularidade nos torneios da elite.</p>
+
+      <h3>🗡 Para o Guerreiro Intermediário</h3>
+      <p>Estude os grandes planos estratégicos das Pretas: como isolar os peões avançados do inimigo, quando trocar
+        bispos por cavaleiros, e como converter finais técnicos de torre. O estudo das batalhas de Kramnik é
+        indispensável para este nível.</p>
+
+      <h3>🏰 Para o General Avançado</h3>
+      <p>A variante 3.d4 merece atenção especial — é rica em possibilidades táticas que muitos adversários subestimam. O
+        Gambito Cochrane (4.Cxf7) também deve ser estudado profundamente: tanto para lançá-lo quanto para rebatê-lo com
+        precisão.</p>
+
+      <h3>📜 A Estratégia do Torneio</h3>
+      <p>Em torneios com muitas rodadas, o Escudo pode ser usado de forma consciente como estratégia: jogar de Pretas
+        buscando a trégua segura, conservando as energias para pressionar de Brancas. Caruana usou exatamente essa
+        lógica no Torneio dos Candidatos de 2018 — e saiu campeão.</p>
+
+      <div class="decreto decreto-sabio">
+        <span class="simbolo">✅</span>
+        <div class="corpo">
+          <strong>O Escudo é Seu se…</strong>
+          <p>Você valoriza a solidez acima de tudo; prefere batalhas técnicas e posicionais a cargas furiosas; quer uma
+            abertura confiável contra inimigos mais poderosos; e aprecia uma escola com séculos de história, filosofia e
+            glória.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP XI ════════════════════ -->
+    <section class="capitulo" id="erros">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo XI ✦</p>
+      <h2>Os Erros dos Impostores — Linhas Não-Teóricas</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Além das armadilhas já mapeadas na Floresta Escura, existem os erros dos impostores — lances
+        que parecem razoáveis, que têm aparência de sabedoria, mas que são teoricamente inferiores e entregam vantagem
+        ao inimigo. O guerreiro educado os reconhece e os evita com naturalidade.</p>
+
+      <h3>🪬 O Bispo Apressado — 3…Bd6?!</h3>
+      <p>O guerreiro impostador tenta atacar o cavaleiro branco com o bispo antes do momento certo. Parece inteligente —
+        mas é uma ilusão.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5</span><br>
+        <span class="lance-ruim">3… Bd6?!</span> <span class="glosa">— Tenta atacar o Cavaleiro com o Bispo — lance
+          duvidoso</span><br>
+        <span class="lance-bom">4. Cc4</span> <span class="glosa">— O Cavaleiro salta, atacando o Bispo por sua
+          vez</span><br>
+        <span class="lance-ruim">4… Cxe4</span> <span class="glosa">— As Pretas capturam em e4</span><br>
+        <span class="lance-bom">5. d3</span> <span class="glosa">— As Brancas expulsam o Cavaleiro Negro e assumem o
+          controle</span>
+      </div>
+      <p>O bispo em d6 bloqueia o próprio peão de d7 e impede a saída natural das tropas. Após 4.Cc4 Cxe4 5.d3, se as
+        Pretas recuarem com 5…b5, perdem um peão. Se avançarem com 5…Cf6, a troca 6.Cxd6+ cxd6 deixa a coluna d com
+        peões dobrados — uma deformidade permanente na estrutura.</p>
+
+      <h3>🕵 A Cravada Prematura — 4…Bg4?!</h3>
+      <p>Outro erro de generais apressados: cravar o cavaleiro antes de recuperar o peão perdido.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5 d6 4. Cf3</span><br>
+        <span class="lance-ruim">4… Bg4?!</span> <span class="glosa">— Crava o Cavaleiro, mas não recupera o
+          peão</span><br>
+        <span class="lance-bom">5. Cc3</span> <span class="glosa">— As Brancas defendem e seguem em franca
+          vantagem</span><br>
+        <span class="glosa">5… d5 6. Cxd5 Cxd5 7. exd5 Dxd5</span><br>
+        <span class="lance-bom">8. Be2</span> <span class="glosa">— As Brancas ficam com um peão a mais. Derrota
+          estratégica.</span>
+      </div>
+
+      <h3>🤺 O Desenvolvimento Antes da Ordem — 4…Cc6?!</h3>
+      <p>E o terceiro erro: desenvolver uma nova tropa antes de recuperar a que está em desvantagem.</p>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5 d6 4. Cf3</span><br>
+        <span class="lance-ruim">4… Cc6?!</span> <span class="glosa">— Desenvolve sem recuperar o peão —
+          desordem!</span><br>
+        <span class="lance-bom">5. d3</span> <span class="glosa">— As Brancas protegem e4 e ficam em franca
+          vantagem</span><br>
+        <span class="glosa">5… d5 6. e5 Cd7 7. d4</span><br>
+        <span class="glosa">— As Brancas dominam o centro e têm um peão a mais</span>
+      </div>
+
+      <div class="decreto decreto-perigo">
+        <span class="simbolo">⚠</span>
+        <div class="corpo">
+          <strong>Resumo dos Impostores</strong>
+          <p>Após 3.Cxe5 d6 4.Cf3, as Pretas <em>devem</em> jogar 4…Cxe4 para recuperar o peão imediatamente. Adiar com
+            Bg4, Cc6 ou Bd6 entrega ao inimigo tempo valioso e frequentemente um peão de vantagem.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP XII ════════════════════ -->
+    <section class="capitulo" id="damiano">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo XII ✦</p>
+      <h2>A Maldição de Damiano — A Variante Proibida</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Há uma variante tão antiga quanto o Escudo de Petrov — e tão perigosa que seu próprio
+        criador, Pedro Damiano, a amaldiçoou em seus pergaminhos do século XVI. É a Variante Damiano: a tentação de
+        capturar o peão branco em e4 imediatamente após 3.Cxe5, sem primeiro expulsar o invasor com d6. Quem cede a esta
+        tentação encontra o abismo.</p>
+
+      <h3>💀 O Erro Amaldiçoado</h3>
+
+      <div class="manuscrito">
+        <span class="lance-bom">3. Cxe5</span><br>
+        <span class="lance-ruim">3… Cxe4??</span> <span class="glosa">— O Erro Amaldiçoado — tenta espelhar antes de
+          d6</span><br>
+        <span class="lance-bom">4. De2!</span> <span class="glosa">— A Rainha sai: ataca o Cavaleiro E o crava ao
+          Rei</span>
+      </div>
+
+      <p>Após 4.De2!, as Pretas não têm resposta satisfatória. Há dois caminhos — e ambos levam à ruína:</p>
+
+      <div class="manuscrito">
+        <span class="lance-ruim">4… Cf6??</span> <span class="glosa">— A pior resposta possível — perde a
+          Rainha</span><br>
+        <span class="lance-bom">5. Cc6+!</span> <span class="glosa">— Xeque Descoberto! A Rainha em d8 está indefesa.
+          Fim.</span><br>
+        <br>
+        <span class="lance-ruim">4… De7</span> <span class="glosa">— Gambito Kholmov — sacrifica o Cavaleiro buscando
+          contrajogo</span><br>
+        <span class="lance-bom">5. Dxe4 d6</span><br>
+        <span class="lance-bom">6. d4 dxe5</span><br>
+        <span class="lance-bom">7. dxe5</span> <span class="glosa">— As Brancas ficam com um peão a mais. Derrota
+          inevitável.</span>
+      </div>
+
+      <p>Mesmo na melhor linha possível — o Gambito Kholmov, onde as Pretas sacrificam o cavaleiro com 4…De7 na
+        esperança de obter contrajogo —, as Brancas mantêm vantagem com peão central avançado, estrutura superior e
+        maior dinâmica de peças. A maldição de Damiano é clara: <strong>3…Cxe4 é um erro grave e deve ser evitado a
+          qualquer custo.</strong></p>
+
+      <div class="decreto decreto-perigo">
+        <span class="simbolo">📜</span>
+        <div class="corpo">
+          <strong>Palavras do Escriba Damiano, 1512</strong>
+          <p>O próprio Pedro Damiano, ao analisar esta variante há mais de quinhentos anos, já a condenava com
+            veemência. Se o fundador dos registros a considerou erro em 1512, o guerreiro de hoje não tem desculpas para
+            repeti-lo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CAP XIII ════════════════════ -->
+    <section class="capitulo" id="grimorio">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo XIII ✦</p>
+      <h2>O Grimório das Variantes — ECO C42/C43</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Todo reino tem sua biblioteca secreta — o grimório onde cada variante, cada caminho e cada
+        nome está catalogado pelos escribas da Ordem Internacional. Eis o mapa completo das variantes do Escudo de
+        Petrov, para consulta do guerreiro estudioso.</p>
+
+      <table class="tabela-herois">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Lances</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>C42</td>
+            <td>Defesa Petrov (Base)</td>
+            <td>1.e4 e5 2.Cf3 Cf6</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Ataque Francês</td>
+            <td>…3.Cxe5 d6 4.Cf3 Cxe4 5.d3</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Ataque Kaufmann</td>
+            <td>…5.c4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Ataque Nimzowitsch</td>
+            <td>…5.Cc3</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Ataque Cozio (Lasker)</td>
+            <td>…5.De2</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Ataque Clássico</td>
+            <td>…5.d4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Chigorin</td>
+            <td>…5.d4 d5 6.Bd3 Be7 7.0-0 Cc6 8.Te1</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Berger</td>
+            <td>…8.Te1 Bg4 9.c3 f5 10.Cbd2</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Krause</td>
+            <td>…10.c4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Maroczy</td>
+            <td>…9.c3 f5 10.c4 Bh4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Jaenisch</td>
+            <td>…7.0-0 Cc6 8.c4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Mason</td>
+            <td>…7.0-0 0-0</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Marshall</td>
+            <td>…5.d4 d5 6.Bd3 Bd6</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Tarrasch</td>
+            <td>…6.Bd3 Bd6 7.0-0 0-0 8.c4 Bg4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td><strong>Armadilha Marshall</strong></td>
+            <td>…8.c4 Bg4 9.cxd5 f5 10.Te1 Bxh2+!</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Fechada</td>
+            <td>…5.d4 Cf6</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Gambito Cochrane</td>
+            <td>1.e4 e5 2.Cf3 Cf6 3.Cxe5 d6 4.Cxf7</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Ataque Paulsen</td>
+            <td>…3.Cxe5 d6 4.Cc4</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td><strong>Variante Damiano</strong></td>
+            <td>1.e4 e5 2.Cf3 Cf6 3.Cxe5 Cxe4 ⚠</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Jogo dos Três Cavaleiros</td>
+            <td>1.e4 e5 2.Cf3 Cf6 3.Cc3</td>
+          </tr>
+          <tr>
+            <td>C42</td>
+            <td>Variante Italiana</td>
+            <td>1.e4 e5 2.Cf3 Cf6 3.Bc4</td>
+          </tr>
+          <tr>
+            <td>C43</td>
+            <td>Ataque Moderno (Steinitz)</td>
+            <td>1.e4 e5 2.Cf3 Cf6 3.d4</td>
+          </tr>
+          <tr>
+            <td>C43</td>
+            <td>Ataque ao Centro</td>
+            <td>…3.d4 exd4 4.e5 Ce4 5.Dxd4 d5</td>
+          </tr>
+          <tr>
+            <td>C43</td>
+            <td>Variante Bardeleben</td>
+            <td>…4.e5 Ce4 5.De2 Cc5 6.Cxd4 Cc6</td>
+          </tr>
+          <tr>
+            <td>C43</td>
+            <td>Variante Trifunovic</td>
+            <td>…3.d4 Cxe4 4.Bd3 d5 5.Cxe5 Bd6 6.0-0 0-0</td>
+          </tr>
+          <tr>
+            <td>C44</td>
+            <td>Gambito Urusov</td>
+            <td>…3.d4 exd4 4.Bc4</td>
+          </tr>
+          <tr>
+            <td>C44</td>
+            <td>Gambito Keidansky</td>
+            <td>…4.Bc4 Cxe4 5.Dxd4</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ════════════════════ CAP XIV — GLOSSÁRIO ════════════════════ -->
+    <section class="capitulo" id="glossario">
+      <span class="canto-tl">✦</span>
+      <p class="num-capitulo">✦ Capítulo XIV ✦</p>
+      <h2>O Léxico do Guerreiro — Glossário</h2>
+      <div class="divisor-capitulo">— ⚜ —</div>
+
+      <p class="capitular">Todo guerreiro que deseja falar a língua da escola deve conhecer seu vocabulário. Eis o
+        léxico sagrado da arte do Escudo de Petrov, traduzido da linguagem dos escribas para o idioma dos guerreiros.
+      </p>
+
+      <dl>
+        <div class="verbete">
+          <dt>ECO C42</dt>
+          <dd>O código dos escribas internacionais para a Petrov Clássica — o caminho principal do Escudo.</dd>
+        </div>
+        <div class="verbete">
+          <dt>ECO C43</dt>
+          <dd>O código para a variante Moderna / Steinitz, onde as Brancas avançam 3.d4 em vez de capturar.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Roque Longo (0-0-0)</dt>
+          <dd>O abrigar do Rei na ala da Rainha — manobra comum das Brancas no Ataque de Nimzowitsch, abrindo espaço
+            para o ataque.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Gambito Stafford</dt>
+          <dd>3…Cc6 — o sacrifício de peão por desenvolvimento relampejante. A manobra do guerreiro louco.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Gambito Cochrane</dt>
+          <dd>4.Cxf7 — o sacrifício do cavaleiro que invade o castelo inimigo, expondo o Rei Negro em troca de dois
+            peões.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Simetria</dt>
+          <dd>A estrutura onde ambos os reinos têm peões nos mesmos campos — o cartão de visitas do Escudo de Petrov.
+          </dd>
+        </div>
+        <div class="verbete">
+          <dt>Peão Isolado</dt>
+          <dd>O soldado sem companheiros nos flancos — alvo estratégico frequente nos finais da Petrov. Quem o cria deve
+            defendê-lo para sempre.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Xeque Descoberto</dt>
+          <dd>O xeque revelado ao mover uma peça que libera o ataque de outra — a arma central da armadilha 4.De2! na
+            Variante Damiano.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Gambito Kholmov</dt>
+          <dd>A tentativa de salvação após a Maldição de Damiano: 4…De7, sacrificando o cavaleiro em busca de contrajogo
+            desesperado.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Variante Trifunovic</dt>
+          <dd>A linha da Petrov Moderna com 4…d5 5.Cxe5 Bd6 — campo de batalha equilibrado e aberto para ambos os lados.
+          </dd>
+        </div>
+        <div class="verbete">
+          <dt>Variante Chigorin</dt>
+          <dd>A linha clássica após 5.d4 d5 6.Bd3 Be7 7.0-0 Cc6 8.Te1 — campo de batalha favorito de Kasparov e Anand.
+          </dd>
+        </div>
+        <div class="verbete">
+          <dt>Armadilha Marshall</dt>
+          <dd>O sacrifício do bispo com Bxh2+! após 8.c4 Bg4 9.cxd5 f5 10.Te1 — a explosão que destrói a estrutura
+            branca.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Ataque Francês (Petrov)</dt>
+          <dd>5.d3 — o caminho mais lento após 3.Cxe5 d6 4.Cf3 Cxe4. A batalha se equaliza rapidamente no 6º lance.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Gambito Urusov</dt>
+          <dd>3.d4 exd4 4.Bc4 — as Brancas oferecem um peão por desenvolvimento veloz. Transpõe para o Gambito Escocês.
+          </dd>
+        </div>
+        <div class="verbete">
+          <dt>Gambito Keidansky</dt>
+          <dd>Variante do Urusov: após 4…Cxe4 5.Dxd4, as Brancas atacam o cavaleiro e ganham um tempo de
+            desenvolvimento.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Variante Bardeleben</dt>
+          <dd>3.d4 exd4 4.e5 Ce4 5.De2 Cc5 6.Cxd4 Cc6 — linha rara, cheia de complicações táticas para ambos os lados.
+          </dd>
+        </div>
+        <div class="verbete">
+          <dt>Ataque ao Centro (C43)</dt>
+          <dd>3.d4 exd4 4.e5 Ce4 5.Dxd4 — os peões centrais de ambos os reinos são capturados. Campo de batalha
+            completamente aberto.</dd>
+        </div>
+        <div class="verbete">
+          <dt>Jogo dos Quatro Cavaleiros</dt>
+          <dd>A posição após 3.Cc3 Cc6 — o desvio da Petrov para uma abertura simétrica clássica com quatro cavaleiros
+            em campo.</dd>
+        </div>
+      </dl>
+    </section>
+
+  </div><!-- fim pergaminho-wrapper -->
+
+  <footer class="rodape-pergaminho">
+    <span class="runa">⚜ ♟ ⚜</span>
+    <p>A Lenda do Escudo de Petrov &nbsp;·&nbsp; Crônicas do Jogo Russo</p>
+    <p style="margin-top:0.5rem; opacity:0.6;">Fontes: xadrezforte.com.br · chess.com · simplifychess.com · 365chess.com
+      · lichess.org</p>
+    <p style="margin-top:0.5rem; font-size:0.6rem; opacity:0.4; letter-spacing:2px;">PARA FINS EDUCACIONAIS · QUE A
+      SABEDORIA DE PETROV GUIE VOSSOS LANCES</p>
+  </footer>
+
+</body>
+
+</html>

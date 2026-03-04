@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>defesa-alekhine</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#dossiê-completo-defesa-alekhine"
+id="toc-dossiê-completo-defesa-alekhine">Dossiê Completo — Defesa
+Alekhine</a>
+<ul>
+<li><a href="#sumário" id="toc-sumário">Sumário</a></li>
+<li><a href="#história-e-filosofia" id="toc-história-e-filosofia">01 —
+História e Filosofia</a></li>
+<li><a href="#a-ideia-central-por-que-provocar-o-centro"
+id="toc-a-ideia-central-por-que-provocar-o-centro">02 — A Ideia Central
+— Por que provocar o centro?</a></li>
+<li><a href="#linha-principal-2.e5-cd5"
+id="toc-linha-principal-2.e5-cd5">03 — Linha Principal: 2.e5
+Cd5</a></li>
+<li><a href="#ataque-dos-quatro-peões-4.c4-cb6-5.f4"
+id="toc-ataque-dos-quatro-peões-4.c4-cb6-5.f4">04 — Ataque dos Quatro
+Peões — 4.c4 Cb6 5.f4</a></li>
+<li><a href="#variante-das-trocas-5.exd6"
+id="toc-variante-das-trocas-5.exd6">05 — Variante das Trocas —
+5.exd6</a></li>
+<li><a href="#variação-moderna-4.cf3" id="toc-variação-moderna-4.cf3">06
+— Variação Moderna — 4.Cf3</a></li>
+<li><a href="#variação-balogh-4.bc4" id="toc-variação-balogh-4.bc4">07 —
+Variação Balogh — 4.Bc4</a></li>
+<li><a href="#ataque-dos-dois-peões-3.c4-cb6-4.c5"
+id="toc-ataque-dos-dois-peões-3.c4-cb6-4.c5">08 — Ataque dos Dois Peões
+— 3.c4 Cb6 4.c5</a></li>
+<li><a href="#variação-dos-dois-cavalos-3.cc3"
+id="toc-variação-dos-dois-cavalos-3.cc3">09 — Variação dos Dois Cavalos
+— 3.Cc3</a></li>
+<li><a href="#alternativas-no-2º-lance-das-brancas"
+id="toc-alternativas-no-2º-lance-das-brancas">10 — Alternativas no 2º
+Lance das Brancas</a></li>
+<li><a href="#linhas-menores-após-2.e5-cd5"
+id="toc-linhas-menores-após-2.e5-cd5">11 — Linhas Menores Após 2.e5
+Cd5</a></li>
+<li><a href="#partidas-de-referência" id="toc-partidas-de-referência">12
+— Partidas de Referência</a></li>
+<li><a href="#referência-eco-e-sub-variantes-b02b05"
+id="toc-referência-eco-e-sub-variantes-b02b05">13 — Referência ECO e
+Sub-variantes (B02–B05)</a></li>
+<li><a href="#especialistas-e-jogadores-de-referência"
+id="toc-especialistas-e-jogadores-de-referência">14 — Especialistas e
+Jogadores de Referência</a></li>
+<li><a href="#glossário-rápido" id="toc-glossário-rápido">Glossário
+Rápido</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="dossiê-completo-defesa-alekhine">Dossiê Completo — Defesa
+Alekhine</h1>
+<blockquote>
+<p>A abertura hipermoderna das pretas contra 1.e4: provocação,
+contra-ataque e desequilíbrio</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Notação</strong></td>
+<td>1.e4 Cf6</td>
+</tr>
+<tr>
+<td><strong>ECO</strong></td>
+<td>B02 – B05</td>
+</tr>
+<tr>
+<td><strong>Tipo</strong></td>
+<td>Abertura do Peão do Rei (resposta das pretas)</td>
+</tr>
+<tr>
+<td><strong>Criador</strong></td>
+<td>Alexander Alekhine, Budapeste 1921</td>
+</tr>
+<tr>
+<td><strong>Escola</strong></td>
+<td>Hipermoderna</td>
+</tr>
+<tr>
+<td><strong>Nível</strong></td>
+<td>Intermediário a Avançado</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sumário">Sumário</h2>
+<ol type="1">
+<li><a href="#01--história-e-filosofia">História e Filosofia</a></li>
+<li><a href="#02--a-ideia-central--por-que-provocar-o-centro">A Ideia
+Central — Por que provocar o centro?</a></li>
+<li><a href="#03--linha-principal-2e5-cd5">Linha Principal: 2.e5
+Cd5</a></li>
+<li><a href="#04--ataque-dos-quatro-peões--4c4-cb6-5f4">Ataque dos
+Quatro Peões — 4.c4 Cb6 5.f4</a></li>
+<li><a href="#05--variante-das-trocas--5exd6">Variante das Trocas —
+5.exd6</a></li>
+<li><a href="#06--variação-moderna--4cf3">Variação Moderna —
+4.Cf3</a></li>
+<li><a href="#07--variação-balogh--4bc4">Variação Balogh —
+4.Bc4</a></li>
+<li><a href="#08--ataque-dos-dois-peões--3c4-cb6-4c5">Ataque dos Dois
+Peões — 3.c4 Cb6 4.c5</a></li>
+<li><a href="#09--variação-dos-dois-cavalos--3cc3">Variação dos Dois
+Cavalos — 3.Cc3</a></li>
+<li><a href="#10--alternativas-no-2-lance-das-brancas">Alternativas no
+2º lance das brancas</a></li>
+<li><a href="#11--linhas-menores-após-2e5-cd5">Linhas menores após 2.e5
+Cd5</a></li>
+<li><a href="#12--partidas-de-referência">Partidas de
+Referência</a></li>
+<li><a href="#13--referência-eco-e-sub-variantes-b02b05">Referência ECO
+e Sub-variantes (B02–B05)</a></li>
+<li><a href="#14--especialistas-e-jogadores-de-referência">Especialistas
+e Jogadores de Referência</a></li>
+<li><a href="#glossário-rápido">Glossário Rápido</a></li>
+</ol>
+<hr />
+<h2 id="história-e-filosofia">01 — História e Filosofia</h2>
+<p>A Defesa Alekhine recebeu o nome de <strong>Alexander
+Alekhine</strong>, quarto campeão mundial de xadrez, que a introduziu no
+<strong>torneio de Budapeste de 1921</strong> em partidas contra Endre
+Steiner e Fritz Sämisch.</p>
+<p>Alekhine fundamentou a defesa na <strong>Escola Hipermoderna de
+Xadrez</strong>, da qual era um dos principais representantes, ao lado
+de Aaron Nimzowitsch, Efim Bogoljubow e Richard Réti. O princípio
+central do hipermodernismo: <strong>controlar o centro a distância, por
+meio de peças</strong>, ao invés de ocupar as casas centrais com peões
+como pregava a Escola Clássica de Tarrasch.</p>
+<p>Vale notar, no entanto, que o próprio Alekhine não se identificava
+com o rótulo “hipermoderno” e chegou a chamar o movimento de <em>“este
+blefe barato, esta autopromoção descarada”</em>, preferindo ver seus
+lances como <strong>ajustes e exceções</strong> à teoria posicional
+clássica — não uma revolução.</p>
+<blockquote>
+<p><em>“O jogo perde imediatamente qualquer sentido de simetria ou
+equilíbrio, o que torna a abertura uma boa escolha para jogadores
+agressivos e combativos.”</em> — GM Nick de Firmian, MCO-15 (2008)</p>
+</blockquote>
+<p>Uma das primeiras ocorrências documentadas é ainda mais antiga:
+existe uma <strong>partida de Napoleão Bonaparte</strong> do século XIX
+que exibe a Defesa Alekhine — e ele ganhou.</p>
+<hr />
+<h2 id="a-ideia-central-por-que-provocar-o-centro">02 — A Ideia Central
+— Por que provocar o centro?</h2>
+<pre><code>1. e4 Cf6    — As pretas atacam o peão de e4 com o cavalo no primeiro lance
+             — Provocam as brancas a avançar para e5
+2. e5        — Resposta mais comum; chuta o cavalo
+2... Cd5     — Cavalo recua para d5 — casa natural e central</code></pre>
+<p>A ideia das pretas é <strong>contraintuitiva</strong>: elas permitem
+que as brancas conquistem espaço central com peões, mas os peões não
+podem andar para trás. Cada avanço de peão é
+<strong>irreversível</strong> e cria potenciais fraquezas
+permanentes.</p>
+<p>Uma vez que a estrutura branca estiver fixada, as pretas
+contra-atacam:</p>
+<ul>
+<li><strong>Alvo principal:</strong> o peão de d4 (enfraquecido pelas
+trocas e avanços)</li>
+<li><strong>Quebras centrais típicas das pretas:</strong> …d6 e …c5</li>
+<li><strong>Manobra de cavalos:</strong> Cd5–b6 (ou Cd5–c6),
+reposicionando para pressionar d4 e c4</li>
+<li><strong>Plano com bispo:</strong> …g6 + …Bg7 (fianqueto), ou …Bg4
+para cravar o cavalo de f3</li>
+</ul>
+<p>As linhas agudas da Defesa Alekhine atraem jogadores que gostam de
+jogo dinâmico, com ataques e contra-ataques em sequência. Qualquer erro
+ou imprecisão pode significar derrota súbita para qualquer lado.</p>
+<blockquote>
+<p>⚠️ Hoje, a Defesa Alekhine não é tão comum no xadrez de elite, mas
+pode ser uma <strong>arma surpresa perigosa</strong> nas mãos certas.
+Nunca deixou de ser apreciada por enxadristas amadores e especialistas
+comprometidos.</p>
+</blockquote>
+<hr />
+<h2 id="linha-principal-2.e5-cd5">03 — Linha Principal: 2.e5 Cd5</h2>
+<pre><code>1. e4 Cf6
+2. e5        — Chuta o cavalo; resposta mais comum e desafiadora
+2... Cd5     — Recuo para d5 — quase universal aqui
+3. d4        — Brancas consolidam o centro
+3... d6      — Pretas atacam e5 imediatamente para começar a minar o centro</code></pre>
+<p>Após 3…d6, as brancas têm três principais respostas:</p>
+<table>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 29%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variante</th>
+<th>Lances</th>
+<th>Caráter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ataque dos Quatro Peões</td>
+<td>4.c4 Cb6 5.f4</td>
+<td>Agressivo, máxima expansão</td>
+</tr>
+<tr>
+<td>Variante das Trocas</td>
+<td>4.c4 Cb6 5.exd6</td>
+<td>Sólido, vantagem espacial modesta</td>
+</tr>
+<tr>
+<td>Variação Moderna</td>
+<td>4.Cf3</td>
+<td>Popular, desenvolvimento prudente</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 Vale notar que essas variantes podem ser alcançadas por
+<strong>diferentes ordens de lances</strong>. Por exemplo, as brancas
+podem jogar c4 antes de d4.</p>
+</blockquote>
+<hr />
+<h2 id="ataque-dos-quatro-peões-4.c4-cb6-5.f4">04 — Ataque dos Quatro
+Peões — 4.c4 Cb6 5.f4</h2>
+<pre><code>3. d4 d6
+4. c4 Cb6    — Cavalo recua novamente, pressão em d4 e c4
+5. f4        — ECO B03 — Brancas tomam TODO o espaço disponível</code></pre>
+<p>O Ataque dos Quatro Peões é a linha mais <strong>ambiciosa e
+agressiva</strong> das brancas. Ilustra perfeitamente a ideia central da
+Defesa Alekhine: as pretas permitem que as brancas construam um centro
+de peões aparentemente esmagador, apostando que ele poderá ser destruído
+mais tarde.</p>
+<p><strong>O problema do centro branco:</strong> embora imponente, ele
+não pode avançar mais sem custos. Jogar c5 daria ao cavalo preto o posto
+avançado em d5. Jogar d5 costuma ser indesejável pelo enfraquecimento
+crítico de e5.</p>
+<pre><code>5... dxe5    — Melhor: pretas destroem o peão avançado imediatamente
+6. fxe5 Cc6  — Atacando d4
+7. Be3       — Melhor (7.Cf3 permite 7...Bg4! com pressão muito forte em d4)
+7... Bf5     — Desenvolvimento antes de jogar …e6
+8. Cc3 e6
+9. Cf3       — Protege e5, prepara eventual avanço d5
+9... Be7     — Prepara …f6 para atacar o centro</code></pre>
+<p>Variante com 10.Be2 (linha mais recente e precisa):</p>
+<pre><code>10. Be2 O-O 11. O-O f6
+12. exf6 Bxf6
+13. Dd2      — Prepara Tad1 e conecta torres
+13... De7 14. Tad1 Tad8 15. Rh1!
+             — Impede …e5 e retira o rei da diagonal a7–g1
+             — Brancas com vantagem de espaço e fraqueza no e6 preto</code></pre>
+<p>Variante com 10.d5 (mais especulativa):</p>
+<pre><code>10. d5 exd5 11. cxd5 Cb4 12. Cd4 Bd7
+13. e6 fxe6 14. dxe6 Bc6
+             — Peão e6 é ameaça, mas peças pretas estão muito ativas</code></pre>
+<p><strong>Variação Planinc (5…g5!?)</strong> — linha aguda
+alternativa:</p>
+<pre><code>5... g5!?    — Gambito Cambridge / Variação Planinc
+             — Se 6.fxg5? dxe5 destrói o centro branco
+             — Popularizada por Albin Planinc nos anos 1970</code></pre>
+<p><strong>Variação Trifunovic (5…Bf5):</strong></p>
+<pre><code>5... Bf5     — Desenvolvimento direto do bispo antes de …e6</code></pre>
+<blockquote>
+<p>💡 O Ataque dos Quatro Peões não é popular no xadrez de elite porque
+muitos jogadores de brancas não querem entrar em linhas táticas agudas
+que as pretas podem ter preparado profundamente.</p>
+</blockquote>
+<hr />
+<h2 id="variante-das-trocas-5.exd6">05 — Variante das Trocas —
+5.exd6</h2>
+<pre><code>3. d4 d6 4. c4 Cb6
+5. exd6      — ECO B03 — Brancas aceitam vantagem espacial mais modesta</code></pre>
+<p>A Variante das Trocas é <strong>menos ambiciosa</strong> que o Ataque
+dos Quatro Peões. As brancas trocam peões, obtendo uma posição mais
+estratégica.</p>
+<p>As pretas têm duas recapturas:</p>
+<pre><code>5... cxd6    — Recaptura ambiciosa: peões pretos no centro (c e d)
+             — Pretas visam atacar e minar d4 e c4
+             — Estilo: fianqueto com …g6 …Bg7, depois …Bg4 para remover Cf3
+5... exd6    — Recaptura sólida: estrutura mais simétrica
+             — Similar à Defesa Francesa da Troca (tendência ao equilíbrio)
+             — Menos contrajogo, mas mais sólido</code></pre>
+<p><strong>Após 5…cxd6 (linha principal):</strong></p>
+<pre><code>6. Cc3 g6 7. Be3 Bg7 8. Tc1 O-O 9. b3
+             — Configuração Voronezh (nomeada por jogadores de Voronezh, RUS)
+             — Bispo de c1 não vai para d3 (evita …Ce5 atacando-o)
+             — Cavalo não vai para f3 (evita …Bg4 cravando-o)
+             — Desvantagem das pretas: difícil desenvolver as peças para pressionar
+9... e5      — Resposta mais comum
+10. d5 Ce5   — Cavalo sem alvos claros, logo perseguido com f4
+             — Resultados muito desfavoráveis para as pretas nesta linha
+
+9... e5 10. dxe5 dxe5
+11. Dxd8 Txd8 12. c5 C6d7
+             — Pretas devem jogar com cautela para se desembaraçar
+             — 12...Cd5?? perde o cavalo para o cravamento com 13.Td1</code></pre>
+<p><strong>Após 5…exd6 (linha sólida):</strong></p>
+<pre><code>6. Cc3 g6 7. Cf3 Bg7 8. Bg5
+             — Bg5 pode ser problemático contra o fianqueto preto
+6... Cc6     — Impede Cc3 + Bd3 + Cge2 (a configuração ideal branca)
+             — Se Bd3, as pretas atacam com …Cb4
+             — Depois: roque, …Be7–f6, e eventualmente …d5</code></pre>
+<hr />
+<h2 id="variação-moderna-4.cf3">06 — Variação Moderna — 4.Cf3</h2>
+<pre><code>3. d4 d6 4. Cf3  — ECO B04/B05 — Variante mais popular no xadrez atual
+                 — Brancas mantêm e5 e começam o desenvolvimento</code></pre>
+<p>A Variação Moderna é a linha <strong>mais comum e mais
+equilibrada</strong>. As brancas não tentam acumular espaço a qualquer
+custo — simplesmente desenvolvem suas peças com solidez, mantendo o
+ponto forte em e5.</p>
+<p>As pretas têm quatro respostas principais:</p>
+<h3 id="bg4-eco-b05-linha-principal">4…Bg4 (ECO B05 — linha
+principal)</h3>
+<pre><code>4... Bg4     — Crava o cavalo de f3, que defende d4 e e5
+5. Be2       — Desfaz a cravação
+             — Imediato 5...Bxf3 daria às brancas par de bispos + centro forte
+5... e6      — Pretas completam o desenvolvimento
+6. O-O Be7
+7. c4 Cb6    — Brancas expandem; cavalo preto recua para b6</code></pre>
+<p>Campeões desta linha: <strong>Lev Alburt</strong>, Vlatko Kovačević,
+Vladimir Bagirov.</p>
+<h3 id="g6-variação-do-fianqueto">4…g6 (Variação do Fianqueto)</h3>
+<pre><code>4... g6      — Prepara …Bg7 — bispo opositor à massa de peões brancos
+5. Bc4       — Variação Keres — mais popular contra o fianqueto
+             — Partida 13 do Match do Século (Spassky × Fischer, 1972)</code></pre>
+<p>Esta linha também foi jogada com frequência por <strong>Bobby
+Fischer</strong> e <strong>Lev Alburt</strong>.</p>
+<h3 id="dxe5-variação-larsen">4…dxe5 (Variação Larsen)</h3>
+<pre><code>4... dxe5    — Elimina o peão avançado
+5. Cxe5      — Cavalo branco vai para e5
+5... Cd7     — Linha aguda: 6.Cxf7!? Rxf7 7.Dh5+ Re6
+             — Sacrifício pelo menos suficiente para empate após 8.Dg4+
+             — Pretas devem aceitar a perpetual: 8...Rf7 9.Dh5+ Re6 etc.
+5... g6      — Variação Kengis
+5... c6      — Variação Miles — mais popular; lance de espera que
+             — desestimula as ambições brancas mais agressivas
+             — Após 6.c4: 6...Cb4!? é interessante
+             — Após 6.Bc4: posições com ou sem fianqueto do bispo preto</code></pre>
+<h3 id="c6-linha-sólida">4…c6 (linha sólida)</h3>
+<pre><code>4... c6      — Passivo mas sólido — posição difícil de atacar
+             — Na maioria das variações, pretas podem jogar …Bg4 para transposição</code></pre>
+<hr />
+<h2 id="variação-balogh-4.bc4">07 — Variação Balogh — 4.Bc4</h2>
+<pre><code>3. d4 d6 4. Bc4  — ECO B03 — Linha com traps táticas em f7
+                 — Primeiro uso documentado: Canal–Colle, Karlovy Vary 1929</code></pre>
+<p>Uma linha lateral razoavelmente popular. Contém armadilhas que podem
+surpreender o desatento:</p>
+<pre><code>4... dxe5 5. dxe5 Cb6??
+             — ERRO — perde a dama para 6.Bxf7+!
+4... Cb6    — Correto
+5. Bb3       — Brancas mantêm o bispo e a pressão
+5... dxe5 6. Dh5 e6 7. dxe5  — &quot;antiga linha principal&quot;
+5... Bf5     — Alternativa; brancas podem tentar 6.e6 como sacrifício posicional
+5... d5      — Recomendado por Taylor — leva a posição similar à Defesa Francesa
+             — seguido de 6...e6</code></pre>
+<hr />
+<h2 id="ataque-dos-dois-peões-3.c4-cb6-4.c5">08 — Ataque dos Dois Peões
+— 3.c4 Cb6 4.c5</h2>
+<pre><code>2. e5 Cd5 3. c4 Cb6 4. c5  — ECO B02 (Ataque Lasker / Variação Chase)</code></pre>
+<p>Uma tentativa ambiciosa. Os peões brancos em c5 e e5 garantem
+vantagem espacial, mas <strong>enfraquecem severamente a casa
+d5</strong> — um problema posicional sério.</p>
+<pre><code>4... Cd5     — Pretas devem recuar; brancas desafiam com Bc4, Cc3
+             — Pretas defendem com …c6 ou …e6 e depois desafiam com …d6 e …b6</code></pre>
+<p>Estatisticamente, esta variante <strong>pontua mal para as
+brancas</strong> — todas as defesas principais das pretas marcam pelo
+menos 50% (segundo John Cox). O problema: as vantagens dinâmicas
+compensam pouco as debilidades estruturais permanentes.</p>
+<hr />
+<h2 id="variação-dos-dois-cavalos-3.cc3">09 — Variação dos Dois Cavalos
+— 3.Cc3</h2>
+<pre><code>2. e5 Cd5 3. Cc3  — ECO B02</code></pre>
+<p>Após 3…Cxc3:</p>
+<pre><code>4. dxc3      — Compensação: desenvolvimento rápido das peças
+             — 4...d6 geralmente leva a posições equilibradas
+             — Cuidado: 5.Bc4 dxe5?? perde a dama para 6.Bxf7+!
+
+4. bxc3      — Compensação: centro sólido, base para ataque no flanco do rei
+             — Estrutura de peões similar à Variante Winawer da Defesa Francesa</code></pre>
+<p>Alternativa mais sólida para as pretas:</p>
+<pre><code>3... e6      — Opção de Alekhine ao enfrentar os Dois Cavalos
+             — Se 4.d4 Cxc3 → transpõe para a linha bxc3 (estilo francês)
+             — Se 4.Cxd5 exd5 → pretas dissolvem os peões dobrados com …d6</code></pre>
+<hr />
+<h2 id="alternativas-no-2º-lance-das-brancas">10 — Alternativas no 2º
+Lance das Brancas</h2>
+<p>Se as brancas <strong>não avançam</strong> para e5 no segundo lance,
+as pretas geralmente transpõem para outras aberturas ou mantêm terreno
+independente.</p>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 20%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lance branco</th>
+<th>Nome</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.Cc3</td>
+<td>Variação Escandinava</td>
+<td>Mais comum alternativa a 2.e5; pretas jogam 2…d5 (Variação
+Escandinava) ou 2…e5 (transpõe para Jogo Vienense / Quatro Cavalos)</td>
+</tr>
+<tr>
+<td>2.d3</td>
+<td>Variação Maroczy</td>
+<td>Menos comum; bloqueia o bispo de c1; pode transposicionar para
+Ataque Índia do Rei</td>
+</tr>
+<tr>
+<td>2.Bc4</td>
+<td>Variação Krejcik</td>
+<td>Raramente vista; 2…Cxe4 3.Bxf7+ Rxf7 4.Dh5+ ganha pouco para as
+brancas</td>
+</tr>
+<tr>
+<td>2.Bd3</td>
+<td>—</td>
+<td>Visa transposição para o Sistema Kopec</td>
+</tr>
+<tr>
+<td>2.c4</td>
+<td>—</td>
+<td>Gambita o peão de e4; muito raro no alto nível</td>
+</tr>
+<tr>
+<td>2.Cf3</td>
+<td>John Tracy Gambit</td>
+<td>Má opção; perde o peão de e4 sem compensação adequada</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Linha independente após 2.Cc3 — Variação
+Escandinava:</strong></p>
+<pre><code>2... d5      — Variação Escandinava da Defesa Alekhine
+3. exd5 Cxd5 4. Bc4
+4... Cb6     — Aproximadamente igual
+4... Cxc3   — Também aproximadamente igual
+4... e6      — Sólido, mas bloqueia o bispo de casas claras
+
+3. e5 Cfd7   — Transpõe para Variante Steinitz da Defesa Francesa após 4.d4 e6
+4. e6!?      — Alternativa aguda</code></pre>
+<blockquote>
+<p>💡 A maioria dos autores especializados em Alekhine — Davies, Cox,
+Taylor — recomenda <strong>2…e5</strong> (transpondo para aberturas
+abertas simétricas) em vez de 2…d5 quando as brancas jogam 2.Cc3, pois
+oferece jogo mais equilibrado.</p>
+</blockquote>
+<hr />
+<h2 id="linhas-menores-após-2.e5-cd5">11 — Linhas Menores Após 2.e5
+Cd5</h2>
+<h3 id="variante-brooklyn-2cg8">Variante Brooklyn — 2…Cg8?!</h3>
+<pre><code>2. e5 Cg8!? — &quot;Brooklyn Defense&quot;, popularizada por GM Joel Benjamin
+             — Primeiro uso registrado: Nimzowitsch × Adolf Albin, Viena 1905
+             — Curiosamente, teoria indica que brancas têm apenas pequena vantagem</code></pre>
+<p>Magnus Carlsen já jogou esta linha em partidas de blitz.</p>
+<h3 id="mokele-mbembe-2ce4">Mokele Mbembe — 2…Ce4?</h3>
+<pre><code>2. e5 Ce4?  — Extremamente duvidoso; cavalo corre o risco de ficar preso
+             — 3.d4 f6 4.Bd3 d5 5.f3 Cg5 6.Bxg5 fxg5 7.f4! — brancas ganhas</code></pre>
+<h3 id="linha-4.bg5-variante-da-1ª-partida-histórica">Linha 4.Bg5
+(Variante da 1ª partida histórica)</h3>
+<pre><code>3. d4 d6 4. Bg5  — Linha de Steiner–Alekhine, Budapeste 1921
+                 — Primeira partida de alto nível com a Defesa Alekhine
+                 — Recomendação: 4...h6 5.Bh4 dxe5 6.dxe5 Bf5
+                 — Seguido de ...Cc6 e ...Cdb4, mirando c2</code></pre>
+<h3 id="linha-3.c4-cb6-4.a4-linha-emory-tate">Linha 3.c4 Cb6 4.a4 (Linha
+Emory Tate)</h3>
+<pre><code>3. c4 Cb6 4. a4  — &quot;Linha Emory Tate&quot; (nomeada pelo MI americano Emory Tate)
+4... d6 5. a5 C6d7 6. e6 — brancas buscam complicações, mas pretas ficam fortes
+4... a5      — Melhor: pretas bloqueiam o avanço branco
+5. Ta3       — Incomum &quot;lift&quot; de torre: visa Tg3 atacando g7
+5... d6 6. exd6 exd6 7. Tg3 Bf5 8. Be7? — torre presa: 9.Txg7 Bg6 10.Bf6!</code></pre>
+<hr />
+<h2 id="partidas-de-referência">12 — Partidas de Referência</h2>
+<h3 id="partida-1-spassky-fischer-match-do-século-1972">Partida 1 —
+Spassky × Fischer (Match do Século, 1972)</h3>
+<p><strong>Boris Spassky × Robert James Fischer</strong> Campeonato
+Mundial 1972, Reykjavik · Rodada 13 · ECO: B04 · Resultado:
+<strong>0-1</strong></p>
+<blockquote>
+<p>Variante principal com 4.Cf3 e 4…g6. Fischer empregou a Defesa
+Alekhine duas vezes neste match (rodadas 13 e 19). A análise completa
+está disponível em: https://www.youtube.com/watch?v=_zPbN2bI6wU</p>
+</blockquote>
+<hr />
+<h3 id="partida-2-topalov-carlsen-morelialinares-2008">Partida 2 —
+Topalov × Carlsen (Morelia/Linares, 2008)</h3>
+<p><strong>Veselin Topalov × Magnus Carlsen</strong> Morelia/Linares
+25th · 20 Fev 2008 · Rodada 5 · ECO: B04 · Resultado:
+<strong>0-1</strong></p>
+<blockquote>
+<p>Carlsen escolhe 4…dxe5 seguido de …c6 (Variação Miles), montando
+formação similar à linha principal após 8…g6!. Com a ruptura central
+12…c5!, as pretas tomam a iniciativa, ganham um peão e convertem a
+vitória.</p>
+</blockquote>
+<hr />
+<h3 id="partida-3-jaracz-sergeev-guben-2012">Partida 3 — Jaracz ×
+Sergeev (Guben, 2012)</h3>
+<p><strong>Barbara Jaracz × Vladimir Sergeev</strong> Guben Open 15th ·
+04 Jan 2012 · Rodada 6 · ECO: B05 · Resultado: <strong>0-1</strong></p>
+<blockquote>
+<p>Variante com 4.c4. Lance estratégico chave: <strong>10…d5!</strong> —
+fixa a fraqueza em d4, tema estratégico central da Defesa Alekhine. Em
+seguida, a manobra <strong>11…Cc8!</strong> com a ideia de alcançar f5
+via …C8e7 e …Cf5. Brancas jogam 14.g4 para impedir isso, mas permitem a
+ruptura <strong>18…f5!</strong> que dá iniciativa decisiva às
+pretas.</p>
+</blockquote>
+<hr />
+<h3 id="partida-4-volokitin-ivanchuk-foros-2006">Partida 4 — Volokitin ×
+Ivanchuk (Foros, 2006)</h3>
+<p><strong>Andrei Volokitin × Vassily Ivanchuk</strong> Foros Aerosvit ·
+25 Jun 2006 · Rodada 8 · ECO: B03 · Resultado: <strong>0-1</strong></p>
+<blockquote>
+<p>Brancas jogam 7.h3 para evitar …Bg4. Ivanchuk encontra
+<strong>9…Be6!</strong> antecipado, esperando 10.b3 para então jogar
+10…d5. As brancas jogam 10.d5?! em vez disso, o que permite
+<strong>10…Bxc3+!</strong> — concessão posicional que dá às pretas
+vantagem duradoura, bem conduzida até o final.</p>
+</blockquote>
+<hr />
+<h3 id="partida-5-kulaots-kengis-riga-1995">Partida 5 — Kulaots × Kengis
+(Riga, 1995)</h3>
+<p><strong>Kaido Kulaots × Edvins Kengis</strong> Riga Zonal · 1995 ·
+Rodada 8 · ECO: B03 · Resultado: <strong>0-1</strong></p>
+<blockquote>
+<p>Ataque dos Quatro Peões com 5.f4!? Pretas buscam contra-ataque com
+…dxe5 e …Cc6, esperando 7.Cf3?! para jogar <strong>7…Bg4!</strong> Não
+acontece, mas pretas conseguem ótimo jogo com <strong>7…Bf5</strong> e
+depois <strong>9…Bb4</strong>. Após imprecisões brancas,
+<strong>13…f6!?</strong> abre a posição e as pretas vencem em menos de
+30 lances.</p>
+</blockquote>
+<hr />
+<h3 id="partida-6-variante-2.cc3-pretas-vencem">Partida 6 — Variante
+2.Cc3 — Pretas vencem</h3>
+<blockquote>
+<p>Brancas optam por 2.Cc3, não avançando para e5. Pretas respondem com
+<strong>2…d5!</strong>, lutando pelo centro. Posição evolui para
+estrutura similar à Defesa Francesa, com a vantagem de as pretas terem o
+bispo de c8 livre. Lance preparatório <strong>7…Cdb8!</strong> permite
+ao bispo sair para <strong>8…Bg4</strong>, dando às pretas excelente
+posição conquistada sem dificuldades.</p>
+</blockquote>
+<hr />
+<h3 id="partida-7-karwowski-petesch-chess.com-2022">Partida 7 —
+Karwowski × Petesch (Chess.com, 2022)</h3>
+<p><strong>Kacper Karwowski (2233) × Gabriel N. Petesch (2330)</strong>
+Titled Tue 19th Apr Late, Chess.com INT · 19 Abr 2022 · Rodada 8 · ECO:
+B03 · Resultado: <strong>0-1</strong></p>
+<pre><code>1. e4 Cf6 2. e5 Cd5 3. d4 d6 4. exd6 Dxd6
+5. Bd3 Cf4 6. Bxf4 Dxf4 7. Ce2 Dd6
+8. Cbc3 c6 9. Ce4 Db4+ 10. Dd2 Dxb2
+11. O-O Da3 12. Df4 Da5 13. C2g3 e6
+14. Cg5 f6 15. Cxh7 Ca6 16. Cxf6+ gxf6
+17. Dxf6 Tg8 18. Bg6+ Txg6 19. Dxg6+ Rd8
+20. Df7 Be7 21. Tfe1 Dg5 22. c4 Bd7
+23. d5 exd5 24. cxd5 Df6 25. Dg8+ Df8
+26. Dxf8+ Bxf8 27. dxc6 Bxc6 28. Tad1+ Rc7
+29. Cf5 Cc5 30. Ce7 Ba4 31. Tc1 b6
+32. Cd5+ Rb7 33. g3 Bh6 34. f4 Tg8
+35. Rf2 Td8 36. Te7+ Ra6 37. Cf6 Cd3+
+38. Rf3 Cxc1 39. Cd7 Bd1+              — 0-1</code></pre>
+<hr />
+<h3 id="partida-8-toncheva-fier-chess.com-2022">Partida 8 — Toncheva ×
+Fier (Chess.com, 2022)</h3>
+<p><strong>Nadya Toncheva (2207) × Alexandr Fier (2569)</strong> Titled
+Tue 29th Mar Early, Chess.com INT · 29 Mar 2022 · Rodada 7 · ECO: B03 ·
+Resultado: <strong>0-1</strong></p>
+<blockquote>
+<p>GM brasileiro Alexandr Fier vence com a Defesa Alekhine — Variante
+das Trocas com 5…cxd6. Partida longa e tecnicamente precisa que mostra a
+qualidade do GM Fier com esta abertura.</p>
+</blockquote>
+<pre><code>1. e4 Cf6 2. e5 Cd5 3. d4 d6 4. c4 Cb6
+5. exd6 cxd6 6. Cf3 g6 7. Cc3 Bg7
+8. Be2 O-O 9. O-O Cc6 10. Be3 Bg4
+11. b3 d5 12. c5 Cc8 13. h3 Bxf3
+14. Bxf3 e6 15. Te1 C8e7 16. Dd2 Cf5
+17. Ce2 Ch4 18. Bg4 h5 19. Bg5 Bf6
+20. Bxh4 Bxh4 21. Bf3 Bf6 22. b4 Bg7
+23. b5 Ca5 24. Tad1 a6 25. Cc3 axb5
+26. Cxb5 Cc6 27. Df4 Ta4 28. De3 Txa2
+29. Cd6 b6 30. Cxf7 Txf7 31. Dxe6 Cxd4
+32. Dxd5 Cxf3+ 33. Dxf3 Td2 34. Txd2 Dxd2
+35. Te8+ Bf8 36. Dg3 Dc1+ 37. Rh2 Df4
+38. Dxf4 Txf4 39. cxb6 Tb4
+             — 0-1 (64 lances)</code></pre>
+<hr />
+<h2 id="referência-eco-e-sub-variantes-b02b05">13 — Referência ECO e
+Sub-variantes (B02–B05)</h2>
+<table>
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr>
+<th>Código</th>
+<th>Linha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 — Defesa Alekhine (linha base)</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.Cc3 d5 — Variação Escandinava</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.Cc3 d5 3.e5 Cfd7 4.e6 — Variação Spielmann</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.d3 — Variação Maroczy</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.Bc4 — Variação Krejcik</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Ce4 — Mokele Mbembe (Buecker)</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cg8 — Defesa Brooklyn</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.Bc4 Cb6 4.Bb3 c5 5.d3 — Variação Kmoch</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.Cc3 — Ataque Sämisch</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.b3 — Variação Welling</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.c4 — Linha c4</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.c4 Cb6 4.b3 — Variação Steiner</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.c4 Cb6 4.c5 — Ataque dos Dois Peões
+(Lasker)</td>
+</tr>
+<tr>
+<td><strong>B02</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.c4 Cb6 4.c5 Cd5 5.Bc4 e6 6.Cc3 d6 — Variação
+Mikenas</td>
+</tr>
+<tr>
+<td><strong>B03</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.d4 — Linha principal (inclui Variante das Trocas
+e Ataque dos Quatro Peões)</td>
+</tr>
+<tr>
+<td><strong>B04</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.d4 d6 4.Cf3 — Variação Moderna (sem 4…Bg4)</td>
+</tr>
+<tr>
+<td><strong>B05</strong></td>
+<td>1.e4 Cf6 2.e5 Cd5 3.d4 d6 4.Cf3 Bg4 — Variação Moderna (com
+4…Bg4)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="especialistas-e-jogadores-de-referência">14 — Especialistas e
+Jogadores de Referência</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr>
+<th>Jogador</th>
+<th>Contribuição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alexander Alekhine</strong></td>
+<td>Criador da defesa; introduziu no torneio de Budapeste, 1921</td>
+</tr>
+<tr>
+<td><strong>Ernst Grünfeld</strong></td>
+<td>Um dos primeiros expoentes após Alekhine</td>
+</tr>
+<tr>
+<td><strong>Lev Alburt</strong></td>
+<td>Jogou quase exclusivamente no nível de GM; responsável por muitas
+contribuições teóricas</td>
+</tr>
+<tr>
+<td><strong>Bobby Fischer</strong></td>
+<td>Empregou a defesa em duas partidas no Match do Século (1972) contra
+Spassky</td>
+</tr>
+<tr>
+<td><strong>Viktor Korchnoi</strong></td>
+<td>Incluiu a defesa em seu repertório, contribuindo para sua
+reputação</td>
+</tr>
+<tr>
+<td><strong>Vassily Ivanchuk</strong></td>
+<td>Defensor mais bem ranqueado da abertura atualmente</td>
+</tr>
+<tr>
+<td><strong>Magnus Carlsen</strong></td>
+<td>Empregou ocasionalmente em partidas competitivas (vitória contra
+Topalov, Linares 2008)</td>
+</tr>
+<tr>
+<td><strong>Levon Aronian</strong></td>
+<td>Usa a defesa ocasionalmente</td>
+</tr>
+<tr>
+<td><strong>Hikaru Nakamura</strong></td>
+<td>Usa ocasionalmente como arma surpresa</td>
+</tr>
+<tr>
+<td><strong>Alexander Shabalov</strong></td>
+<td>Usa a abertura com regularidade</td>
+</tr>
+<tr>
+<td><strong>Artashes Minasian</strong></td>
+<td>Usa a abertura com regularidade</td>
+</tr>
+<tr>
+<td><strong>Alexandr Fier (BRA)</strong></td>
+<td>GM brasileiro que jogou muito a defesa no início de sua
+carreira</td>
+</tr>
+<tr>
+<td><strong>Alexander Baburin</strong></td>
+<td>Referência moderna da defesa</td>
+</tr>
+<tr>
+<td><strong>Vladimir Sergeev</strong></td>
+<td>Especialista na variante de 4.c4</td>
+</tr>
+<tr>
+<td><strong>Olexandr Bortnyk</strong></td>
+<td>Jogador de referência contemporâneo</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <em>“A moda pode mudar rapidamente se algum campeão abraçar a
+causa, já que os resultados das pretas na prática são bons.”</em> — GM
+Nick de Firmian</p>
+</blockquote>
+<hr />
+<h2 id="glossário-rápido">Glossário Rápido</h2>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr>
+<th>Termo</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ECO B02</strong></td>
+<td>Código base: 1.e4 Cf6</td>
+</tr>
+<tr>
+<td><strong>ECO B03</strong></td>
+<td>Linha 3.d4: Variante das Trocas e Ataque dos Quatro Peões</td>
+</tr>
+<tr>
+<td><strong>ECO B04</strong></td>
+<td>Variação Moderna sem 4…Bg4</td>
+</tr>
+<tr>
+<td><strong>ECO B05</strong></td>
+<td>Variação Moderna com 4…Bg4 — linha mais comum atual</td>
+</tr>
+<tr>
+<td><strong>Hipermodernismo</strong></td>
+<td>Escola de xadrez que prega controle do centro a distância por peças,
+não por peões</td>
+</tr>
+<tr>
+<td><strong>Ataque dos Quatro Peões</strong></td>
+<td>5.f4 — linha mais agressiva das brancas; centro máximo</td>
+</tr>
+<tr>
+<td><strong>Variante das Trocas</strong></td>
+<td>5.exd6 — brancas aceitam vantagem espacial modesta; mais
+estratégico</td>
+</tr>
+<tr>
+<td><strong>Variação Moderna</strong></td>
+<td>4.Cf3 — linha mais comum; desenvolvimento prudente das brancas</td>
+</tr>
+<tr>
+<td><strong>Variação Voronezh</strong></td>
+<td>Configuração branca com Tc1, b3 após 5…cxd6 6.Cc3 g6 7.Be3 — evita
+alvos para as pretas</td>
+</tr>
+<tr>
+<td><strong>Variação Larsen</strong></td>
+<td>4…dxe5 — pretas eliminam o peão avançado imediatamente</td>
+</tr>
+<tr>
+<td><strong>Variação Kengis</strong></td>
+<td>5.Cxe5 g6 — resposta ao lance Larsen</td>
+</tr>
+<tr>
+<td><strong>Variação Miles</strong></td>
+<td>5.Cxe5 c6 — lance de espera, desestimula ambições brancas</td>
+</tr>
+<tr>
+<td><strong>Variação Planinc</strong></td>
+<td>5…g5!? (Gambito Cambridge) no Ataque dos Quatro Peões</td>
+</tr>
+<tr>
+<td><strong>Variação Trifunovic</strong></td>
+<td>5…Bf5 no Ataque dos Quatro Peões</td>
+</tr>
+<tr>
+<td><strong>Variação Balogh</strong></td>
+<td>4.Bc4 — contém traps táticas em f7</td>
+</tr>
+<tr>
+<td><strong>Ataque Lasker / Variação Chase</strong></td>
+<td>3.c4 Cb6 4.c5 — Ataque dos Dois Peões</td>
+</tr>
+<tr>
+<td><strong>Defesa Brooklyn</strong></td>
+<td>2.e5 Cg8!? — retorna o cavalo para casa; incomum mas defendível</td>
+</tr>
+<tr>
+<td><strong>Mokele Mbembe</strong></td>
+<td>2.e5 Ce4? — muito duvidoso; cavalo pode ficar preso</td>
+</tr>
+<tr>
+<td><strong>Linha Emory Tate</strong></td>
+<td>3.c4 Cb6 4.a4 — com ideia de lift de torre (Ta3–Tg3)</td>
+</tr>
+<tr>
+<td><strong>Variação Escandinava</strong></td>
+<td>2.Cc3 d5 — linha independente com as pretas contestando o
+centro</td>
+</tr>
+<tr>
+<td><strong>Variação Krejcik</strong></td>
+<td>2.Bc4 — raramente vista, permite às pretas par de bispos</td>
+</tr>
+<tr>
+<td><strong>Ruptura …d5</strong></td>
+<td>Lance estratégico chave das pretas: fixa e ataca o peão de d4</td>
+</tr>
+<tr>
+<td><strong>Posto avançado em d5</strong></td>
+<td>Casa forte obtida pelas pretas após troca de peões; alvo de manobras
+de cavalos</td>
+</tr>
+<tr>
+<td><strong>Ruptura …f6</strong></td>
+<td>Quebra das pretas contra o peão de e5 no Ataque dos Quatro
+Peões</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Dossiê Defesa Alekhine — Compilado e organizado a partir de
+estudos do Lichess, Wikipedia (EN/PT), Chess.com e artigos
+especializados · Para fins educacionais</em></p>
+</body>
+</html>
