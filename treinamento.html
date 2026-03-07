@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>treinamento</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+
+    @media print {
+      html {
+        background-color: white;
+      }
+
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+
+      p,
+      h2,
+      h3 {
+        orphans: 3;
+        widows: 3;
+      }
+
+      h2,
+      h3,
+      h4 {
+        page-break-after: avoid;
+      }
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    a {
+      color: #1a1a1a;
+    }
+
+    a:visited {
+      color: #1a1a1a;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1.4em;
+    }
+
+    h5,
+    h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    h6 {
+      font-weight: normal;
+    }
+
+    ol,
+    ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+
+    li>ol,
+    li>ul {
+      margin-top: 0;
+    }
+
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+
+    .sourceCode {
+      background-color: transparent;
+      overflow: visible;
+    }
+
+    #TOC li {
+      list-style: none;
+    }
+
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+
+    #TOC>ul {
+      padding-left: 0;
+    }
+
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list[class] {
+      list-style: none;
+    }
+
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+
+    .display.math {
+      display: block;
+      text-align: center;
+      margin: 0.5rem auto;
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="TOC" role="doc-toc">
+    <ul>
+      <li><a href="#cronograma-de-treinamento-de-xadrez" id="toc-cronograma-de-treinamento-de-xadrez">♟ Cronograma de
+          Treinamento
+          de Xadrez</a>
+        <ul>
+          <li><a href="#de-1000-a-2000-de-rating-em-12-meses" id="toc-de-1000-a-2000-de-rating-em-12-meses">De 1000 a
+              2000 de Rating
+              em 12 Meses</a></li>
+          <li><a href="#visão-geral" id="toc-visão-geral">Visão Geral</a></li>
+          <li><a href="#princípios-do-treinamento" id="toc-princípios-do-treinamento">Princípios do Treinamento</a></li>
+          <li><a href="#fase-1-fundamentos-sólidos-meses-13" id="toc-fase-1-fundamentos-sólidos-meses-13">Fase 1 —
+              Fundamentos
+              Sólidos (Meses 1–3)</a></li>
+          <li><a href="#fase-2-construindo-o-jogo-meses-46" id="toc-fase-2-construindo-o-jogo-meses-46">Fase 2 —
+              Construindo o Jogo
+              (Meses 4–6)</a></li>
+          <li><a href="#fase-3-jogo-posicional-e-cálculo-meses-79"
+              id="toc-fase-3-jogo-posicional-e-cálculo-meses-79">Fase 3 — Jogo
+              Posicional e Cálculo (Meses 7–9)</a></li>
+          <li><a href="#fase-4-técnica-de-mestre-meses-1012" id="toc-fase-4-técnica-de-mestre-meses-1012">Fase 4 —
+              Técnica de Mestre
+              (Meses 10–12)</a></li>
+          <li><a href="#volume-de-jogo" id="toc-volume-de-jogo">Volume de
+              Jogo</a></li>
+          <li><a href="#erros-comuns-a-evitar" id="toc-erros-comuns-a-evitar">Erros Comuns a Evitar</a></li>
+          <li><a href="#ferramentas-complementares" id="toc-ferramentas-complementares">Ferramentas Complementares</a>
+          </li>
+          <li><a href="#expectativa-real-de-progressão" id="toc-expectativa-real-de-progressão">Expectativa Real de
+              Progressão</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <h1 id="cronograma-de-treinamento-de-xadrez">♟ Cronograma de Treinamento
+    de Xadrez</h1>
+  <h2 id="de-1000-a-2000-de-rating-em-12-meses">De 1000 a 2000 de Rating
+    em 12 Meses</h2>
+  <blockquote>
+    <p><em>Plano personalizado com base na sua biblioteca</em></p>
+  </blockquote>
+  <hr />
+  <h2 id="visão-geral">Visão Geral</h2>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 13%" />
+      <col style="width: 20%" />
+      <col style="width: 29%" />
+      <col style="width: 36%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Fase</th>
+        <th>Período</th>
+        <th>Rating Alvo</th>
+        <th>Foco Principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Meses 1–3</td>
+        <td>1000 → 1400</td>
+        <td>Tática intensa, xeque-mate, finais básicos</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Meses 4–6</td>
+        <td>1400 → 1600</td>
+        <td>Cálculo, estratégia, aberturas, finais de torre</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Meses 7–9</td>
+        <td>1600 → 1800</td>
+        <td>Jogo posicional, cálculo profundo, partidas de GM</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Meses 10–12</td>
+        <td>1800 → 2000</td>
+        <td>Técnica avançada, análise crítica, torneios</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Carga horária mínima:</strong> 1h–1h30 dias úteis / Sábado 4h
+    (manhã livre após aula 10h–12h) / Domingo 2h (~11h–12h semanais)</p>
+  <blockquote>
+    <p>⚠️ <strong>Sábados:</strong> aula das 10h às 12h. O treino começa à
+      tarde — aproveite o bloco de 4h para as sessões mais longas e densas da
+      semana.</p>
+  </blockquote>
+  <p><strong>Distribuição por área:</strong></p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Área</th>
+        <th>% do tempo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tática</td>
+        <td>40%</td>
+      </tr>
+      <tr>
+        <td>Cálculo</td>
+        <td>20%</td>
+      </tr>
+      <tr>
+        <td>Finais</td>
+        <td>15%</td>
+      </tr>
+      <tr>
+        <td>Estratégia</td>
+        <td>15%</td>
+      </tr>
+      <tr>
+        <td>Aberturas</td>
+        <td>10%</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <h2 id="princípios-do-treinamento">Princípios do Treinamento</h2>
+  <ol type="1">
+    <li><strong>Tática diária é inegociável.</strong> Resolva problemas todo
+      dia, mesmo que por 15 minutos. É o investimento com maior retorno para
+      quem está abaixo de 1800.</li>
+    <li><strong>Finais antes de aberturas.</strong> Um final mal executado
+      custa o mesmo que cair em uma armadilha de abertura, mas é mais
+      corrigível com estudo.</li>
+    <li><strong>Analise suas próprias partidas.</strong> Use o motor apenas
+      para checar — nunca para substituir seu raciocínio. Analise sozinho por
+      pelo menos 15 minutos primeiro.</li>
+    <li><strong>Jogue partidas longas.</strong> Prefira 15+10 ou mais. Blitz
+      forma hábitos ruins de cálculo. Limite a no máximo 30% do volume
+      total.</li>
+    <li><strong>Um livro por vez.</strong> Não pule entre obras. Termine,
+      aplique, absorva. Com 3 livros por fase no máximo.</li>
+    <li><strong>Nunca leia passivamente.</strong> Ao estudar uma posição:
+      pense 5–10 minutos, escreva as variantes, depois compare com o
+      livro.</li>
+  </ol>
+  <hr />
+  <h2 id="fase-1-fundamentos-sólidos-meses-13">Fase 1 — Fundamentos
+    Sólidos (Meses 1–3)</h2>
+  <p><strong>Meta:</strong> 1000 → 1400 | <strong>Foco:</strong> Tática,
+    xeque-mate e finais básicos</p>
+  <p>A maioria das partidas neste nível é decidida por erros táticos
+    simples. Quem reconhece padrões vence. O objetivo é eliminar erros
+    grosseiros e construir um repertório sólido de padrões.</p>
+  <h3 id="rotina-semanal">Rotina Semanal</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 22%" />
+      <col style="width: 27%" />
+      <col style="width: 50%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Dia</th>
+        <th>Foco</th>
+        <th>Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Segunda</td>
+        <td>Tática</td>
+        <td>40 min: <em>1001 Chess Exercises for Beginners</em> (20–30
+          problemas) + revisão dos erros</td>
+      </tr>
+      <tr>
+        <td>Terça</td>
+        <td>Finais</td>
+        <td>1h: <em>Xadrez Vitorioso: Finais</em> (Seirawan) — 1 capítulo com
+          exercícios</td>
+      </tr>
+      <tr>
+        <td>Quarta</td>
+        <td>Partidas comentadas</td>
+        <td>1h: <em>Logical Chess Move by Move</em> (Chernev) — 1 partida ao
+          tabuleiro físico</td>
+      </tr>
+      <tr>
+        <td>Quinta</td>
+        <td>Tática</td>
+        <td>40 min: <em>1001 Deadly Checkmates</em> (Nunn) — seções iniciais +
+          revisão de erros</td>
+      </tr>
+      <tr>
+        <td>Sexta</td>
+        <td>Base geral</td>
+        <td>1h: <em>Lições Elementares de Xadrez</em> (Capablanca) — 1
+          capítulo</td>
+      </tr>
+      <tr>
+        <td>Sábado</td>
+        <td>Dia intensivo (4h)</td>
+        <td><strong>13h–14h30:</strong> 30 problemas táticos (<em>1001 Chess
+            Exercises</em>) + revisão detalhada dos erros.
+          <strong>14h30–16h:</strong> 2 partidas longas (15+10) com anotação de
+          erros. <strong>16h–17h:</strong> análise das partidas sem engine.
+          <strong>17h–17h30:</strong> leitura de 1 capítulo do <em>Logical Chess
+            Move by Move</em> ao tabuleiro.
+        </td>
+      </tr>
+      <tr>
+        <td>Domingo</td>
+        <td>Revisão</td>
+        <td>1h: refazer problemas errados da semana + anotações</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="livros-da-fase-1">Livros da Fase 1</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 61%" />
+      <col style="width: 38%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Livro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tática (principal)</td>
+        <td><em>1001 Chess Exercises for Beginners</em> — complete o livro
+          inteiro</td>
+      </tr>
+      <tr>
+        <td>Xeque-mate</td>
+        <td><em>1001 Deadly Checkmates</em> (Nunn) — primeiros 200
+          problemas</td>
+      </tr>
+      <tr>
+        <td>Finais básicos</td>
+        <td><em>Xadrez Vitorioso: Finais</em> (Seirawan) — leitura completa</td>
+      </tr>
+      <tr>
+        <td>Base geral</td>
+        <td><em>Lições Elementares de Xadrez</em> (Capablanca) — leitura
+          completa</td>
+      </tr>
+      <tr>
+        <td>Partidas modelo</td>
+        <td><em>Logical Chess Move by Move</em> (Chernev) — primeiros 10
+          capítulos</td>
+      </tr>
+      <tr>
+        <td>Suporte</td>
+        <td><em>Problemas de Xadrez: 260 Problemas</em> (Guarino) — referência
+          complementar</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="metas-de-controle">Metas de Controle</h3>
+  <ul>
+    <li><strong>Mês 1:</strong> Reconhecer os 7 padrões de xeque-mate mais
+      comuns (back rank, afogamento, dois bispos, etc.)</li>
+    <li><strong>Mês 2:</strong> Resolver problemas de 1 movimento em menos
+      de 30 segundos com 85% de acerto</li>
+    <li><strong>Mês 3:</strong> Dominar Rei+Peão vs. Rei e Rei+Torre vs. Rei
+      com segurança total; completar 2000+ exercícios táticos</li>
+  </ul>
+  <hr />
+  <h2 id="fase-2-construindo-o-jogo-meses-46">Fase 2 — Construindo o Jogo
+    (Meses 4–6)</h2>
+  <p><strong>Meta:</strong> 1400 → 1600 | <strong>Foco:</strong> Cálculo,
+    estratégia, aberturas, finais de torre</p>
+  <p>Com os padrões táticos estabelecidos, é hora de aprender a fazer
+    planos e montar um repertório de aberturas funcional.</p>
+  <h3 id="rotina-semanal-1">Rotina Semanal</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 22%" />
+      <col style="width: 27%" />
+      <col style="width: 50%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Dia</th>
+        <th>Foco</th>
+        <th>Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Segunda</td>
+        <td>Tática intermediária</td>
+        <td>40 min: <em>DAMP</em> (Duarte &amp; Lapertosa) — 1 capítulo +
+          exercícios</td>
+      </tr>
+      <tr>
+        <td>Terça</td>
+        <td>Abertura</td>
+        <td>1h: <em>Xadrez Vitorioso: Aberturas</em> (Seirawan) + definir 1
+          abertura para brancas e 1 para pretas</td>
+      </tr>
+      <tr>
+        <td>Quarta</td>
+        <td>Finais de torre</td>
+        <td>1h: <em>Prática de Finais de Torre</em> (Korchnoi) — 1 seção com
+          exercícios</td>
+      </tr>
+      <tr>
+        <td>Quinta</td>
+        <td>Estratégia</td>
+        <td>1h: <em>Xadrez Vitorioso: Estratégias</em> (Seirawan) — 1 capítulo +
+          anotações</td>
+      </tr>
+      <tr>
+        <td>Sexta</td>
+        <td>Partidas comentadas</td>
+        <td>1h: <em>Minhas Melhores Partidas</em> (Fischer) — primeiras 10
+          partidas ao tabuleiro físico</td>
+      </tr>
+      <tr>
+        <td>Sábado</td>
+        <td>Dia intensivo (4h)</td>
+        <td><strong>13h–14h:</strong> 1 seção de finais de torre
+          (<em>Korchnoi</em>) com exercícios. <strong>14h–16h:</strong> 3 partidas
+          longas com foco em aplicar a abertura estudada.
+          <strong>16h–17h30:</strong> análise das 3 partidas sem engine, depois
+          confirmar com engine. <strong>17h–17h30:</strong> 1 capítulo de
+          <em>Xadrez Vitorioso: Combinações</em> ao tabuleiro.
+        </td>
+      </tr>
+      <tr>
+        <td>Domingo</td>
+        <td>Revisão + tática</td>
+        <td>1h: 20 problemas do <em>5334 Problems</em> (Polgar) + revisão de
+          erros da semana</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="livros-da-fase-2">Livros da Fase 2</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 61%" />
+      <col style="width: 38%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Livro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tática/Cálculo</td>
+        <td><em>DAMP</em> (Duarte &amp; Lapertosa) — leitura completa</td>
+      </tr>
+      <tr>
+        <td>Abertura</td>
+        <td><em>Xadrez Vitorioso: Aberturas</em> (Seirawan) + <em>Keep It Simple
+            1.e4</em> ou <em>1.d4! The Chess Bible</em></td>
+      </tr>
+      <tr>
+        <td>Finais de torre</td>
+        <td><em>Prática de Finais de Torre</em> (Korchnoi)</td>
+      </tr>
+      <tr>
+        <td>Estratégia</td>
+        <td><em>Xadrez Vitorioso: Estratégias</em> (Seirawan) — leitura
+          completa</td>
+      </tr>
+      <tr>
+        <td>Partidas modelo</td>
+        <td><em>Minhas Melhores Partidas</em> (Fischer) — primeiras 15
+          partidas</td>
+      </tr>
+      <tr>
+        <td>Combinações</td>
+        <td><em>Xadrez Vitorioso: Combinações</em> (Seirawan)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="metas-de-controle-1">Metas de Controle</h3>
+  <ul>
+    <li><strong>Mês 4:</strong> Ter definido e memorizado a estrutura básica
+      de sua abertura com brancas e pretas (mínimo 8 lances principais)</li>
+    <li><strong>Mês 5:</strong> Converter Torre+Rei vs. Rei com 90% de
+      consistência usando Lucena e Philidor</li>
+    <li><strong>Mês 6:</strong> Identificar corretamente o plano estratégico
+      em posições do meio-jogo em 60% dos casos</li>
+  </ul>
+  <hr />
+  <h2 id="fase-3-jogo-posicional-e-cálculo-meses-79">Fase 3 — Jogo
+    Posicional e Cálculo (Meses 7–9)</h2>
+  <p><strong>Meta:</strong> 1600 → 1800 | <strong>Foco:</strong> Posição,
+    cálculo profundo, partidas de GM</p>
+  <p>A fase mais exigente intelectualmente. Você vai aprender a avaliar
+    posições sistematicamente e calcular variantes longas. A transição de
+    1600 para 1800 exige precisão — não dá mais para depender só dos erros
+    do adversário.</p>
+  <h3 id="rotina-semanal-2">Rotina Semanal</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 22%" />
+      <col style="width: 27%" />
+      <col style="width: 50%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Dia</th>
+        <th>Foco</th>
+        <th>Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Segunda</td>
+        <td>Cálculo</td>
+        <td>1h: <em>Chess Calculation Training</em> (Edouard) — 1 capítulo
+          completo com exercícios</td>
+      </tr>
+      <tr>
+        <td>Terça</td>
+        <td>Estratégia clássica</td>
+        <td>1h: <em>Meu Sistema</em> (Nimzowitsch) — 1 capítulo + análise ao
+          tabuleiro (leitura lenta)</td>
+      </tr>
+      <tr>
+        <td>Quarta</td>
+        <td>Finais avançados</td>
+        <td>1h: <em>100 Endgames You Must Know</em> — 10 finais por sessão com
+          análise</td>
+      </tr>
+      <tr>
+        <td>Quinta</td>
+        <td>Partidas de GM</td>
+        <td>1h: <em>Meus Grandes Predecessores Vol. I</em> (Kasparov) — 2
+          partidas comentadas</td>
+      </tr>
+      <tr>
+        <td>Sexta</td>
+        <td>Reconhecimento de padrões</td>
+        <td>1h: <em>Train Your Chess Pattern Recognition</em></td>
+      </tr>
+      <tr>
+        <td>Sábado</td>
+        <td>Dia intensivo (4h)</td>
+        <td><strong>13h–14h30:</strong> torneio presencial ou 2 partidas longas
+          online (30+20). <strong>14h30–16h:</strong> análise profunda das
+          partidas sem engine. <strong>16h–17h:</strong> <em>Forcing Chess
+            Moves</em> (Hertan) — 1 capítulo com todos os exercícios.
+          <strong>17h–17h30:</strong> revisão dos finais da semana (<em>100
+            Endgames</em>).
+        </td>
+      </tr>
+      <tr>
+        <td>Domingo</td>
+        <td>Revisão</td>
+        <td>1h30: revisão semanal + <em>Forcing Chess Moves</em> (Hertan)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="livros-da-fase-3">Livros da Fase 3</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 61%" />
+      <col style="width: 38%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Livro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cálculo</td>
+        <td><em>Chess Calculation Training</em> (Edouard) — volume principal da
+          fase</td>
+      </tr>
+      <tr>
+        <td>Estratégia clássica</td>
+        <td><em>Meu Sistema</em> (Nimzowitsch) — leitura lenta e profunda</td>
+      </tr>
+      <tr>
+        <td>Finais completos</td>
+        <td><em>100 Endgames You Must Know</em> — estudo integral</td>
+      </tr>
+      <tr>
+        <td>Padrões</td>
+        <td><em>Train Your Chess Pattern Recognition</em></td>
+      </tr>
+      <tr>
+        <td>Partidas comentadas</td>
+        <td><em>Meus Grandes Predecessores</em> Vol. I e II (Kasparov)</td>
+      </tr>
+      <tr>
+        <td>Cálculo avançado</td>
+        <td><em>Forcing Chess Moves</em> (Hertan)</td>
+      </tr>
+      <tr>
+        <td>Estratégia moderna</td>
+        <td><em>Segredos da Moderna Estratégia</em> (Watson) — introdução</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="metas-de-controle-2">Metas de Controle</h3>
+  <ul>
+    <li><strong>Mês 7:</strong> Calcular corretamente variantes de 3 lances
+      em pelo menos 80% das posições táticas</li>
+    <li><strong>Mês 8:</strong> Explicar os 6 principais elementos
+      posicionais de Nimzowitsch em posições do meio-jogo</li>
+    <li><strong>Mês 9:</strong> Resolver os primeiros 50 finais do <em>100
+        Endgames</em> com acerto de 85%</li>
+  </ul>
+  <hr />
+  <h2 id="fase-4-técnica-de-mestre-meses-1012">Fase 4 — Técnica de Mestre
+    (Meses 10–12)</h2>
+  <p><strong>Meta:</strong> 1800 → 2000 | <strong>Foco:</strong> Análise
+    crítica, técnica avançada, torneios</p>
+  <p>Consolidação e refinamento. A base está construída — agora é fechar
+    lacunas, estudar profundamente os grandes mestres e acumular horas de
+    jogo competitivo de qualidade.</p>
+  <h3 id="rotina-semanal-3">Rotina Semanal</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 22%" />
+      <col style="width: 27%" />
+      <col style="width: 50%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Dia</th>
+        <th>Foco</th>
+        <th>Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Segunda</td>
+        <td>Análise profunda</td>
+        <td>1h30: análise das últimas 3 partidas com motor — identifique padrões
+          de erro recorrente</td>
+      </tr>
+      <tr>
+        <td>Terça</td>
+        <td>Técnica avançada</td>
+        <td>1h: <em>A Arte de Manobrar as Peças</em> (Dvoretsky) — 1
+          capítulo</td>
+      </tr>
+      <tr>
+        <td>Quarta</td>
+        <td>Finais avançados</td>
+        <td>1h: <em>Test Your Endgame Ability</em> + <em>Botvinnik on the
+            Endgame</em></td>
+      </tr>
+      <tr>
+        <td>Quinta</td>
+        <td>Partidas de Kasparov</td>
+        <td>1h: <em>Kasparov on Kasparov</em> ou <em>Meus Grandes
+            Predecessores</em> Vol. III/IV</td>
+      </tr>
+      <tr>
+        <td>Sexta</td>
+        <td>Posição avançada</td>
+        <td>1h: <em>A Tomada de Decisão no Xadrez Posicional</em> (Gelfand) ou
+          <em>Soviet Middlegame Technique</em>
+        </td>
+      </tr>
+      <tr>
+        <td>Sábado</td>
+        <td>Dia intensivo (4h)</td>
+        <td><strong>13h–15h:</strong> torneio presencial ou 2 partidas longas
+          (30+20). <strong>15h–16h30:</strong> análise rigorosa das partidas —
+          identifique erros de cálculo, avaliação e técnica.
+          <strong>16h30–17h30:</strong> 1 sessão de <em>Test Your Endgame
+            Ability</em> ou repertório de abertura. <strong>17h30–18h:</strong> 1
+          capítulo de <em>Kasparov: 300 Melhores Partidas</em> ao tabuleiro.
+        </td>
+      </tr>
+      <tr>
+        <td>Domingo</td>
+        <td>Revisão total</td>
+        <td>2h: repertório de abertura + finais críticos + táticas pesadas
+          (<em>5334 Problems</em>)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="livros-da-fase-4">Livros da Fase 4</h3>
+  <table class="table table-striped">
+    <colgroup>
+      <col style="width: 61%" />
+      <col style="width: 38%" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Livro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Técnica</td>
+        <td><em>A Arte de Manobrar as Peças</em> (Dvoretsky)</td>
+      </tr>
+      <tr>
+        <td>Finais avançados</td>
+        <td><em>Test Your Endgame Ability</em> + <em>Botvinnik on the
+            Endgame</em> + <em>Segredos dos Finais de Peão</em> (Müller)</td>
+      </tr>
+      <tr>
+        <td>Grandes partidas</td>
+        <td><em>Meus Grandes Predecessores</em> Vol. III, IV, V (Kasparov)</td>
+      </tr>
+      <tr>
+        <td>Posição avançada</td>
+        <td><em>A Tomada de Decisão no Xadrez Posicional</em> (Gelfand)</td>
+      </tr>
+      <tr>
+        <td>Meio-jogo</td>
+        <td><em>Soviet Middlegame Technique</em> + <em>Manual de Ataque</em>
+          (Aagaard)</td>
+      </tr>
+      <tr>
+        <td>Abertura</td>
+        <td><em>ECO B</em> (sua abertura) + <em>Manual de Aberturas Vol. I</em>
+          (Lazzarotto)</td>
+      </tr>
+      <tr>
+        <td>Partidas modelo</td>
+        <td><em>Kasparov: 300 Melhores Partidas</em> — selecione 30 para estudo
+          aprofundado</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="metas-de-controle-3">Metas de Controle</h3>
+  <ul>
+    <li><strong>Mês 10:</strong> Repertório com pelo menos 15 lances de
+      profundidade nas linhas principais</li>
+    <li><strong>Mês 11:</strong> Converter posições tecnicamente ganhas
+      (torres, damas, superioridade posicional) com 90% de consistência</li>
+    <li><strong>Mês 12:</strong> Atingir 2000 no chess.com e participar de
+      pelo menos 2 torneios OTB com resultado positivo</li>
+  </ul>
+  <hr />
+  <h2 id="volume-de-jogo">Volume de Jogo</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Meta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Partidas online (15+10)</td>
+        <td>3–5 por semana</td>
+      </tr>
+      <tr>
+        <td>Partidas OTB</td>
+        <td>1 por mês (mínimo)</td>
+      </tr>
+      <tr>
+        <td>Torneios OTB</td>
+        <td>1 por trimestre</td>
+      </tr>
+      <tr>
+        <td>Total anual</td>
+        <td>600–800 partidas online + 30–60 OTB</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Regra de ouro:</strong> Resolver tática → Jogar → Analisar
+    sem engine → Só então usar engine.</p>
+  <hr />
+  <h2 id="erros-comuns-a-evitar">Erros Comuns a Evitar</h2>
+  <ul>
+    <li><strong>Estudar muitas aberturas ao mesmo tempo.</strong> Escolha 1
+      para brancas e 1 para pretas. Repertório amplo mas raso é inútil.</li>
+    <li><strong>Usar o motor como bengala.</strong> Analise sozinho por 15
+      minutos antes de ligar o computador.</li>
+    <li><strong>Pular os exercícios dos livros.</strong> O aprendizado vem
+      da prática, não da leitura passiva.</li>
+    <li><strong>Negligenciar finais.</strong> A maioria dos jogadores abaixo
+      de 2000 perde muitos pontos aqui. Finais são matemática — aprenda uma
+      vez, dura para sempre.</li>
+    <li><strong>Jogar só blitz.</strong> Limite a no máximo 30% do volume
+      total.</li>
+    <li><strong>Estudar 20 livros ao mesmo tempo.</strong> Máximo de 3
+      livros por fase.</li>
+  </ul>
+  <hr />
+  <h2 id="ferramentas-complementares">Ferramentas Complementares</h2>
+  <ul>
+    <li><strong>Lichess.org</strong> — análise gratuita de partidas, estudos
+      e puzzles diários</li>
+    <li><strong>Chess Tempo</strong> — banco de táticas excelente para
+      complementar os livros</li>
+    <li><strong>Tabuleiro físico</strong> — desenvolve visualização e
+      concentração; use sempre que estudar</li>
+    <li><strong>Diário de xadrez</strong> — anote erros recorrentes,
+      posições que não entendeu, conceitos novos</li>
+  </ul>
+  <hr />
+  <h2 id="expectativa-real-de-progressão">Expectativa Real de
+    Progressão</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Período</th>
+        <th>Rating Esperado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>3 meses</td>
+        <td>~1400</td>
+      </tr>
+      <tr>
+        <td>6 meses</td>
+        <td>~1600</td>
+      </tr>
+      <tr>
+        <td>9 meses</td>
+        <td>~1800</td>
+      </tr>
+      <tr>
+        <td>12 meses</td>
+        <td>2000</td>
+      </tr>
+    </tbody>
+  </table>
+  <blockquote>
+    <p>O progresso não é linear. Platôs de 3–6 semanas são normais e
+      geralmente precedem um salto de desempenho. <strong>Não mude o plano
+        durante platôs.</strong> Continue o trabalho sistemático.</p>
+  </blockquote>
+  <hr />
+  <blockquote>
+    <p><em>“O xadrez é 99% tática.”</em> — Richard Teichmann</p>
+  </blockquote>
+</body>
+
+</html>
